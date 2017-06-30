@@ -10,7 +10,7 @@
         <td>Levels</td>
         <td>
           <label class="radio-inline" v-for="l in [1, 2, 3, 4, 5, 6]">
-            <input type="radio" name="level" v-model="level" :value="l" /> {{ l }} &nbsp;
+            <input type="radio" v-model="level" :value="l" /> {{ l }} &nbsp;
           </label>
         </td>
       </tr>
@@ -18,7 +18,7 @@
         <td>Mode</td>
         <td>
           <label class="radio-inline" v-for="mo in ['easy', 'normal', 'hard']">
-            <input type="radio" name="mode" v-model="mode" :value="mo" /> {{ mo | capitalize }} &nbsp;
+            <input type="radio" v-model="mode" :value="mo" /> {{ mo | capitalize }} &nbsp;
           </label>
         </td>
       </tr>
@@ -37,7 +37,7 @@ import MainLayout from '../layouts/Main.vue'
 
 module.exports = {
   data: function() {
-    var vm = this
+    const vm = this
     return {
       name: vm.$root.name,
       mode: vm.$root.mode,
@@ -47,7 +47,7 @@ module.exports = {
   mounted() {
     const vm = this
     document.getElementById('name').focus()
-    window.addEventListener('keydown', function(e) {
+    window.addEventListener('keydown', e => {
       if (e.keyCode === 19){
         vm.onSubmit(e)
       }
@@ -55,13 +55,13 @@ module.exports = {
   },
   methods: {
     onSubmit: function(event) {
-      var vm = this
+      const vm = this
       vm.$root.name = vm.name
       vm.$root.mode = vm.mode
       vm.$root.level = vm.level
 
       event.preventDefault()
-      this.$root.currentRoute = "/quiz"
+      vm.$root.currentRoute = "/quiz"
       window.history.pushState(
         null,
         routes["/quiz"],

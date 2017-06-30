@@ -1,14 +1,11 @@
 <template>
-<div class="container" style="padding-top:12px">
-  <!-- <v-link href="/">Home</v-link> -->
-  <!-- <ul>
-      <li>
-        <v-link href="/quiz">Quiz</v-link>
-        <v-link href="/about">About</v-link>
-      </li>
-    </ul> -->
-  <slot></slot>
-</div>
+  <div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <div class="container" style="padding-top:12px">
+      <!-- <v-link href="/">Home</v-link> -->
+      <slot></slot>
+    </div>
+  </div>
 </template>
 
 <script>

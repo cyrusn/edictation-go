@@ -1,0 +1,1927 @@
+[{
+    "title": "accept",
+    "partOfSpeech": "v",
+    "definition": "接受",
+    "level": 1
+  },
+  {
+    "title": "achieve",
+    "partOfSpeech": "v",
+    "definition": "達成",
+    "level": 1
+  },
+  {
+    "title": "adapt",
+    "partOfSpeech": "v",
+    "definition": "適應",
+    "level": 1
+  },
+  {
+    "title": "add",
+    "partOfSpeech": "v",
+    "definition": "加",
+    "level": 1
+  },
+  {
+    "title": "admire",
+    "partOfSpeech": "v",
+    "definition": "欣賞",
+    "level": 1
+  },
+  {
+    "title": "adopt",
+    "partOfSpeech": "v",
+    "definition": "採納",
+    "level": 1
+  },
+  {
+    "title": "affect",
+    "partOfSpeech": "v",
+    "definition": "影響",
+    "level": 1
+  },
+  {
+    "title": "afford",
+    "partOfSpeech": "v",
+    "definition": "負擔",
+    "level": 1
+  },
+  {
+    "title": "agree",
+    "partOfSpeech": "v",
+    "definition": "同意",
+    "level": 1
+  },
+  {
+    "title": "amaze",
+    "partOfSpeech": "v",
+    "definition": "使大為驚奇",
+    "level": 1
+  },
+  {
+    "title": "analyse",
+    "partOfSpeech": "v",
+    "definition": "分析",
+    "level": 1
+  },
+  {
+    "title": "announce",
+    "partOfSpeech": "v",
+    "definition": "宣佈",
+    "level": 1
+  },
+  {
+    "title": "annoy",
+    "partOfSpeech": "v",
+    "definition": "困擾",
+    "level": 1
+  },
+  {
+    "title": "appear",
+    "partOfSpeech": "v",
+    "definition": "出現",
+    "level": 1
+  },
+  {
+    "title": "apply",
+    "partOfSpeech": "v",
+    "definition": "應用",
+    "level": 1
+  },
+  {
+    "title": "appreciate",
+    "partOfSpeech": "v",
+    "definition": "欣賞",
+    "level": 1
+  },
+  {
+    "title": "arise",
+    "partOfSpeech": "v",
+    "definition": "上升/產生",
+    "level": 1
+  },
+  {
+    "title": "arrange",
+    "partOfSpeech": "v",
+    "definition": "安排",
+    "level": 1
+  },
+  {
+    "title": "arrive",
+    "partOfSpeech": "v",
+    "definition": "到達",
+    "level": 1
+  },
+  {
+    "title": "attract",
+    "partOfSpeech": "v",
+    "definition": "吸引",
+    "level": 1
+  },
+  {
+    "title": "avoid",
+    "partOfSpeech": "v",
+    "definition": "避開",
+    "level": 1
+  },
+  {
+    "title": "bake",
+    "partOfSpeech": "v",
+    "definition": "烤",
+    "level": 1
+  },
+  {
+    "title": "balance",
+    "partOfSpeech": "v",
+    "definition": "平衡",
+    "level": 1
+  },
+  {
+    "title": "bargain",
+    "partOfSpeech": "v",
+    "definition": "討價還價",
+    "level": 1
+  },
+  {
+    "title": "bark",
+    "partOfSpeech": "v",
+    "definition": "吠",
+    "level": 1
+  },
+  {
+    "title": "bear",
+    "partOfSpeech": "v",
+    "definition": "懷有/忍受",
+    "level": 1
+  },
+  {
+    "title": "beat",
+    "partOfSpeech": "v",
+    "definition": "擊打/跳動",
+    "level": 1
+  },
+  {
+    "title": "become",
+    "partOfSpeech": "v",
+    "definition": "成為",
+    "level": 1
+  },
+  {
+    "title": "beg",
+    "partOfSpeech": "v",
+    "definition": "(乞)求",
+    "level": 1
+  },
+  {
+    "title": "believe",
+    "partOfSpeech": "v",
+    "definition": "相信",
+    "level": 1
+  },
+  {
+    "title": "belong",
+    "partOfSpeech": "v",
+    "definition": "屬於",
+    "level": 1
+  },
+  {
+    "title": "bite",
+    "partOfSpeech": "v",
+    "definition": "咬",
+    "level": 1
+  },
+  {
+    "title": "blame",
+    "partOfSpeech": "v",
+    "definition": "責怪",
+    "level": 1
+  },
+  {
+    "title": "bleed",
+    "partOfSpeech": "v",
+    "definition": "流血",
+    "level": 1
+  },
+  {
+    "title": "blow",
+    "partOfSpeech": "v",
+    "definition": "吹",
+    "level": 1
+  },
+  {
+    "title": "boast",
+    "partOfSpeech": "v",
+    "definition": "誇耀",
+    "level": 1
+  },
+  {
+    "title": "borrow",
+    "partOfSpeech": "v",
+    "definition": "借來",
+    "level": 1
+  },
+  {
+    "title": "bother",
+    "partOfSpeech": "v",
+    "definition": "打攪",
+    "level": 1
+  },
+  {
+    "title": "breathe",
+    "partOfSpeech": "v",
+    "definition": "呼吸",
+    "level": 1
+  },
+  {
+    "title": "brush",
+    "partOfSpeech": "v",
+    "definition": "刷",
+    "level": 2
+  },
+  {
+    "title": "bump",
+    "partOfSpeech": "v",
+    "definition": "撞",
+    "level": 2
+  },
+  {
+    "title": "capture",
+    "partOfSpeech": "v",
+    "definition": "捕捉",
+    "level": 2
+  },
+  {
+    "title": "carry",
+    "partOfSpeech": "v",
+    "definition": "攜帶",
+    "level": 2
+  },
+  {
+    "title": "catch",
+    "partOfSpeech": "v",
+    "definition": "捕捉",
+    "level": 2
+  },
+  {
+    "title": "cause",
+    "partOfSpeech": "v",
+    "definition": "導致",
+    "level": 2
+  },
+  {
+    "title": "cease",
+    "partOfSpeech": "v",
+    "definition": "停止",
+    "level": 2
+  },
+  {
+    "title": "celebrate",
+    "partOfSpeech": "v",
+    "definition": "慶祝",
+    "level": 2
+  },
+  {
+    "title": "challenge",
+    "partOfSpeech": "v",
+    "definition": "挑戰",
+    "level": 2
+  },
+  {
+    "title": "chase",
+    "partOfSpeech": "v",
+    "definition": "追逐",
+    "level": 2
+  },
+  {
+    "title": "chat",
+    "partOfSpeech": "v",
+    "definition": "聊天",
+    "level": 2
+  },
+  {
+    "title": "cheat",
+    "partOfSpeech": "v",
+    "definition": "欺騙",
+    "level": 2
+  },
+  {
+    "title": "choose",
+    "partOfSpeech": "v",
+    "definition": "選擇",
+    "level": 2
+  },
+  {
+    "title": "claim",
+    "partOfSpeech": "v",
+    "definition": "聲稱",
+    "level": 2
+  },
+  {
+    "title": "clap",
+    "partOfSpeech": "v",
+    "definition": "拍手",
+    "level": 2
+  },
+  {
+    "title": "climb",
+    "partOfSpeech": "v",
+    "definition": "爬",
+    "level": 2
+  },
+  {
+    "title": "collapse",
+    "partOfSpeech": "v",
+    "definition": "倒塌",
+    "level": 2
+  },
+  {
+    "title": "collect",
+    "partOfSpeech": "v",
+    "definition": "收集",
+    "level": 2
+  },
+  {
+    "title": "combine",
+    "partOfSpeech": "v",
+    "definition": "結合",
+    "level": 2
+  },
+  {
+    "title": "commit",
+    "partOfSpeech": "v",
+    "definition": "干犯",
+    "level": 2
+  },
+  {
+    "title": "communicate",
+    "partOfSpeech": "v",
+    "definition": "通訊",
+    "level": 2
+  },
+  {
+    "title": "compare",
+    "partOfSpeech": "v",
+    "definition": "比較",
+    "level": 2
+  },
+  {
+    "title": "compete",
+    "partOfSpeech": "v",
+    "definition": "競爭",
+    "level": 2
+  },
+  {
+    "title": "complain",
+    "partOfSpeech": "v",
+    "definition": "投訴",
+    "level": 2
+  },
+  {
+    "title": "complete",
+    "partOfSpeech": "v",
+    "definition": "完成",
+    "level": 2
+  },
+  {
+    "title": "concern",
+    "partOfSpeech": "v",
+    "definition": "使不安/關係到",
+    "level": 2
+  },
+  {
+    "title": "consider",
+    "partOfSpeech": "v",
+    "definition": "考慮",
+    "level": 2
+  },
+  {
+    "title": "consist",
+    "partOfSpeech": "v",
+    "definition": "構成",
+    "level": 2
+  },
+  {
+    "title": "contact",
+    "partOfSpeech": "v",
+    "definition": "聯繫",
+    "level": 2
+  },
+  {
+    "title": "contain",
+    "partOfSpeech": "v",
+    "definition": "包含",
+    "level": 2
+  },
+  {
+    "title": "continue",
+    "partOfSpeech": "v",
+    "definition": "持續",
+    "level": 2
+  },
+  {
+    "title": "convince",
+    "partOfSpeech": "v",
+    "definition": "說服",
+    "level": 2
+  },
+  {
+    "title": "correct",
+    "partOfSpeech": "v",
+    "definition": "改正",
+    "level": 2
+  },
+  {
+    "title": "correspond",
+    "partOfSpeech": "v",
+    "definition": "符合/相應",
+    "level": 2
+  },
+  {
+    "title": "cost",
+    "partOfSpeech": "v",
+    "definition": "值(多少錢)",
+    "level": 2
+  },
+  {
+    "title": "cough",
+    "partOfSpeech": "v",
+    "definition": "咳嗽",
+    "level": 2
+  },
+  {
+    "title": "count",
+    "partOfSpeech": "v",
+    "definition": "計數/數",
+    "level": 2
+  },
+  {
+    "title": "cover",
+    "partOfSpeech": "v",
+    "definition": "遮蓋",
+    "level": 2
+  },
+  {
+    "title": "crawl",
+    "partOfSpeech": "v",
+    "definition": "爬",
+    "level": 3
+  },
+  {
+    "title": "create",
+    "partOfSpeech": "v",
+    "definition": "創造",
+    "level": 3
+  },
+  {
+    "title": "damage",
+    "partOfSpeech": "v",
+    "definition": "破壞",
+    "level": 3
+  },
+  {
+    "title": "deceive",
+    "partOfSpeech": "v",
+    "definition": "欺騙",
+    "level": 3
+  },
+  {
+    "title": "decide",
+    "partOfSpeech": "v",
+    "definition": "決定",
+    "level": 3
+  },
+  {
+    "title": "decorate",
+    "partOfSpeech": "v",
+    "definition": "裝飾",
+    "level": 3
+  },
+  {
+    "title": "decrease",
+    "partOfSpeech": "v",
+    "definition": "減少",
+    "level": 3
+  },
+  {
+    "title": "defend",
+    "partOfSpeech": "v",
+    "definition": "防守/辯護",
+    "level": 3
+  },
+  {
+    "title": "define",
+    "partOfSpeech": "v",
+    "definition": "給...下定義",
+    "level": 3
+  },
+  {
+    "title": "deliver",
+    "partOfSpeech": "v",
+    "definition": "傳送",
+    "level": 3
+  },
+  {
+    "title": "depart",
+    "partOfSpeech": "v",
+    "definition": "出發/離開",
+    "level": 3
+  },
+  {
+    "title": "describe",
+    "partOfSpeech": "v",
+    "definition": "形容/描述",
+    "level": 3
+  },
+  {
+    "title": "design",
+    "partOfSpeech": "v",
+    "definition": "設計",
+    "level": 3
+  },
+  {
+    "title": "desire",
+    "partOfSpeech": "v",
+    "definition": "渴望",
+    "level": 3
+  },
+  {
+    "title": "destroy",
+    "partOfSpeech": "v",
+    "definition": "破壞",
+    "level": 3
+  },
+  {
+    "title": "detect",
+    "partOfSpeech": "v",
+    "definition": "察覺",
+    "level": 3
+  },
+  {
+    "title": "determine",
+    "partOfSpeech": "v",
+    "definition": "下決心",
+    "level": 3
+  },
+  {
+    "title": "develop",
+    "partOfSpeech": "v",
+    "definition": "發展",
+    "level": 3
+  },
+  {
+    "title": "dig",
+    "partOfSpeech": "v",
+    "definition": "掘",
+    "level": 3
+  },
+  {
+    "title": "direct",
+    "partOfSpeech": "v",
+    "definition": "指揮/導演",
+    "level": 3
+  },
+  {
+    "title": "disappear",
+    "partOfSpeech": "v",
+    "definition": "消失",
+    "level": 3
+  },
+  {
+    "title": "discourage",
+    "partOfSpeech": "v",
+    "definition": "使洩氣",
+    "level": 3
+  },
+  {
+    "title": "discover",
+    "partOfSpeech": "v",
+    "definition": "發現",
+    "level": 3
+  },
+  {
+    "title": "discriminate",
+    "partOfSpeech": "v",
+    "definition": "區別/歧視",
+    "level": 3
+  },
+  {
+    "title": "discuss",
+    "partOfSpeech": "v",
+    "definition": "討論",
+    "level": 3
+  },
+  {
+    "title": "divide",
+    "partOfSpeech": "v",
+    "definition": "劃分",
+    "level": 3
+  },
+  {
+    "title": "doubt",
+    "partOfSpeech": "v",
+    "definition": "懷疑",
+    "level": 3
+  },
+  {
+    "title": "draft",
+    "partOfSpeech": "v",
+    "definition": "起草",
+    "level": 3
+  },
+  {
+    "title": "dress",
+    "partOfSpeech": "v",
+    "definition": "穿著/打扮",
+    "level": 3
+  },
+  {
+    "title": "encourage",
+    "partOfSpeech": "v",
+    "definition": "鼓勵",
+    "level": 3
+  },
+  {
+    "title": "endanger",
+    "partOfSpeech": "v",
+    "definition": "使遭到危險",
+    "level": 3
+  },
+  {
+    "title": "ensure",
+    "partOfSpeech": "v",
+    "definition": "保證",
+    "level": 3
+  },
+  {
+    "title": "envy",
+    "partOfSpeech": "v",
+    "definition": "羨慕",
+    "level": 3
+  },
+  {
+    "title": "equal",
+    "partOfSpeech": "v",
+    "definition": "等如",
+    "level": 3
+  },
+  {
+    "title": "erase",
+    "partOfSpeech": "v",
+    "definition": "抹去",
+    "level": 3
+  },
+  {
+    "title": "escape",
+    "partOfSpeech": "v",
+    "definition": "逃走",
+    "level": 3
+  },
+  {
+    "title": "establish",
+    "partOfSpeech": "v",
+    "definition": "建立",
+    "level": 3
+  },
+  {
+    "title": "exercise",
+    "partOfSpeech": "v",
+    "definition": "鍛鍊/運動",
+    "level": 4
+  },
+  {
+    "title": "exhibit",
+    "partOfSpeech": "v",
+    "definition": "展示",
+    "level": 4
+  },
+  {
+    "title": "exist",
+    "partOfSpeech": "v",
+    "definition": "存在",
+    "level": 4
+  },
+  {
+    "title": "expect",
+    "partOfSpeech": "v",
+    "definition": "預料/期望",
+    "level": 4
+  },
+  {
+    "title": "experience",
+    "partOfSpeech": "v",
+    "definition": "經驗",
+    "level": 4
+  },
+  {
+    "title": "expire",
+    "partOfSpeech": "v",
+    "definition": "過期",
+    "level": 4
+  },
+  {
+    "title": "explain",
+    "partOfSpeech": "v",
+    "definition": "解釋",
+    "level": 4
+  },
+  {
+    "title": "export",
+    "partOfSpeech": "v",
+    "definition": "輸出",
+    "level": 4
+  },
+  {
+    "title": "express",
+    "partOfSpeech": "v",
+    "definition": "表達",
+    "level": 4
+  },
+  {
+    "title": "fail",
+    "partOfSpeech": "v",
+    "definition": "失敗/不及格",
+    "level": 4
+  },
+  {
+    "title": "faint",
+    "partOfSpeech": "v",
+    "definition": "暈",
+    "level": 4
+  },
+  {
+    "title": "fear",
+    "partOfSpeech": "v",
+    "definition": "害怕",
+    "level": 4
+  },
+  {
+    "title": "feed",
+    "partOfSpeech": "v",
+    "definition": "餵飼",
+    "level": 4
+  },
+  {
+    "title": "filter",
+    "partOfSpeech": "v",
+    "definition": "過濾",
+    "level": 4
+  },
+  {
+    "title": "float",
+    "partOfSpeech": "v",
+    "definition": "浮",
+    "level": 4
+  },
+  {
+    "title": "fold",
+    "partOfSpeech": "v",
+    "definition": "摺",
+    "level": 4
+  },
+  {
+    "title": "follow",
+    "partOfSpeech": "v",
+    "definition": "跟從/跟蹤",
+    "level": 4
+  },
+  {
+    "title": "force",
+    "partOfSpeech": "v",
+    "definition": "強迫",
+    "level": 4
+  },
+  {
+    "title": "forget",
+    "partOfSpeech": "v",
+    "definition": "忘記",
+    "level": 4
+  },
+  {
+    "title": "freeze",
+    "partOfSpeech": "v",
+    "definition": "凝固",
+    "level": 4
+  },
+  {
+    "title": "frighten",
+    "partOfSpeech": "v",
+    "definition": "使…驚恐",
+    "level": 4
+  },
+  {
+    "title": "frown",
+    "partOfSpeech": "v",
+    "definition": "皺眉",
+    "level": 4
+  },
+  {
+    "title": "gain",
+    "partOfSpeech": "v",
+    "definition": "得到",
+    "level": 4
+  },
+  {
+    "title": "grab",
+    "partOfSpeech": "v",
+    "definition": "抓取",
+    "level": 4
+  },
+  {
+    "title": "greet",
+    "partOfSpeech": "v",
+    "definition": "問候",
+    "level": 4
+  },
+  {
+    "title": "grow",
+    "partOfSpeech": "v",
+    "definition": "成長/變得",
+    "level": 4
+  },
+  {
+    "title": "guard",
+    "partOfSpeech": "v",
+    "definition": "守衛",
+    "level": 4
+  },
+  {
+    "title": "guess",
+    "partOfSpeech": "v",
+    "definition": "估計",
+    "level": 4
+  },
+  {
+    "title": "guide",
+    "partOfSpeech": "v",
+    "definition": "指導",
+    "level": 4
+  },
+  {
+    "title": "handle",
+    "partOfSpeech": "v",
+    "definition": "處理",
+    "level": 4
+  },
+  {
+    "title": "hang",
+    "partOfSpeech": "v",
+    "definition": "掛起",
+    "level": 4
+  },
+  {
+    "title": "happen",
+    "partOfSpeech": "v",
+    "definition": "發生",
+    "level": 4
+  },
+  {
+    "title": "hate",
+    "partOfSpeech": "v",
+    "definition": "憎惡",
+    "level": 4
+  },
+  {
+    "title": "heat",
+    "partOfSpeech": "v",
+    "definition": "加熱",
+    "level": 4
+  },
+  {
+    "title": "hesitate",
+    "partOfSpeech": "v",
+    "definition": "猶豫",
+    "level": 4
+  },
+  {
+    "title": "hike",
+    "partOfSpeech": "v",
+    "definition": "遠足",
+    "level": 4
+  },
+  {
+    "title": "hire",
+    "partOfSpeech": "v",
+    "definition": "租/雇用",
+    "level": 4
+  },
+  {
+    "title": "hold",
+    "partOfSpeech": "v",
+    "definition": "持著/舉辦",
+    "level": 4
+  },
+  {
+    "title": "hug",
+    "partOfSpeech": "v",
+    "definition": "擁抱",
+    "level": 4
+  },
+  {
+    "title": "hunt",
+    "partOfSpeech": "v",
+    "definition": "追獵",
+    "level": 4
+  },
+  {
+    "title": "ignore",
+    "partOfSpeech": "v",
+    "definition": "忽視",
+    "level": 4
+  },
+  {
+    "title": "import",
+    "partOfSpeech": "v",
+    "definition": "輸入",
+    "level": 4
+  },
+  {
+    "title": "impress",
+    "partOfSpeech": "v",
+    "definition": "給...極深的印象",
+    "level": 4
+  },
+  {
+    "title": "include",
+    "partOfSpeech": "v",
+    "definition": "包括",
+    "level": 4
+  },
+  {
+    "title": "increase",
+    "partOfSpeech": "v",
+    "definition": "增加",
+    "level": 4
+  },
+  {
+    "title": "influence",
+    "partOfSpeech": "v",
+    "definition": "影響",
+    "level": 4
+  },
+  {
+    "title": "interview",
+    "partOfSpeech": "v",
+    "definition": "面試/採訪",
+    "level": 4
+  },
+  {
+    "title": "introduce",
+    "partOfSpeech": "v",
+    "definition": "介紹/引進",
+    "level": 4
+  },
+  {
+    "title": "invent",
+    "partOfSpeech": "v",
+    "definition": "發明",
+    "level": 4
+  },
+  {
+    "title": "investigate",
+    "partOfSpeech": "v",
+    "definition": "調查",
+    "level": 4
+  },
+  {
+    "title": "invite",
+    "partOfSpeech": "v",
+    "definition": "邀請",
+    "level": 4
+  },
+  {
+    "title": "issue",
+    "partOfSpeech": "v",
+    "definition": "發行/發出",
+    "level": 4
+  },
+  {
+    "title": "jog",
+    "partOfSpeech": "v",
+    "definition": "緩跑",
+    "level": 4
+  },
+  {
+    "title": "kidnap",
+    "partOfSpeech": "v",
+    "definition": "綁架",
+    "level": 4
+  },
+  {
+    "title": "kneel",
+    "partOfSpeech": "v",
+    "definition": "跪下",
+    "level": 4
+  },
+  {
+    "title": "knock",
+    "partOfSpeech": "v",
+    "definition": "敲/撞",
+    "level": 4
+  },
+  {
+    "title": "lack",
+    "partOfSpeech": "v",
+    "definition": "缺乏",
+    "level": 4
+  },
+  {
+    "title": "lay",
+    "partOfSpeech": "v",
+    "definition": "擺放下",
+    "level": 4
+  },
+  {
+    "title": "lead",
+    "partOfSpeech": "v",
+    "definition": "引導/領導",
+    "level": 4
+  },
+  {
+    "title": "learn",
+    "partOfSpeech": "v",
+    "definition": "學習",
+    "level": 4
+  },
+  {
+    "title": "leave",
+    "partOfSpeech": "v",
+    "definition": "離開",
+    "level": 4
+  },
+  {
+    "title": "lend",
+    "partOfSpeech": "v",
+    "definition": "借出",
+    "level": 4
+  },
+  {
+    "title": "lie",
+    "partOfSpeech": "v",
+    "definition": "撒謊/躺臥",
+    "level": 5
+  },
+  {
+    "title": "lift",
+    "partOfSpeech": "v",
+    "definition": "舉起",
+    "level": 5
+  },
+  {
+    "title": "list",
+    "partOfSpeech": "v",
+    "definition": "列舉",
+    "level": 5
+  },
+  {
+    "title": "maintain",
+    "partOfSpeech": "v",
+    "definition": "維持/堅持",
+    "level": 5
+  },
+  {
+    "title": "manage",
+    "partOfSpeech": "v",
+    "definition": "管理",
+    "level": 5
+  },
+  {
+    "title": "marry",
+    "partOfSpeech": "v",
+    "definition": "與…結婚",
+    "level": 5
+  },
+  {
+    "title": "match",
+    "partOfSpeech": "v",
+    "definition": "使較量",
+    "level": 5
+  },
+  {
+    "title": "mean",
+    "partOfSpeech": "v",
+    "definition": "意謂",
+    "level": 5
+  },
+  {
+    "title": "melt",
+    "partOfSpeech": "v",
+    "definition": "溶解",
+    "level": 5
+  },
+  {
+    "title": "mention",
+    "partOfSpeech": "v",
+    "definition": "提及",
+    "level": 5
+  },
+  {
+    "title": "mind",
+    "partOfSpeech": "v",
+    "definition": "注意",
+    "level": 5
+  },
+  {
+    "title": "miss",
+    "partOfSpeech": "v",
+    "definition": "錯過/掛念",
+    "level": 5
+  },
+  {
+    "title": "nod",
+    "partOfSpeech": "v",
+    "definition": "點頭",
+    "level": 5
+  },
+  {
+    "title": "notice",
+    "partOfSpeech": "v",
+    "definition": "察覺",
+    "level": 5
+  },
+  {
+    "title": "occur",
+    "partOfSpeech": "v",
+    "definition": "發生",
+    "level": 5
+  },
+  {
+    "title": "offer",
+    "partOfSpeech": "v",
+    "definition": "提供",
+    "level": 5
+  },
+  {
+    "title": "organise",
+    "partOfSpeech": "v",
+    "definition": "組織",
+    "level": 5
+  },
+  {
+    "title": "owe",
+    "partOfSpeech": "v",
+    "definition": "欠",
+    "level": 5
+  },
+  {
+    "title": "own",
+    "partOfSpeech": "v",
+    "definition": "擁有",
+    "level": 5
+  },
+  {
+    "title": "pass",
+    "partOfSpeech": "v",
+    "definition": "傳遞/通過",
+    "level": 5
+  },
+  {
+    "title": "pay",
+    "partOfSpeech": "v",
+    "definition": "付出",
+    "level": 5
+  },
+  {
+    "title": "perform",
+    "partOfSpeech": "v",
+    "definition": "演出",
+    "level": 5
+  },
+  {
+    "title": "persist",
+    "partOfSpeech": "v",
+    "definition": "堅持",
+    "level": 5
+  },
+  {
+    "title": "pick",
+    "partOfSpeech": "v",
+    "definition": "選擇/採摘",
+    "level": 5
+  },
+  {
+    "title": "plant",
+    "partOfSpeech": "v",
+    "definition": "種植",
+    "level": 5
+  },
+  {
+    "title": "possess",
+    "partOfSpeech": "v",
+    "definition": "擁有",
+    "level": 5
+  },
+  {
+    "title": "practise",
+    "partOfSpeech": "v",
+    "definition": "練習",
+    "level": 5
+  },
+  {
+    "title": "pray",
+    "partOfSpeech": "v",
+    "definition": "祈禱",
+    "level": 5
+  },
+  {
+    "title": "prefer",
+    "partOfSpeech": "v",
+    "definition": "較喜歡",
+    "level": 5
+  },
+  {
+    "title": "prepare",
+    "partOfSpeech": "v",
+    "definition": "準備",
+    "level": 5
+  },
+  {
+    "title": "present",
+    "partOfSpeech": "v",
+    "definition": "呈獻",
+    "level": 5
+  },
+  {
+    "title": "press",
+    "partOfSpeech": "v",
+    "definition": "按/催逼",
+    "level": 5
+  },
+  {
+    "title": "pretend",
+    "partOfSpeech": "v",
+    "definition": "假裝",
+    "level": 5
+  },
+  {
+    "title": "prevent",
+    "partOfSpeech": "v",
+    "definition": "防止",
+    "level": 5
+  },
+  {
+    "title": "produce",
+    "partOfSpeech": "v",
+    "definition": "生產",
+    "level": 5
+  },
+  {
+    "title": "promise",
+    "partOfSpeech": "v",
+    "definition": "承諾",
+    "level": 5
+  },
+  {
+    "title": "propose",
+    "partOfSpeech": "v",
+    "definition": "提議",
+    "level": 5
+  },
+  {
+    "title": "protect",
+    "partOfSpeech": "v",
+    "definition": "保護",
+    "level": 5
+  },
+  {
+    "title": "provide",
+    "partOfSpeech": "v",
+    "definition": "提供",
+    "level": 5
+  },
+  {
+    "title": "pump",
+    "partOfSpeech": "v",
+    "definition": "泵",
+    "level": 5
+  },
+  {
+    "title": "purchase",
+    "partOfSpeech": "v",
+    "definition": "購買",
+    "level": 5
+  },
+  {
+    "title": "raise",
+    "partOfSpeech": "v",
+    "definition": "提高/養育",
+    "level": 5
+  },
+  {
+    "title": "reach",
+    "partOfSpeech": "v",
+    "definition": "達到/觸及",
+    "level": 5
+  },
+  {
+    "title": "realize",
+    "partOfSpeech": "v",
+    "definition": "領悟到",
+    "level": 5
+  },
+  {
+    "title": "receive",
+    "partOfSpeech": "v",
+    "definition": "收到",
+    "level": 5
+  },
+  {
+    "title": "recommend",
+    "partOfSpeech": "v",
+    "definition": "推介",
+    "level": 5
+  },
+  {
+    "title": "record",
+    "partOfSpeech": "v",
+    "definition": "記錄",
+    "level": 5
+  },
+  {
+    "title": "reduce",
+    "partOfSpeech": "v",
+    "definition": "減少",
+    "level": 5
+  },
+  {
+    "title": "refer",
+    "partOfSpeech": "v",
+    "definition": "提及",
+    "level": 5
+  },
+  {
+    "title": "reflect",
+    "partOfSpeech": "v",
+    "definition": "反映",
+    "level": 5
+  },
+  {
+    "title": "register",
+    "partOfSpeech": "v",
+    "definition": "註冊",
+    "level": 5
+  },
+  {
+    "title": "release",
+    "partOfSpeech": "v",
+    "definition": "釋放",
+    "level": 5
+  },
+  {
+    "title": "remain",
+    "partOfSpeech": "v",
+    "definition": "餘下",
+    "level": 5
+  },
+  {
+    "title": "remove",
+    "partOfSpeech": "v",
+    "definition": "移開/消除",
+    "level": 5
+  },
+  {
+    "title": "rent",
+    "partOfSpeech": "v",
+    "definition": "租用",
+    "level": 5
+  },
+  {
+    "title": "repeat",
+    "partOfSpeech": "v",
+    "definition": "重複",
+    "level": 5
+  },
+  {
+    "title": "reply",
+    "partOfSpeech": "v",
+    "definition": "答覆",
+    "level": 5
+  },
+  {
+    "title": "report",
+    "partOfSpeech": "v",
+    "definition": "報告",
+    "level": 5
+  },
+  {
+    "title": "represent",
+    "partOfSpeech": "v",
+    "definition": "代表",
+    "level": 5
+  },
+  {
+    "title": "respect",
+    "partOfSpeech": "v",
+    "definition": "尊重",
+    "level": 5
+  },
+  {
+    "title": "return",
+    "partOfSpeech": "v",
+    "definition": "歸還",
+    "level": 5
+  },
+  {
+    "title": "review",
+    "partOfSpeech": "v",
+    "definition": "評論/重新探討",
+    "level": 5
+  },
+  {
+    "title": "rise",
+    "partOfSpeech": "v",
+    "definition": "上升",
+    "level": 5
+  },
+  {
+    "title": "roar",
+    "partOfSpeech": "v",
+    "definition": "哮叫",
+    "level": 5
+  },
+  {
+    "title": "rub",
+    "partOfSpeech": "v",
+    "definition": "磨擦",
+    "level": 5
+  },
+  {
+    "title": "sail",
+    "partOfSpeech": "v",
+    "definition": "航行",
+    "level": 5
+  },
+  {
+    "title": "satisfy",
+    "partOfSpeech": "v",
+    "definition": "使滿意",
+    "level": 5
+  },
+  {
+    "title": "scare",
+    "partOfSpeech": "v",
+    "definition": "驚嚇",
+    "level": 5
+  },
+  {
+    "title": "scold",
+    "partOfSpeech": "v",
+    "definition": "責罵",
+    "level": 5
+  },
+  {
+    "title": "scream",
+    "partOfSpeech": "v",
+    "definition": "尖叫",
+    "level": 5
+  },
+  {
+    "title": "search",
+    "partOfSpeech": "v",
+    "definition": "搜尋",
+    "level": 5
+  },
+  {
+    "title": "seek",
+    "partOfSpeech": "v",
+    "definition": "找",
+    "level": 5
+  },
+  {
+    "title": "seem",
+    "partOfSpeech": "v",
+    "definition": "看來好像",
+    "level": 6
+  },
+  {
+    "title": "select",
+    "partOfSpeech": "v",
+    "definition": "選擇",
+    "level": 6
+  },
+  {
+    "title": "separate",
+    "partOfSpeech": "v",
+    "definition": "分隔",
+    "level": 6
+  },
+  {
+    "title": "shake",
+    "partOfSpeech": "v",
+    "definition": "搖動",
+    "level": 6
+  },
+  {
+    "title": "shine",
+    "partOfSpeech": "v",
+    "definition": "發亮",
+    "level": 6
+  },
+  {
+    "title": "shiver",
+    "partOfSpeech": "v",
+    "definition": "抖震",
+    "level": 6
+  },
+  {
+    "title": "shoot",
+    "partOfSpeech": "v",
+    "definition": "發射/注射",
+    "level": 6
+  },
+  {
+    "title": "shout",
+    "partOfSpeech": "v",
+    "definition": "喊叫",
+    "level": 6
+  },
+  {
+    "title": "shut",
+    "partOfSpeech": "v",
+    "definition": "關上",
+    "level": 6
+  },
+  {
+    "title": "sigh",
+    "partOfSpeech": "v",
+    "definition": "嘆息",
+    "level": 6
+  },
+  {
+    "title": "sink",
+    "partOfSpeech": "v",
+    "definition": "下沈",
+    "level": 6
+  },
+  {
+    "title": "skip",
+    "partOfSpeech": "v",
+    "definition": "略過/跳繩",
+    "level": 6
+  },
+  {
+    "title": "slip",
+    "partOfSpeech": "v",
+    "definition": "滑行/滑倒",
+    "level": 6
+  },
+  {
+    "title": "smell",
+    "partOfSpeech": "v",
+    "definition": "聞",
+    "level": 6
+  },
+  {
+    "title": "smile",
+    "partOfSpeech": "v",
+    "definition": "微笑",
+    "level": 6
+  },
+  {
+    "title": "smoke",
+    "partOfSpeech": "v",
+    "definition": "吸煙",
+    "level": 6
+  },
+  {
+    "title": "sneeze",
+    "partOfSpeech": "v",
+    "definition": "打噴嚏",
+    "level": 6
+  },
+  {
+    "title": "snore",
+    "partOfSpeech": "v",
+    "definition": "打鼾",
+    "level": 6
+  },
+  {
+    "title": "solve",
+    "partOfSpeech": "v",
+    "definition": "解決",
+    "level": 6
+  },
+  {
+    "title": "sound",
+    "partOfSpeech": "v",
+    "definition": "聽起來",
+    "level": 6
+  },
+  {
+    "title": "speak",
+    "partOfSpeech": "v",
+    "definition": "說",
+    "level": 6
+  },
+  {
+    "title": "spend",
+    "partOfSpeech": "v",
+    "definition": "花費",
+    "level": 6
+  },
+  {
+    "title": "spill",
+    "partOfSpeech": "v",
+    "definition": "使濺出",
+    "level": 6
+  },
+  {
+    "title": "spit",
+    "partOfSpeech": "v",
+    "definition": "吐",
+    "level": 6
+  },
+  {
+    "title": "splash",
+    "partOfSpeech": "v",
+    "definition": "潑濕/濺濕",
+    "level": 6
+  },
+  {
+    "title": "spoil",
+    "partOfSpeech": "v",
+    "definition": "損壞/寵壞",
+    "level": 6
+  },
+  {
+    "title": "spot",
+    "partOfSpeech": "v",
+    "definition": "發現",
+    "level": 6
+  },
+  {
+    "title": "spread",
+    "partOfSpeech": "v",
+    "definition": "擴散",
+    "level": 6
+  },
+  {
+    "title": "stare",
+    "partOfSpeech": "v",
+    "definition": "凝視/盯",
+    "level": 6
+  },
+  {
+    "title": "starve",
+    "partOfSpeech": "v",
+    "definition": "挨餓",
+    "level": 6
+  },
+  {
+    "title": "steal",
+    "partOfSpeech": "v",
+    "definition": "偷",
+    "level": 6
+  },
+  {
+    "title": "stick",
+    "partOfSpeech": "v",
+    "definition": "釘/貼",
+    "level": 6
+  },
+  {
+    "title": "stir",
+    "partOfSpeech": "v",
+    "definition": "攪動",
+    "level": 6
+  },
+  {
+    "title": "stretch",
+    "partOfSpeech": "v",
+    "definition": "伸展",
+    "level": 6
+  },
+  {
+    "title": "strike",
+    "partOfSpeech": "v",
+    "definition": "攻擊/敲打",
+    "level": 6
+  },
+  {
+    "title": "struggle",
+    "partOfSpeech": "v",
+    "definition": "掙扎",
+    "level": 6
+  },
+  {
+    "title": "succeed",
+    "partOfSpeech": "v",
+    "definition": "成功",
+    "level": 6
+  },
+  {
+    "title": "suck",
+    "partOfSpeech": "v",
+    "definition": "吸",
+    "level": 6
+  },
+  {
+    "title": "suffer",
+    "partOfSpeech": "v",
+    "definition": "遭受/受苦/患病",
+    "level": 6
+  },
+  {
+    "title": "suggest",
+    "partOfSpeech": "v",
+    "definition": "建議",
+    "level": 6
+  },
+  {
+    "title": "support",
+    "partOfSpeech": "v",
+    "definition": "支持",
+    "level": 6
+  },
+  {
+    "title": "suppose",
+    "partOfSpeech": "v",
+    "definition": "假設",
+    "level": 6
+  },
+  {
+    "title": "surf",
+    "partOfSpeech": "v",
+    "definition": "衝浪",
+    "level": 6
+  },
+  {
+    "title": "surrender",
+    "partOfSpeech": "v",
+    "definition": "投降",
+    "level": 6
+  },
+  {
+    "title": "surround",
+    "partOfSpeech": "v",
+    "definition": "圍繞",
+    "level": 6
+  },
+  {
+    "title": "suspect",
+    "partOfSpeech": "v",
+    "definition": "懷疑",
+    "level": 6
+  },
+  {
+    "title": "swallow",
+    "partOfSpeech": "v",
+    "definition": "吞下",
+    "level": 6
+  },
+  {
+    "title": "sweep",
+    "partOfSpeech": "v",
+    "definition": "打掃",
+    "level": 6
+  },
+  {
+    "title": "switch off",
+    "partOfSpeech": "v",
+    "definition": "關掉",
+    "level": 6
+  },
+  {
+    "title": "switch on",
+    "partOfSpeech": "v",
+    "definition": "開啟",
+    "level": 6
+  },
+  {
+    "title": "taste",
+    "partOfSpeech": "v",
+    "definition": "嚐起來",
+    "level": 6
+  },
+  {
+    "title": "tear",
+    "partOfSpeech": "v",
+    "definition": "撕開",
+    "level": 6
+  },
+  {
+    "title": "tease",
+    "partOfSpeech": "v",
+    "definition": "戲弄",
+    "level": 6
+  },
+  {
+    "title": "throw",
+    "partOfSpeech": "v",
+    "definition": "拋",
+    "level": 6
+  },
+  {
+    "title": "touch",
+    "partOfSpeech": "v",
+    "definition": "接觸",
+    "level": 6
+  },
+  {
+    "title": "train",
+    "partOfSpeech": "v",
+    "definition": "訓練",
+    "level": 6
+  },
+  {
+    "title": "travel",
+    "partOfSpeech": "v",
+    "definition": "旅遊",
+    "level": 6
+  },
+  {
+    "title": "treat",
+    "partOfSpeech": "v",
+    "definition": "對待",
+    "level": 6
+  },
+  {
+    "title": "trick",
+    "partOfSpeech": "v",
+    "definition": "哄騙",
+    "level": 6
+  },
+  {
+    "title": "trust",
+    "partOfSpeech": "v",
+    "definition": "信任",
+    "level": 6
+  },
+  {
+    "title": "twist",
+    "partOfSpeech": "v",
+    "definition": "扭曲/歪曲",
+    "level": 6
+  },
+  {
+    "title": "vanish",
+    "partOfSpeech": "v",
+    "definition": "消失",
+    "level": 6
+  },
+  {
+    "title": "vibrate",
+    "partOfSpeech": "v",
+    "definition": "震動",
+    "level": 6
+  },
+  {
+    "title": "wag",
+    "partOfSpeech": "v",
+    "definition": "搖擺",
+    "level": 6
+  },
+  {
+    "title": "warn",
+    "partOfSpeech": "v",
+    "definition": "警告",
+    "level": 6
+  },
+  {
+    "title": "waste",
+    "partOfSpeech": "v",
+    "definition": "浪費",
+    "level": 6
+  },
+  {
+    "title": "wave",
+    "partOfSpeech": "v",
+    "definition": "搖動/揮手",
+    "level": 6
+  },
+  {
+    "title": "wear",
+    "partOfSpeech": "v",
+    "definition": "穿著",
+    "level": 6
+  },
+  {
+    "title": "weep",
+    "partOfSpeech": "v",
+    "definition": "飲泣",
+    "level": 6
+  },
+  {
+    "title": "weigh",
+    "partOfSpeech": "v",
+    "definition": "重(多少)",
+    "level": 6
+  },
+  {
+    "title": "whisper",
+    "partOfSpeech": "v",
+    "definition": "低語",
+    "level": 6
+  },
+  {
+    "title": "wrap",
+    "partOfSpeech": "v",
+    "definition": "裹起",
+    "level": 6
+  },
+  {
+    "title": "yawn",
+    "partOfSpeech": "v",
+    "definition": "打呵欠",
+    "level": 6
+  }
+]

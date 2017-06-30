@@ -1,15 +1,10 @@
 <template id="quiz">
 <main-layout>
+  <progress-bar :percentage="percentage"></progress-bar>
   <div class="panel panel-default">
-    <code>{{$root.stat}}</code>
+
     <div class="panel-heading">
       <h3 class="panel-title">{{definition}}</h3>
-      <h1>{{$root.noOfQuestions}}</h1>
-      <code>
-        {{questionIDs}}
-      </code>
-      <p>{{id}}</p>
-      <p>{{tts_source}}</p>
     </div>
 
     <div class="panel-body">
@@ -33,6 +28,7 @@
 
 <script>
 import MainLayout from '../layouts/Main.vue'
+import ProgressBar from '../components/ProgressBar.vue'
 import axios from "axios"
 import _ from "lodash"
 
@@ -40,10 +36,11 @@ const defaultMessage = "Please type your answer!"
 
 module.exports = {
   components: {
-    MainLayout
+    MainLayout,
+    ProgressBar
   },
-  data: function() {
-    var vm = this
+  data() {
+    const vm = this
     return {
       index: 0,
       definition: "",
@@ -53,29 +50,40 @@ module.exports = {
     }
   },
   computed: {
-    id () {
-      var vm = this
+    percentage() {
+      const vm = this
+      return (vm.index + 1) * 100 / vm.$root.noOfQuestions
+    },
+    id() {
+      const vm = this
       return vm.questionIDs[vm.index]
     },
-    questionIDs () {
-      var vm = this
-      var range = _.range(vm.$root.noOfQuestions)
-      return _.shuffle(range)
+    questionIDs() {
+      const vm = this
+      const root = vm.$root
+      const range = _.range(root.noOfQuestions)
+
+      const result =  _(range).map(i=>i+1).shuffle().value()
+      console.log(result);
+      return result
     }
   },
   watch: {
-    id () {
-      var vm = this
+    id() {
+      const vm = this
+      // fetch infomation for new question
       vm.fetchJSON()
-      setTimeout(function() {
-        this.speak()
-      }.bind(vm), 500)
+
+      // speak the vocab after 0.5s
+      vm.speak()
+      
+      // reset answer
       vm.answer = ""
       document.getElementById("answer").focus()
     }
   },
-  created: function() {
-    var vm = this
+  created() {
+    const vm = this
 
     window.addEventListener("keydown", function(e) {
       if (e.keyCode == 13) {
@@ -85,55 +93,52 @@ module.exports = {
   },
   methods: {
     fetchJSON() {
-      var vm = this
-      var definition = ""
+      const vm = this
+      const definition = ""
       axios.get("./api/" + vm.$root.level + "/" + vm.id)
         .then(function(response) {
           const definition = response.data.definition
           vm.definition = definition
         })
-        .catch(function(err) {
+        .catch(err => {
           if (err) {
             console.log(err)
           }
         })
     },
     next() {
-      var vm = this
+      const vm = this
+      const root = vm.$root
+
       const data = new FormData();
       const id = vm.id
       data.append('answer', vm.answer)
-      axios.post("./check/" + vm.$root.level + "/" + id, data)
-        .then(function(response) {
-          const isCorrect = response.data.result
-          vm.$root.stat[id] = isCorrect
+      axios.post("./check/" + root.level + "/" + id, data)
+        .then(response => {
+          const correct = response.data.result
+          root.stat[id] = correct
 
-          if (vm.index < vm.$root.noOfQuestions - 1) {
+          if (vm.index < root.noOfQuestions - 1) {
             vm.index += 1
           } else {
-            vm.$root.currentRoute = "/report"
+            root.currentRoute = "/report"
           }
 
-          if (isCorrect) {
-            vm.message = defaultMessage
-            vm.answer = ""
-          } else {
-            vm.message = "Wrong ans, please try again!"
-          }
         })
-        .catch(function(err) {
+        .catch(err => {
           if (err) {
             console.log(err)
           }
         })
     },
     speak() {
-      var vm = this
-      const level = vm.$root.level
+      const vm = this
+      const root = vm.$root
       const id = vm.id
+      const level = vm.$root.level
 
       vm.tts_source = `/mp3/${level}/${id}`
-      var tts = new Audio(vm.tts_source)
+      const tts = new Audio(vm.tts_source)
       tts.play()
     }
   }
