@@ -74,9 +74,9 @@ export default {
       window.history.pushState(
         null,
         routes['/quiz'],
-        '/quiz'
+        without + '/quiz'
       )
-      axios.get('.' + without + '/api/' + vm.$root.level)
+      axios.get('./api/' + vm.$root.level)
         .then(function (response) {
           vm.$root.noOfQuestions = response.data.noOfQuestions
         })

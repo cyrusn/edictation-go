@@ -101,7 +101,7 @@ export default {
     fetchJSON () {
       const vm = this
 
-      axios.get('.' + without + '/api/' + vm.$root.level + '/' + vm.id)
+      axios.get('./api/' + vm.$root.level + '/' + vm.id)
         .then(function (response) {
           const definition = response.data.definition
           const partOfSpeech = response.data.partOfSpeech
@@ -122,7 +122,7 @@ export default {
       const data = new FormData()
       const id = vm.id
       data.append('answer', vm.answer)
-      axios.post('.' + without + '/check/' + root.level + '/' + id, data)
+      axios.post('./check/' + root.level + '/' + id, data)
         .then(response => {
           const correct = response.data.result
           root.stat[id] = correct
