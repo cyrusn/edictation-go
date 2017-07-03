@@ -16,7 +16,6 @@
   import MainLayout from '../layouts/Main.vue'
   import ModeAndLevelBadge from '../components/ModeAndLevelBadge.vue'
 
-
   export default {
     components: {
       MainLayout,

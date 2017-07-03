@@ -8,7 +8,7 @@ import (
 
 // GetVoiceResponse ...
 func GetVoiceResponse(title string) (*http.Response, error) {
-	url := fmt.Sprintf("http://localhost:4000/voice/%s", title)
+	url := fmt.Sprintf("http://localhost:5001/voice/%s", title)
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err

@@ -1,18 +1,19 @@
 import Vue from 'vue'
-import routes from "./routes"
+import routes from './routes'
 
-const app = new Vue({
+/* eslint-disable no-new */
+new Vue({
   el: '#app',
-  data() {
+  data () {
     return {
       currentRoute: window.location.pathname,
-      name: "",
-      clazz: "",
-      clazzNo: "",
-      mode: "normal",
+      name: '',
+      clazz: '',
+      clazzNo: '',
+      mode: 'normal',
       level: 1,
       noOfQuestions: 0,
-      stat: {},
+      stat: {}
     }
   },
   computed: {

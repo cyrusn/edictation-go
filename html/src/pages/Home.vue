@@ -51,45 +51,42 @@
       </div>
     </div>
   </form>
-  {{$root.name}}
-  {{$root.clazz}}
-  {{$root.clazzNo}}
+  {{$root.name}} {{$root.clazz}} {{$root.clazzNo}}
 </main-layout>
 </template>
 
 <script type="text/javascript">
-import axios from "axios"
-import routes from "../routes"
+import axios from 'axios'
+import routes from '../routes'
 import MainLayout from '../layouts/Main.vue'
 
-module.exports = {
-  mounted() {
-    const vm = this
-      document.getElementById('name').focus()
+export default {
+  mounted () {
+    document.getElementById('name').focus()
   },
   methods: {
-    onSubmit: function(event) {
+    onSubmit: function (event) {
       const vm = this
 
-      vm.$root.currentRoute = "/quiz"
+      vm.$root.currentRoute = '/quiz'
       window.history.pushState(
         null,
-        routes["/quiz"],
-        "/quiz"
+        routes['/quiz'],
+        '/quiz'
       )
       axios.get('/api/' + vm.$root.level)
-        .then(function(response) {
+        .then(function (response) {
           vm.$root.noOfQuestions = response.data.noOfQuestions
         })
     }
   },
   filters: {
-    capitalize: function(str) {
+    capitalize: function (str) {
       return str.charAt(0).toUpperCase() + str.slice(1)
     }
   },
   components: {
     MainLayout
   }
-};
+}
 </script>

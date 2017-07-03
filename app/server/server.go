@@ -8,9 +8,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/cyrusn/edictation-tsf/app/cli"
-	"github.com/cyrusn/edictation-tsf/app/vocab"
-	"github.com/cyrusn/edictation-tsf/app/voice"
+	"github.com/cyrusn/edictation-go/app/cli"
+	"github.com/cyrusn/edictation-go/app/vocab"
+	"github.com/cyrusn/edictation-go/app/voice"
 	"github.com/gorilla/mux"
 )
 

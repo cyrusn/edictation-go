@@ -34,50 +34,51 @@
 import MainLayout from '../layouts/Main.vue'
 import ProgressBar from '../components/ProgressBar.vue'
 import ModeAndLevelBadge from '../components/ModeAndLevelBadge.vue'
-import axios from "axios"
-import _ from "lodash"
+import routes from '../routes.js'
+import axios from 'axios'
+import _ from 'lodash'
 
-const defaultMessage = "Please type your answer!"
+const defaultMessage = 'Please type your answer!'
 
-module.exports = {
+export default {
   components: {
     MainLayout,
     ProgressBar,
     ModeAndLevelBadge
   },
-  data() {
+  data () {
     return {
       index: 0,
-      definition: "",
-      partOfSpeech: "",
-      tts_source: "",
-      answer: "",
-      message: defaultMessage,
+      definition: '',
+      partOfSpeech: '',
+      tts_source: '',
+      answer: '',
+      message: defaultMessage
     }
   },
   computed: {
-    id() {
+    id () {
       const vm = this
       return vm.questionIDs[vm.index]
     },
-    percentage() {
+    percentage () {
       const vm = this
       return (vm.index + 1) * 100 / vm.$root.noOfQuestions
     },
-    questionIDs() {
+    questionIDs () {
       const vm = this
       const root = vm.$root
 
       const range = _.range(root.noOfQuestions)
-      return _(range).map(i=>i+1).shuffle().value()
+      return _(range).map(i => i + 1).shuffle().value()
     },
-    tts() {
+    tts () {
       const vm = this
       return new Audio(vm.tts_source)
     }
   },
   watch: {
-    id() {
+    id () {
       const vm = this
       const root = vm.$root
 
@@ -86,21 +87,20 @@ module.exports = {
 
       vm.tts_source = `/voice/${root.level}/${vm.id}`
       // reset answer
-      vm.answer = ""
-      document.getElementById("answer").focus()
+      vm.answer = ''
+      document.getElementById('answer').focus()
     },
-    tts_source() {
+    tts_source () {
       const vm = this
       setTimeout(vm.speak, 500)
-
     }
   },
   methods: {
-    fetchJSON() {
+    fetchJSON () {
       const vm = this
 
-      axios.get("./api/" + vm.$root.level + "/" + vm.id)
-        .then(function(response) {
+      axios.get('./api/' + vm.$root.level + '/' + vm.id)
+        .then(function (response) {
           const definition = response.data.definition
           const partOfSpeech = response.data.partOfSpeech
 
@@ -113,14 +113,14 @@ module.exports = {
           }
         })
     },
-    next() {
+    next () {
       const vm = this
       const root = vm.$root
 
-      const data = new FormData();
+      const data = new FormData()
       const id = vm.id
       data.append('answer', vm.answer)
-      axios.post("./check/" + root.level + "/" + id, data)
+      axios.post('./check/' + root.level + '/' + id, data)
         .then(response => {
           const correct = response.data.result
           root.stat[id] = correct
@@ -128,14 +128,13 @@ module.exports = {
           if (vm.index < root.noOfQuestions - 1) {
             vm.index += 1
           } else {
-            root.currentRoute = "/report"
+            root.currentRoute = '/report'
             window.history.pushState(
               null,
-              routes["/report"],
-              "/report"
+              routes['/report'],
+              '/report'
             )
           }
-
         })
         .catch(err => {
           if (err) {
@@ -143,7 +142,7 @@ module.exports = {
           }
         })
     },
-    speak() {
+    speak () {
       const vm = this
       vm.tts.play()
     }
