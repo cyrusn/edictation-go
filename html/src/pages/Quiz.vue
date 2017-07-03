@@ -85,8 +85,6 @@ module.exports = {
       vm.fetchJSON()
 
       vm.tts_source = `/voice/${root.level}/${vm.id}`
-      // vm.tts = new Audio(vm.tts_source)
-
       // reset answer
       vm.answer = ""
       document.getElementById("answer").focus()

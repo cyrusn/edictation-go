@@ -1,5 +1,29 @@
 # eDictation Spec
 
+## How to use?
+- start voice server
+
+``` sh
+cd voiceServer
+npm install
+npm run start
+```
+
+- build javascript for html
+``` sh
+cd html
+npm install
+npm run build
+# or npm run watchify for development
+```
+
+- run server app
+``` sh
+go run main.go
+```
+
+
+
 ## Use case
 
 ### Student

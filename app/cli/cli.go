@@ -24,7 +24,7 @@ func init() {
 	const (
 		defaultPort          = ":8080"
 		defaultServingFolder = "./html"
-		defaultVocabJSONPath = "./vocab.json"
+		defaultVocabJSONPath = "./vocab/vocab.json"
 
 		usagePort          = "server port"
 		usageServingFolder = "location of static files"
