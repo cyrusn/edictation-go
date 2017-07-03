@@ -37,6 +37,8 @@ import ModeAndLevelBadge from '../components/ModeAndLevelBadge.vue'
 import routes from '../routes.js'
 import axios from 'axios'
 import _ from 'lodash'
+import config from '../config'
+const without = config.without
 
 const defaultMessage = 'Please type your answer!'
 
@@ -85,7 +87,7 @@ export default {
       // fetch infomation for new question
       vm.fetchJSON()
 
-      vm.tts_source = `/voice/${root.level}/${vm.id}`
+      vm.tts_source = `${without}/voice/${root.level}/${vm.id}`
       // reset answer
       vm.answer = ''
       document.getElementById('answer').focus()
@@ -99,7 +101,7 @@ export default {
     fetchJSON () {
       const vm = this
 
-      axios.get('./api/' + vm.$root.level + '/' + vm.id)
+      axios.get('.' + without + '/api/' + vm.$root.level + '/' + vm.id)
         .then(function (response) {
           const definition = response.data.definition
           const partOfSpeech = response.data.partOfSpeech
@@ -120,7 +122,7 @@ export default {
       const data = new FormData()
       const id = vm.id
       data.append('answer', vm.answer)
-      axios.post('./check/' + root.level + '/' + id, data)
+      axios.post('.' + without + '/check/' + root.level + '/' + id, data)
         .then(response => {
           const correct = response.data.result
           root.stat[id] = correct
@@ -132,7 +134,7 @@ export default {
             window.history.pushState(
               null,
               routes['/report'],
-              '/report'
+              without + '/report'
             )
           }
         })

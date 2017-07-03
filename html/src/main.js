@@ -6,7 +6,7 @@ new Vue({
   el: '#app',
   data () {
     return {
-      currentRoute: window.location.pathname,
+      currentRoute: '/',
       name: '',
       clazz: '',
       clazzNo: '',

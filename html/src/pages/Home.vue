@@ -59,6 +59,8 @@
 import axios from 'axios'
 import routes from '../routes'
 import MainLayout from '../layouts/Main.vue'
+import config from '../config'
+const without = config.without
 
 export default {
   mounted () {
@@ -74,7 +76,7 @@ export default {
         routes['/quiz'],
         '/quiz'
       )
-      axios.get('/api/' + vm.$root.level)
+      axios.get('.' + without + '/api/' + vm.$root.level)
         .then(function (response) {
           vm.$root.noOfQuestions = response.data.noOfQuestions
         })
