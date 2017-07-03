@@ -1,17 +1,21 @@
 <template id="quiz">
 <main-layout>
+  <h1>Quiz</h1>
+  {{$root.stat}}
+  <hr>
+  <mode-and-level-badge></mode-and-level-badge>
   <progress-bar :percentage="percentage"></progress-bar>
-  <div class="panel panel-default">
 
+  <div class="panel panel-success">
     <div class="panel-heading">
-      <h3 class="panel-title">{{definition}}</h3>
+      <h1 class="panel-title">{{definition}} {{partOfSpeech}}</h1>
     </div>
 
     <div class="panel-body">
-      <div class="input-group">
+      <div class="input-group" @keypress.enter="next">
         <input id="answer" type="text" class="form-control" v-model="answer">
         <div class="input-group-btn">
-          <button class="btn btn-default" @click="next">
+          <button class="btn btn-default" @click.prevent="next">
           <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
         </button>
           <button class="btn btn-default" @click="speak">
@@ -29,6 +33,7 @@
 <script>
 import MainLayout from '../layouts/Main.vue'
 import ProgressBar from '../components/ProgressBar.vue'
+import ModeAndLevelBadge from '../components/ModeAndLevelBadge.vue'
 import axios from "axios"
 import _ from "lodash"
 
@@ -37,68 +42,72 @@ const defaultMessage = "Please type your answer!"
 module.exports = {
   components: {
     MainLayout,
-    ProgressBar
+    ProgressBar,
+    ModeAndLevelBadge
   },
   data() {
-    const vm = this
     return {
       index: 0,
       definition: "",
+      partOfSpeech: "",
       tts_source: "",
       answer: "",
-      message: defaultMessage
+      message: defaultMessage,
     }
   },
   computed: {
-    percentage() {
-      const vm = this
-      return (vm.index + 1) * 100 / vm.$root.noOfQuestions
-    },
     id() {
       const vm = this
       return vm.questionIDs[vm.index]
     },
+    percentage() {
+      const vm = this
+      return (vm.index + 1) * 100 / vm.$root.noOfQuestions
+    },
     questionIDs() {
       const vm = this
       const root = vm.$root
-      const range = _.range(root.noOfQuestions)
 
-      const result =  _(range).map(i=>i+1).shuffle().value()
-      console.log(result);
-      return result
+      const range = _.range(root.noOfQuestions)
+      return _(range).map(i=>i+1).shuffle().value()
+    },
+    tts() {
+      const vm = this
+      return new Audio(vm.tts_source)
     }
   },
   watch: {
     id() {
       const vm = this
+      const root = vm.$root
+
       // fetch infomation for new question
       vm.fetchJSON()
 
-      // speak the vocab after 0.5s
-      vm.speak()
-      
+      vm.tts_source = `/voice/${root.level}/${vm.id}`
+      // vm.tts = new Audio(vm.tts_source)
+
       // reset answer
       vm.answer = ""
       document.getElementById("answer").focus()
-    }
-  },
-  created() {
-    const vm = this
+    },
+    tts_source() {
+      const vm = this
+      setTimeout(vm.speak, 500)
 
-    window.addEventListener("keydown", function(e) {
-      if (e.keyCode == 13) {
-        vm.next()
-      }
-    })
+    }
   },
   methods: {
     fetchJSON() {
       const vm = this
-      const definition = ""
+
       axios.get("./api/" + vm.$root.level + "/" + vm.id)
         .then(function(response) {
           const definition = response.data.definition
+          const partOfSpeech = response.data.partOfSpeech
+
           vm.definition = definition
+          vm.partOfSpeech = partOfSpeech
         })
         .catch(err => {
           if (err) {
@@ -122,6 +131,11 @@ module.exports = {
             vm.index += 1
           } else {
             root.currentRoute = "/report"
+            window.history.pushState(
+              null,
+              routes["/report"],
+              "/report"
+            )
           }
 
         })
@@ -133,13 +147,7 @@ module.exports = {
     },
     speak() {
       const vm = this
-      const root = vm.$root
-      const id = vm.id
-      const level = vm.$root.level
-
-      vm.tts_source = `/mp3/${level}/${id}`
-      const tts = new Audio(vm.tts_source)
-      tts.play()
+      vm.tts.play()
     }
   }
 }

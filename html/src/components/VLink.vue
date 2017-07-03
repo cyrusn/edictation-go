@@ -2,7 +2,7 @@
   <a
     v-bind:href="href"
     v-bind:class="{ active: isActive }"
-    v-on:click="go"
+    v-on:click.prevent="go"
   >
     <slot></slot>
   </a>
@@ -25,7 +25,6 @@
     },
     methods: {
       go (event) {
-        event.preventDefault()
         this.$root.currentRoute = this.href
         window.history.pushState(
           null,

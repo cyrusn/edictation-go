@@ -1,20 +1,26 @@
 <template>
   <main-layout>
     <h1>Report</h1>
-    <p>Authors: TSF, CyrusN</p>
-    <h2>{{$root.name}}</h2>
+    <hr>
+    <h2>{{$root.name}} <small>{{$root.clazz}}{{$root.clazzNo}}</small></h2>
+
+    <mode-and-level-badge></mode-and-level-badge>
+    <h3>Statics</h3>
     <code>
-      {{$root.stat}}
+      {{JSON.stringify($root.stat, null, "  ")}}
     </code>
   </main-layout>
 </template>
 
 <script>
   import MainLayout from '../layouts/Main.vue'
+  import ModeAndLevelBadge from '../components/ModeAndLevelBadge.vue'
+
 
   export default {
     components: {
-      MainLayout
+      MainLayout,
+      ModeAndLevelBadge
     }
   }
 </script>

@@ -43,7 +43,7 @@ func Serve() {
 	r.HandleFunc("/check/{level:[1-6]}/{id:[0-9]+}", checkHandler).
 		Methods("POST")
 
-	r.HandleFunc("/mp3/{level:[1-6]}/{id:[0-9]+}", mp3Handler)
+	r.HandleFunc("/voice/{level:[1-6]}/{id:[0-9]+}", voiceHandler)
 
 	r.PathPrefix("/").Handler(
 		http.StripPrefix(
@@ -93,19 +93,17 @@ func checkHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func mp3Handler(w http.ResponseWriter, r *http.Request) {
+func voiceHandler(w http.ResponseWriter, r *http.Request) {
 	levelIndex := getLevelIndex(w, r)
 	idIndex := getIDIndex(w, r)
 
-	// level := levelIndex + 1
-
 	v := levelVocabs[levelIndex][idIndex]
-	// filename := fmt.Sprintf("./mp3/level%v/%s.mp3", level, v.Title)
-	src := voice.GetVoice(v.Title)
-	fileResponse, err := http.Get(src)
+	fileResponse, err := voice.GetVoiceResponse(v.Title)
 	if err != nil {
 		errPrint(w, err)
 	}
+
+	w.Header().Set("Content-Type", "audio/mpeg")
 	fileResponse.Write(w)
 }
 

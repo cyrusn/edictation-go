@@ -7,6 +7,8 @@ const app = new Vue({
     return {
       currentRoute: window.location.pathname,
       name: "",
+      clazz: "",
+      clazzNo: "",
       mode: "normal",
       level: 1,
       noOfQuestions: 0,
