@@ -58,8 +58,6 @@
 import axios from 'axios'
 import routes from '../routes'
 import MainLayout from '../layouts/Main.vue'
-import config from '../config'
-const without = config.without
 
 export default {
   mounted () {

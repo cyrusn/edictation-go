@@ -37,8 +37,6 @@ import ModeAndLevelBadge from '../components/ModeAndLevelBadge.vue'
 import routes from '../routes.js'
 import axios from 'axios'
 import _ from 'lodash'
-import config from '../config'
-const without = config.without
 
 const defaultMessage = 'Please type your answer!'
 
@@ -99,7 +97,7 @@ export default {
       // fetch infomation for new question
       vm.fetchJSON()
 
-      vm.tts_source = `${without}/voice/${root.level}/${vm.id}`
+      vm.tts_source = `./voice/${root.level}/${vm.id}`
       // reset answer
       vm.answer = ''
       document.getElementById('answer').focus()

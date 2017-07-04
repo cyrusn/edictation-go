@@ -10,8 +10,6 @@
 
 <script>
   import routes from '../routes'
-  import config from '../config'
-  const without = config.without
 
   export default {
     props: {
@@ -28,11 +26,6 @@
     methods: {
       go (event) {
         this.$root.currentRoute = this.href
-        // window.history.pushState(
-        //   null,
-        //   routes[this.href],
-        //   without + this.href
-        // )
       }
     }
   }
