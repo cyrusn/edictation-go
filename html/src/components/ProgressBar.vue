@@ -1,13 +1,12 @@
 <template lang="html">
 <div class="progress">
   <div
-  class="progress-bar"
+  :class=[progressBar]
   role="progressbar"
   aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
   :style='{
     width: percentage + "%"
   }'>
-  <span class="sr-only">60% Complete</span>
   </div>
 </div>
 </template>
@@ -18,7 +17,12 @@ export default {
     percentage: {
       type: Number,
       required: true
+    },
+    progressBar: {
+      type: String,
+      required: true
     }
+
   }
 }
 </script>

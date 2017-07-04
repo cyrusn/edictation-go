@@ -28,11 +28,11 @@
     methods: {
       go (event) {
         this.$root.currentRoute = this.href
-        window.history.pushState(
-          null,
-          routes[this.href],
-          without + this.href
-        )
+        // window.history.pushState(
+        //   null,
+        //   routes[this.href],
+        //   without + this.href
+        // )
       }
     }
   }

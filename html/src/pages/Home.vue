@@ -51,7 +51,6 @@
       </div>
     </div>
   </form>
-  {{$root.name}} {{$root.clazz}} {{$root.clazzNo}}
 </main-layout>
 </template>
 
@@ -71,11 +70,6 @@ export default {
       const vm = this
 
       vm.$root.currentRoute = '/quiz'
-      window.history.pushState(
-        null,
-        routes['/quiz'],
-        without + '/quiz'
-      )
       axios.get('./api/' + vm.$root.level)
         .then(function (response) {
           vm.$root.noOfQuestions = response.data.noOfQuestions

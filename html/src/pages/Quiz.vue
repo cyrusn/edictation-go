@@ -4,8 +4,8 @@
   {{$root.stat}}
   <hr>
   <mode-and-level-badge></mode-and-level-badge>
-  <progress-bar :percentage="percentage"></progress-bar>
-
+  <progress-bar :percentage="percentage * 100" progressBar='progress-bar'></progress-bar>
+  <progress-bar v-if="$root.mode != 'easy'" :percentage="wrongPercentage * 100" progressBar='progress-bar progress-bar-danger'></progress-bar>
   <div class="panel panel-success">
     <div class="panel-heading">
       <h1 class="panel-title">{{definition}} {{partOfSpeech}}</h1>
@@ -42,6 +42,17 @@ const without = config.without
 
 const defaultMessage = 'Please type your answer!'
 
+function acceptance(mode) {
+  switch (mode) {
+    case "normal":
+      return 0.5
+    case "hard":
+      return 0.25
+    default:
+      return 1
+  }
+}
+
 export default {
   components: {
     MainLayout,
@@ -55,6 +66,7 @@ export default {
       partOfSpeech: '',
       tts_source: '',
       answer: '',
+      wrongPercentage: 0,
       message: defaultMessage
     }
   },
@@ -65,7 +77,7 @@ export default {
     },
     percentage () {
       const vm = this
-      return (vm.index + 1) * 100 / vm.$root.noOfQuestions
+      return (vm.index + 1) / vm.$root.noOfQuestions
     },
     questionIDs () {
       const vm = this
@@ -118,24 +130,31 @@ export default {
     next () {
       const vm = this
       const root = vm.$root
+      const id = vm.id
 
       const data = new FormData()
-      const id = vm.id
+
+
       data.append('answer', vm.answer)
       axios.post('./check/' + root.level + '/' + id, data)
         .then(response => {
           const correct = response.data.result
           root.stat[id] = correct
 
-          if (vm.index < root.noOfQuestions - 1) {
+          const noOfWrongAnswers = _(root.stat)
+            .map(val => val)
+            .filter(val => !val)
+            .value()
+            .length
+
+          vm.wrongPercentage = noOfWrongAnswers / (root.noOfQuestions * acceptance(root.mode))
+
+          if (vm.wrongPercentage > 1) {
+            window.location.pathname = "/"
+          } else if (vm.index < root.noOfQuestions - 1) {
             vm.index += 1
           } else {
             root.currentRoute = '/report'
-            window.history.pushState(
-              null,
-              routes['/report'],
-              without + '/report'
-            )
           }
         })
         .catch(err => {
