@@ -6,7 +6,8 @@
   "dependencies": {
     "express": "^4.15.3",
     "google-tts-api": "0.0.1",
-    "morgan": "^1.8.2"
+    "morgan": "^1.8.2",
+    "yargs": "^8.0.2"
   },
   "devDependencies": {},
   "scripts": {
