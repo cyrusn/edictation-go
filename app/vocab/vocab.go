@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-// Vocab is ...
+// Vocab is basic struct for vocabulary.
 type Vocab struct {
 	ID           int    `json:"id"`
 	Title        string `json:"title,omitempty"`
@@ -18,6 +18,7 @@ type Vocab struct {
 
 var vocabs []Vocab
 
+// FilterVocabsByIDs filter vocabs by id.
 func FilterVocabsByIDs(ids []int, vocabs []Vocab) []Vocab {
 	var result []Vocab
 	for _, id := range ids {
@@ -33,10 +34,12 @@ func FilterVocabsByIDs(ids []int, vocabs []Vocab) []Vocab {
 	return result
 }
 
+// FilterVocabsByLevel filter vocabs by level.
 func FilterVocabsByLevel(level int, vocabs []Vocab) []Vocab {
 	return filter(vocabs, byLevel(level))
 }
 
+// GetVocabs will read vocabulary from location which is a json file that store all vocabularies.
 func GetVocabs(pathToJSON string) []Vocab {
 	raw, err := ioutil.ReadFile(pathToJSON)
 	if err != nil {
@@ -49,6 +52,7 @@ func GetVocabs(pathToJSON string) []Vocab {
 	return c
 }
 
+// byLevel is callback function for vocabs by given level.
 func byLevel(level int) func(Vocab) bool {
 	return func(v Vocab) bool {
 		if v.Level == level {
@@ -59,6 +63,7 @@ func byLevel(level int) func(Vocab) bool {
 	}
 }
 
+// filter is helper function to filter vocabs.
 func filter(vocabs []Vocab, f func(Vocab) bool) []Vocab {
 	var resultVocabs []Vocab
 

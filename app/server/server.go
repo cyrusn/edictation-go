@@ -15,10 +15,14 @@ import (
 	"github.com/gorilla/mux"
 )
 
-var allVocabs []vocab.Vocab
-var levelVocabs [][]vocab.Vocab
+// init variables for initiation
+var (
+	allVocabs       []vocab.Vocab
+	voiceServerPort string
+)
 
 func init() {
+	// import cli package
 	cli.Parse()
 
 	vocabJSONPath := cli.VocabJSONPath
@@ -29,19 +33,40 @@ func init() {
 // Serve ...
 func Serve() {
 	port := cli.Port
+	voiceServerPort = cli.VoiceServerPort
 	servingFolder := cli.ServingFolder
 
 	r := mux.NewRouter()
-	r.HandleFunc("/api/id/{id:[0-9]+}", vocabHandler)
 
-	r.HandleFunc("/api/level/{level:[1-6]}", levelHandler)
+	type api struct {
+		method  string
+		path    string
+		handler func(http.ResponseWriter, *http.Request)
+	}
 
-	r.HandleFunc("/api/vocabs", vocabsHandler)
+	var apis = []api{
+		// Get Vocab by vocabID
+		api{"GET", "/api/id/{id:[0-9]+}", vocabIDHandler},
 
-	r.HandleFunc("/check/id/{id:[0-9]+}", checkHandler).Methods("POST")
+		// get the list of vocabs by given level
+		api{"GET", "/api/level/{level:[1-6]}", levelHandler},
 
-	r.HandleFunc("/voice/id/{id:[0-9]+}", voiceHandler)
+		// get the src of tts by given vocabID
+		api{"GET", "/voice/id/{id:[0-9]+}", voiceHandler},
 
+		// Post a list of VocabID, and will return the list of Vocabs
+		// for reporting
+		api{"POST", "/api/vocabs", vocabsHandler},
+
+		// post a vocabID and with answer, return bool
+		api{"POST", "/check/id/{id:[0-9]+}", checkHandler},
+	}
+
+	for _, a := range apis {
+		r.HandleFunc(a.path, a.handler).Methods(a.method)
+	}
+
+	// server static folder
 	r.PathPrefix("/").Handler(
 		http.StripPrefix(
 			"/",
@@ -62,6 +87,7 @@ func Serve() {
 	log.Fatal(srv.ListenAndServe())
 }
 
+// httpLogger is a simple logger to log the request info
 func httpLogger(handler http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("%s %s %s", r.RemoteAddr, r.Method, r.URL)
@@ -70,30 +96,30 @@ func httpLogger(handler http.Handler) http.Handler {
 }
 
 func vocabsHandler(w http.ResponseWriter, r *http.Request) {
-
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
-		panic(err)
+		errPrint(w, err)
+		return
 	}
 	defer r.Body.Close()
 	var v []int
 
 	if err := json.Unmarshal(body, &v); err != nil {
 		errPrint(w, err)
+		return
 	}
 
 	vocabs := vocab.FilterVocabsByIDs(v, allVocabs)
 	if err := json.NewEncoder(w).Encode(vocabs); err != nil {
 		errPrint(w, err)
 	}
-
 }
 
 func levelHandler(w http.ResponseWriter, r *http.Request) {
-	levelIndex := getLevelIndex(w, r)
+	level := getLevelFromAPI(r)
 
 	var result []int
-	vocabs := vocab.FilterVocabsByLevel(levelIndex+1, allVocabs)
+	vocabs := vocab.FilterVocabsByLevel(level, allVocabs)
 	for _, v := range vocabs {
 		result = append(result, v.ID)
 	}
@@ -105,25 +131,42 @@ func levelHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func checkHandler(w http.ResponseWriter, r *http.Request) {
+	id := getIDFromAPI(r)
 
-	idIndex := getIDIndex(w, r)
-
-	w.Header().Add("Content-Type", "application/json; charset=UTF-8")
-	answer := r.FormValue("answer")
-	vocab := allVocabs[idIndex]
-
-	if answer == vocab.Title {
-		w.Write([]byte(`{"result":true}`))
-	} else {
-		w.Write([]byte(`{"result":false}`))
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		errPrint(w, err)
+		return
 	}
+	defer r.Body.Close()
+
+	type ans struct {
+		Answer string `json:"answer"`
+	}
+	var v ans
+
+	if err := json.Unmarshal(body, &v); err != nil {
+		errPrint(w, err)
+		return
+	}
+
+	vocab := allVocabs[id]
+	w.Header().Add("Content-Type", "application/json; charset=UTF-8")
+
+	if vocab.Title == v.Answer {
+		w.Write([]byte("true"))
+		return
+	}
+
+	w.Write([]byte("false"))
+
 }
 
 func voiceHandler(w http.ResponseWriter, r *http.Request) {
-	idIndex := getIDIndex(w, r)
+	id := getIDFromAPI(r)
 
-	v := allVocabs[idIndex]
-	fileResponse, err := voice.GetVoiceResponse(v.Title)
+	v := allVocabs[id]
+	fileResponse, err := voice.GetVoiceResponse(v.Title, voiceServerPort)
 	if err != nil {
 		errPrint(w, err)
 		return
@@ -133,11 +176,13 @@ func voiceHandler(w http.ResponseWriter, r *http.Request) {
 	fileResponse.Write(w)
 }
 
-func vocabHandler(w http.ResponseWriter, r *http.Request) {
-	idIndex := getIDIndex(w, r)
+func vocabIDHandler(w http.ResponseWriter, r *http.Request) {
+	id := getIDFromAPI(r)
 
 	w.Header().Add("Content-Type", "application/json; charset=UTF-8")
-	v := allVocabs[idIndex]
+	v := allVocabs[id]
+	// remove title, so student can't retrive the vocab simple from
+	// calling the api directly
 	v.Title = ""
 
 	if err := json.NewEncoder(w).Encode(v); err != nil {
@@ -149,22 +194,14 @@ func errPrint(w http.ResponseWriter, err error) {
 	fmt.Fprintf(w, `{"error": %s}`, err)
 }
 
-func getLevelIndex(w http.ResponseWriter, r *http.Request) int {
+func getLevelFromAPI(r *http.Request) int {
 	slevel := mux.Vars(r)["level"]
-	level, err := strconv.Atoi(slevel)
-	if err != nil {
-		errPrint(w, err)
-	}
-	var index = level - 1
-	return index
+	level, _ := strconv.Atoi(slevel)
+	return level
 }
 
-func getIDIndex(w http.ResponseWriter, r *http.Request) int {
+func getIDFromAPI(r *http.Request) int {
 	sID := mux.Vars(r)["id"]
-	id, err := strconv.Atoi(sID)
-	if err != nil {
-		errPrint(w, err)
-	}
-	index := id
-	return index
+	id, _ := strconv.Atoi(sID)
+	return id
 }
