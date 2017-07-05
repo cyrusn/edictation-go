@@ -12,13 +12,17 @@ new Vue({
       clazzNo: '',
       mode: 'normal',
       level: 1,
-      noOfQuestions: 0,
+      questionIDs: [],
       stat: {}
     }
   },
   computed: {
     ViewComponent () {
       return routes[this.currentRoute]
+    },
+    noOfQuestions () {
+      const vm = this
+      return vm.questionIDs.length
     }
   },
   render (h) {

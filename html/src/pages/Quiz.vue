@@ -1,7 +1,6 @@
 <template id="quiz">
 <main-layout>
   <h1>Quiz</h1>
-  {{$root.stat}}
   <hr>
   <mode-and-level-badge></mode-and-level-badge>
   <progress-bar :percentage="percentage * 100" progressBar='progress-bar'></progress-bar>
@@ -31,20 +30,20 @@
 </template>
 
 <script>
+/*global Audio, FormData*/
 import MainLayout from '../layouts/Main.vue'
 import ProgressBar from '../components/ProgressBar.vue'
 import ModeAndLevelBadge from '../components/ModeAndLevelBadge.vue'
-import routes from '../routes.js'
 import axios from 'axios'
 import _ from 'lodash'
 
 const defaultMessage = 'Please type your answer!'
 
-function acceptance(mode) {
+function acceptance (mode) {
   switch (mode) {
-    case "normal":
+    case 'normal':
       return 0.5
-    case "hard":
+    case 'hard':
       return 0.25
     default:
       return 1
@@ -71,18 +70,11 @@ export default {
   computed: {
     id () {
       const vm = this
-      return vm.questionIDs[vm.index]
+      return vm.$root.questionIDs[vm.index]
     },
     percentage () {
       const vm = this
       return (vm.index + 1) / vm.$root.noOfQuestions
-    },
-    questionIDs () {
-      const vm = this
-      const root = vm.$root
-
-      const range = _.range(root.noOfQuestions)
-      return _(range).map(i => i + 1).shuffle().value()
     },
     tts () {
       const vm = this
@@ -92,12 +84,10 @@ export default {
   watch: {
     id () {
       const vm = this
-      const root = vm.$root
-
       // fetch infomation for new question
-      vm.fetchJSON()
+      vm.fetchAPI()
 
-      vm.tts_source = `./voice/${root.level}/${vm.id}`
+      vm.tts_source = `./voice/id/${vm.id}`
       // reset answer
       vm.answer = ''
       document.getElementById('answer').focus()
@@ -108,10 +98,10 @@ export default {
     }
   },
   methods: {
-    fetchJSON () {
+    fetchAPI () {
       const vm = this
 
-      axios.get('./api/' + vm.$root.level + '/' + vm.id)
+      axios.get('./api/id/' + vm.id)
         .then(function (response) {
           const definition = response.data.definition
           const partOfSpeech = response.data.partOfSpeech
@@ -131,16 +121,16 @@ export default {
       const id = vm.id
 
       const data = new FormData()
+      const answer = vm.answer
 
-
-      data.append('answer', vm.answer)
-      axios.post('./check/' + root.level + '/' + id, data)
+      data.append('answer', answer)
+      axios.post('./check/id/' + id, data)
         .then(response => {
-          const correct = response.data.result
-          root.stat[id] = correct
+          const isCorrect = response.data.result
+          root.stat[id] = { isCorrect, answer }
 
           const noOfWrongAnswers = _(root.stat)
-            .map(val => val)
+            .map(val => val.isCorrect)
             .filter(val => !val)
             .value()
             .length
@@ -148,7 +138,7 @@ export default {
           vm.wrongPercentage = noOfWrongAnswers / (root.noOfQuestions * acceptance(root.mode))
 
           if (vm.wrongPercentage > 1) {
-            window.location.pathname = "/"
+            window.location.pathname = '/'
           } else if (vm.index < root.noOfQuestions - 1) {
             vm.index += 1
           } else {

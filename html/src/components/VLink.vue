@@ -9,8 +9,6 @@
 </template>
 
 <script>
-  import routes from '../routes'
-
   export default {
     props: {
       href: {

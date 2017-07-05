@@ -4,7 +4,9 @@
     S.K.H. Li Ping Secondary School<br><small>eDictation System</small>
   </h1>
   <hr>
-  <form class="form-horizontal" @keypress.enter="onSubmit">
+
+  <div v-if="!isValid" class="alert alert-danger" role="alert">Invalid user information</div>
+  <form class="form-horizontal" @keypress.enter="submit">
     <div class="form-group">
       <label class="col-sm-2 control-label">Name</label>
       <div class="col-sm-10">
@@ -47,7 +49,7 @@
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <button class="btn btn-success" @click.prevent="onSubmit">Next</button>
+        <button class="btn btn-success" @click.prevent="submit">Next</button>
       </div>
     </div>
   </form>
@@ -56,22 +58,34 @@
 
 <script type="text/javascript">
 import axios from 'axios'
-import routes from '../routes'
 import MainLayout from '../layouts/Main.vue'
+import _ from 'lodash'
 
+// TODO: Validation on student, class and classNo, empty entry is not allowed.
 export default {
+  data () {
+    return {
+      isValid: true
+    }
+  },
   mounted () {
     document.getElementById('name').focus()
   },
   methods: {
-    onSubmit: function (event) {
+    submit: function (event) {
       const vm = this
+      const root = vm.$root
 
-      vm.$root.currentRoute = '/quiz'
-      axios.get('./api/' + vm.$root.level)
+      // simple Validation: all fields can't be empty
+      vm.isValid = !(root.name === '' || root.clazz === '' || root.clazzNo === '')
+
+      if (vm.isValid) {
+        vm.$root.currentRoute = '/quiz'
+        axios.get('./api/level/' + vm.$root.level)
         .then(function (response) {
-          vm.$root.noOfQuestions = response.data.noOfQuestions
+          vm.$root.questionIDs = _.shuffle(response.data)
         })
+      }
     }
   },
   filters: {

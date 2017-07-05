@@ -9,6 +9,7 @@ import (
 
 // Vocab is ...
 type Vocab struct {
+	ID           int    `json:"id"`
 	Title        string `json:"title,omitempty"`
 	PartOfSpeech string `json:"partOfSpeech"`
 	Definition   string `json:"definition"`
@@ -16,6 +17,21 @@ type Vocab struct {
 }
 
 var vocabs []Vocab
+
+func FilterVocabsByIDs(ids []int, vocabs []Vocab) []Vocab {
+	var result []Vocab
+	for _, id := range ids {
+	vocab_loop:
+		for _, vocab := range vocabs {
+			if vocab.ID == id {
+				result = append(result, vocab)
+				break vocab_loop
+			}
+		}
+	}
+
+	return result
+}
 
 func FilterVocabsByLevel(level int, vocabs []Vocab) []Vocab {
 	return filter(vocabs, byLevel(level))

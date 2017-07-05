@@ -3,6 +3,7 @@ package server
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"strconv"
@@ -23,11 +24,6 @@ func init() {
 	vocabJSONPath := cli.VocabJSONPath
 	allVocabs = vocab.GetVocabs(vocabJSONPath)
 
-	for i := 0; i < 6; i++ {
-		vocabs := vocab.FilterVocabsByLevel(i+1, allVocabs)
-		levelVocabs = append(levelVocabs, vocabs)
-	}
-
 }
 
 // Serve ...
@@ -36,14 +32,15 @@ func Serve() {
 	servingFolder := cli.ServingFolder
 
 	r := mux.NewRouter()
-	r.HandleFunc("/api/{level:[1-6]}/{id:[0-9]+}", vocabHandler)
+	r.HandleFunc("/api/id/{id:[0-9]+}", vocabHandler)
 
-	r.HandleFunc("/api/{level:[1-6]}", levelHandler)
+	r.HandleFunc("/api/level/{level:[1-6]}", levelHandler)
 
-	r.HandleFunc("/check/{level:[1-6]}/{id:[0-9]+}", checkHandler).
-		Methods("POST")
+	r.HandleFunc("/api/vocabs", vocabsHandler)
 
-	r.HandleFunc("/voice/{level:[1-6]}/{id:[0-9]+}", voiceHandler)
+	r.HandleFunc("/check/id/{id:[0-9]+}", checkHandler).Methods("POST")
+
+	r.HandleFunc("/voice/id/{id:[0-9]+}", voiceHandler)
 
 	r.PathPrefix("/").Handler(
 		http.StripPrefix(
@@ -72,19 +69,48 @@ func httpLogger(handler http.Handler) http.Handler {
 	})
 }
 
+func vocabsHandler(w http.ResponseWriter, r *http.Request) {
+
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		panic(err)
+	}
+	defer r.Body.Close()
+	var v []int
+
+	if err := json.Unmarshal(body, &v); err != nil {
+		errPrint(w, err)
+	}
+
+	vocabs := vocab.FilterVocabsByIDs(v, allVocabs)
+	if err := json.NewEncoder(w).Encode(vocabs); err != nil {
+		errPrint(w, err)
+	}
+
+}
+
 func levelHandler(w http.ResponseWriter, r *http.Request) {
 	levelIndex := getLevelIndex(w, r)
 
-	w.Write([]byte(fmt.Sprintf(`{"noOfQuestions":%d}`, len(levelVocabs[levelIndex]))))
+	var result []int
+	vocabs := vocab.FilterVocabsByLevel(levelIndex+1, allVocabs)
+	for _, v := range vocabs {
+		result = append(result, v.ID)
+	}
+
+	w.Header().Add("Content-Type", "application/json; charset=UTF-8")
+	if err := json.NewEncoder(w).Encode(result); err != nil {
+		errPrint(w, err)
+	}
 }
 
 func checkHandler(w http.ResponseWriter, r *http.Request) {
 
-	levelIndex := getLevelIndex(w, r)
 	idIndex := getIDIndex(w, r)
 
+	w.Header().Add("Content-Type", "application/json; charset=UTF-8")
 	answer := r.FormValue("answer")
-	vocab := levelVocabs[levelIndex][idIndex]
+	vocab := allVocabs[idIndex]
 
 	if answer == vocab.Title {
 		w.Write([]byte(`{"result":true}`))
@@ -94,13 +120,13 @@ func checkHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func voiceHandler(w http.ResponseWriter, r *http.Request) {
-	levelIndex := getLevelIndex(w, r)
 	idIndex := getIDIndex(w, r)
 
-	v := levelVocabs[levelIndex][idIndex]
+	v := allVocabs[idIndex]
 	fileResponse, err := voice.GetVoiceResponse(v.Title)
 	if err != nil {
 		errPrint(w, err)
+		return
 	}
 
 	w.Header().Set("Content-Type", "audio/mpeg")
@@ -109,10 +135,9 @@ func voiceHandler(w http.ResponseWriter, r *http.Request) {
 
 func vocabHandler(w http.ResponseWriter, r *http.Request) {
 	idIndex := getIDIndex(w, r)
-	levelIndex := getLevelIndex(w, r)
 
-	w.Header().Set("Content-Type", "application/json")
-	v := levelVocabs[levelIndex][idIndex]
+	w.Header().Add("Content-Type", "application/json; charset=UTF-8")
+	v := allVocabs[idIndex]
 	v.Title = ""
 
 	if err := json.NewEncoder(w).Encode(v); err != nil {
@@ -140,6 +165,6 @@ func getIDIndex(w http.ResponseWriter, r *http.Request) int {
 	if err != nil {
 		errPrint(w, err)
 	}
-	index := id - 1
+	index := id
 	return index
 }
