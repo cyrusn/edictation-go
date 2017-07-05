@@ -119,14 +119,11 @@ export default {
       const vm = this
       const root = vm.$root
       const id = vm.id
+      const answer = vm.answer.toLowerCase()
 
-      const data = new FormData()
-      const answer = vm.answer
-
-      data.append('answer', answer)
-      axios.post('./check/id/' + id, data)
+      axios.post('./check/id/' + id, {answer})
         .then(response => {
-          const isCorrect = response.data.result
+          const isCorrect = response.data
           root.stat[id] = { isCorrect, answer }
 
           const noOfWrongAnswers = _(root.stat)
