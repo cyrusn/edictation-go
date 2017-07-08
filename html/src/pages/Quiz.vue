@@ -87,7 +87,7 @@ export default {
       // fetch infomation for new question
       vm.fetchAPI()
 
-      vm.tts_source = `./voice/id/${vm.id}`
+      vm.tts_source = `./api/voice/vocab/id/${vm.id}`
       // reset answer
       vm.answer = ''
       document.getElementById('answer').focus()
@@ -101,7 +101,7 @@ export default {
     fetchAPI () {
       const vm = this
 
-      axios.get('./api/id/' + vm.id)
+      axios.get('./api/vocab/id/' + vm.id)
         .then(function (response) {
           const definition = response.data.definition
           const partOfSpeech = response.data.partOfSpeech
@@ -121,7 +121,7 @@ export default {
       const id = vm.id
       const answer = vm.answer.toLowerCase()
 
-      axios.post('./check/id/' + id, {answer})
+      axios.post('./api/check/vocab/id/' + id, {answer})
         .then(response => {
           const isCorrect = response.data
           root.stat[id] = { isCorrect, answer }

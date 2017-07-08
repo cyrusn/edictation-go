@@ -64,7 +64,7 @@
         .map((val, key) => parseInt(key))
         .value()
 
-      axios.post('./api/vocabs', ids)
+      axios.post('./api/vocab/id', ids)
         .then(response => {
           vm.allIncorrectVocabs = response.data.map(vocab => {
             const wrongAns = root.stat[vocab.id].answer

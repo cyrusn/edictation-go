@@ -1,22 +1,34 @@
 package voice
 
 import (
+	"errors"
 	"fmt"
-	"io/ioutil"
-	"net/http"
+	"os/exec"
+	"path"
+	"runtime"
 )
 
-// GetVoiceResponse will return the mp3 source url with *http.Response format
-func GetVoiceResponse(title string, port string) (*http.Response, error) {
-	url := fmt.Sprintf("http://localhost"+port+"/voice/%s", title)
-	resp, err := http.Get(url)
-	if err != nil {
-		return nil, err
+// getVoiceSource will use a simple node app in ./voice.js
+// ./voice.js will return a mp3 source from translate.google.come
+func GetVoiceSource(title string, speed float64) (string, error) {
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		return "", errors.New("No caller information")
 	}
-	defer resp.Body.Close()
-	src, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
+
+	jsFilePath := path.Join(path.Dir(filename), "./voice.js")
+
+	args := []string{
+		jsFilePath,
+		fmt.Sprintf(`-t="%s"`, title),
+		fmt.Sprintf(`-s=%v`, speed),
 	}
-	return http.Get(string(src))
+	cmd := exec.Command("node", args...)
+
+	output, err := cmd.Output()
+	if err != nil {
+		return "", err
+	}
+
+	return string(output), nil
 }

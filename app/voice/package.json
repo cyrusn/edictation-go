@@ -1,12 +1,10 @@
 {
-  "name": "voiceserver",
+  "name": "Voice Package",
   "version": "1.0.0",
-  "description": "voice server for edictation system",
+  "description": "voice package for edictation system",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.15.3",
     "google-tts-api": "0.0.1",
-    "morgan": "^1.8.2",
     "yargs": "^8.0.2"
   },
   "devDependencies": {},

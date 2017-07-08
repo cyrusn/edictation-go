@@ -8,8 +8,8 @@ import (
 var (
 	// Port store the port string for server
 	Port string
-	// VoiceServerPort store the port string for voice server
-	VoiceServerPort string
+	// VoiceSpeed control the speed of the voice
+	VoiceSpeed float64
 	// ServingFolder is location that serve the public files (index.html ...)
 	ServingFolder string
 	// VocabJSONPath is the location of all vocabularies
@@ -25,12 +25,12 @@ func init() {
 
 	const (
 		defaultPort          = ":5050"
-		defaultVoicePort     = ":5001"
+		defaultVoiceSpeed    = 0.5
 		defaultServingFolder = "./html/dist"
 		defaultVocabJSONPath = "./vocab/vocab.json"
 
 		usagePort          = "server port"
-		usageVoicePort     = "voice server's port"
+		usageVoiceSpeed    = "speed of voice"
 		usageServingFolder = "location of static files"
 		usageVocabJSONPath = "location of vocab.json"
 	)
@@ -38,8 +38,8 @@ func init() {
 	flag.StringVar(&Port, "port", defaultPort, usagePort)
 	flag.StringVar(&Port, "p", defaultPort, usagePort+" shorthand")
 
-	flag.StringVar(&VoiceServerPort, "vport", defaultVoicePort, usageVoicePort)
-	flag.StringVar(&VoiceServerPort, "vp", defaultVoicePort, usageVoicePort+" shorthand")
+	flag.Float64Var(&VoiceSpeed, "speed", defaultVoiceSpeed, usageVoiceSpeed)
+	flag.Float64Var(&VoiceSpeed, "vs", defaultVoiceSpeed, usageVoiceSpeed+" shorthand")
 
 	flag.StringVar(&ServingFolder, "static", defaultServingFolder, usageServingFolder)
 	flag.StringVar(&ServingFolder, "s", defaultServingFolder, usageServingFolder+" shorthand")
