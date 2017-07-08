@@ -1,14 +1,6 @@
 # eDictation Spec
 
 ## How to use?
-- start voice server
-
-``` sh
-cd voiceServer
-npm install
-npm run start
-```
-
 - build javascript for html
 ``` sh
 cd html
@@ -21,8 +13,6 @@ npm run build
 ``` sh
 go run main.go
 ```
-
-
 
 ## Use case
 
@@ -65,3 +55,4 @@ go run main.go
 - [Vue.js](https://vuejs.org/)
 - [gorilla/mux: A powerful URL router and dispatcher for golang.](https://github.com/gorilla/mux)
 - [Text to Speech | TTS SDK | Speech Recognition (ASR)](https://www.ispeech.org/)
+- [google-tts-api](https://www.npmjs.com/package/google-tts-api)
