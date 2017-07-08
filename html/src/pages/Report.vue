@@ -1,12 +1,12 @@
 <template>
   <main-layout>
-    <h1>Report</h1>
+    <h1>Report <small>{{now.toDateString()}}</small></h1>
     <hr>
     <h2>{{$root.name}} <small>{{$root.clazz}} ({{$root.clazzNo}})</small></h2>
 
     <mode-and-level-badge></mode-and-level-badge>
-    <h3>Statics</h3>
 
+    <h3>Statics</h3>
     <table class="table table-hover">
       <tbody>
         <tr>
@@ -37,20 +37,8 @@
     },
     data () {
       return {
-        allIncorrectVocabs: []
-      }
-    },
-    computed: {
-      resultPercentage () {
-        const vm = this
-        const root = vm.$root
-
-        const noOfWrongAnswers = _(root.stat)
-          .map(val => val)
-          .filter(val => !val)
-          .value()
-          .length
-        return noOfWrongAnswers / (root.noOfQuestions)
+        allIncorrectVocabs: [],
+        now: new Date()
       }
     },
     mounted () {

@@ -64,7 +64,8 @@ export default {
       tts_source: '',
       answer: '',
       wrongPercentage: 0,
-      message: defaultMessage
+      message: defaultMessage,
+      correctPercentage: 0
     }
   },
   computed: {
@@ -132,6 +133,10 @@ export default {
             .value()
             .length
 
+          // updated $root.correctPercentage
+          root.correctPercentage = (1 - noOfWrongAnswers / root.noOfQuestions).toFixed(2) * 100
+
+          // updated wrongPercentage for ProgressBar
           vm.wrongPercentage = noOfWrongAnswers / (root.noOfQuestions * acceptance(root.mode))
 
           if (vm.wrongPercentage > 1) {

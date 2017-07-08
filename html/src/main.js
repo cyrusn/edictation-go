@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import routes from './routes'
+import _ from 'lodash'
 
 /* eslint-disable no-new */
 new Vue({
@@ -13,7 +14,8 @@ new Vue({
       mode: 'normal',
       level: 1,
       questionIDs: [],
-      stat: {}
+      stat: {},
+      correctPercentage: 0
     }
   },
   computed: {
@@ -21,8 +23,7 @@ new Vue({
       return routes[this.currentRoute]
     },
     noOfQuestions () {
-      const vm = this
-      return vm.questionIDs.length
+      return this.questionIDs.length
     }
   },
   render (h) {
