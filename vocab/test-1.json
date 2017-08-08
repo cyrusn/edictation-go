@@ -1,0 +1,273 @@
+[{
+    "id":0,
+    "title": "accept",
+    "partOfSpeech": "v",
+    "definition": "接受",
+    "level": 1
+  },
+  {
+    "id":1,
+    "title": "achieve",
+    "partOfSpeech": "v",
+    "definition": "達成",
+    "level": 1
+  },
+  {
+    "id":2,
+    "title": "adapt",
+    "partOfSpeech": "v",
+    "definition": "適應",
+    "level": 1
+  },
+  {
+    "id":3,
+    "title": "add",
+    "partOfSpeech": "v",
+    "definition": "加",
+    "level": 1
+  },
+  {
+    "id":4,
+    "title": "admire",
+    "partOfSpeech": "v",
+    "definition": "欣賞",
+    "level": 1
+  },
+  {
+    "id":5,
+    "title": "adopt",
+    "partOfSpeech": "v",
+    "definition": "採納",
+    "level": 1
+  },
+  {
+    "id":6,
+    "title": "affect",
+    "partOfSpeech": "v",
+    "definition": "影響",
+    "level": 1
+  },
+  {
+    "id":7,
+    "title": "afford",
+    "partOfSpeech": "v",
+    "definition": "負擔",
+    "level": 1
+  },
+  {
+    "id":8,
+    "title": "agree",
+    "partOfSpeech": "v",
+    "definition": "同意",
+    "level": 1
+  },
+  {
+    "id":9,
+    "title": "amaze",
+    "partOfSpeech": "v",
+    "definition": "使大為驚奇",
+    "level": 1
+  },
+  {
+    "id":10,
+    "title": "analyse",
+    "partOfSpeech": "v",
+    "definition": "分析",
+    "level": 1
+  },
+  {
+    "id":11,
+    "title": "announce",
+    "partOfSpeech": "v",
+    "definition": "宣佈",
+    "level": 1
+  },
+  {
+    "id":12,
+    "title": "annoy",
+    "partOfSpeech": "v",
+    "definition": "困擾",
+    "level": 1
+  },
+  {
+    "id":13,
+    "title": "appear",
+    "partOfSpeech": "v",
+    "definition": "出現",
+    "level": 1
+  },
+  {
+    "id":14,
+    "title": "apply",
+    "partOfSpeech": "v",
+    "definition": "應用",
+    "level": 1
+  },
+  {
+    "id":15,
+    "title": "appreciate",
+    "partOfSpeech": "v",
+    "definition": "欣賞",
+    "level": 1
+  },
+  {
+    "id":16,
+    "title": "arise",
+    "partOfSpeech": "v",
+    "definition": "上升/產生",
+    "level": 1
+  },
+  {
+    "id":17,
+    "title": "arrange",
+    "partOfSpeech": "v",
+    "definition": "安排",
+    "level": 1
+  },
+  {
+    "id":18,
+    "title": "arrive",
+    "partOfSpeech": "v",
+    "definition": "到達",
+    "level": 1
+  },
+  {
+    "id":19,
+    "title": "attract",
+    "partOfSpeech": "v",
+    "definition": "吸引",
+    "level": 1
+  },
+  {
+    "id":20,
+    "title": "avoid",
+    "partOfSpeech": "v",
+    "definition": "避開",
+    "level": 1
+  },
+  {
+    "id":21,
+    "title": "bake",
+    "partOfSpeech": "v",
+    "definition": "烤",
+    "level": 1
+  },
+  {
+    "id":22,
+    "title": "balance",
+    "partOfSpeech": "v",
+    "definition": "平衡",
+    "level": 1
+  },
+  {
+    "id":23,
+    "title": "bargain",
+    "partOfSpeech": "v",
+    "definition": "討價還價",
+    "level": 1
+  },
+  {
+    "id":24,
+    "title": "bark",
+    "partOfSpeech": "v",
+    "definition": "吠",
+    "level": 1
+  },
+  {
+    "id":25,
+    "title": "bear",
+    "partOfSpeech": "v",
+    "definition": "懷有/忍受",
+    "level": 1
+  },
+  {
+    "id":26,
+    "title": "beat",
+    "partOfSpeech": "v",
+    "definition": "擊打/跳動",
+    "level": 1
+  },
+  {
+    "id":27,
+    "title": "become",
+    "partOfSpeech": "v",
+    "definition": "成為",
+    "level": 1
+  },
+  {
+    "id":28,
+    "title": "beg",
+    "partOfSpeech": "v",
+    "definition": "(乞)求",
+    "level": 1
+  },
+  {
+    "id":29,
+    "title": "believe",
+    "partOfSpeech": "v",
+    "definition": "相信",
+    "level": 1
+  },
+  {
+    "id":30,
+    "title": "belong",
+    "partOfSpeech": "v",
+    "definition": "屬於",
+    "level": 1
+  },
+  {
+    "id":31,
+    "title": "bite",
+    "partOfSpeech": "v",
+    "definition": "咬",
+    "level": 1
+  },
+  {
+    "id":32,
+    "title": "blame",
+    "partOfSpeech": "v",
+    "definition": "責怪",
+    "level": 1
+  },
+  {
+    "id":33,
+    "title": "bleed",
+    "partOfSpeech": "v",
+    "definition": "流血",
+    "level": 1
+  },
+  {
+    "id":34,
+    "title": "blow",
+    "partOfSpeech": "v",
+    "definition": "吹",
+    "level": 1
+  },
+  {
+    "id":35,
+    "title": "boast",
+    "partOfSpeech": "v",
+    "definition": "誇耀",
+    "level": 1
+  },
+  {
+    "id":36,
+    "title": "borrow",
+    "partOfSpeech": "v",
+    "definition": "借來",
+    "level": 1
+  },
+  {
+    "id":37,
+    "title": "bother",
+    "partOfSpeech": "v",
+    "definition": "打攪",
+    "level": 1
+  },
+  {
+    "id":38,
+    "title": "breathe",
+    "partOfSpeech": "v",
+    "definition": "呼吸",
+    "level": 1
+  }]

@@ -1,0 +1,504 @@
+[  {
+    "id":176,
+    "title": "lie",
+    "partOfSpeech": "v",
+    "definition": "撒謊/躺臥",
+    "level": 5
+  },
+  {
+    "id":177,
+    "title": "lift",
+    "partOfSpeech": "v",
+    "definition": "舉起",
+    "level": 5
+  },
+  {
+    "id":178,
+    "title": "list",
+    "partOfSpeech": "v",
+    "definition": "列舉",
+    "level": 5
+  },
+  {
+    "id":179,
+    "title": "maintain",
+    "partOfSpeech": "v",
+    "definition": "維持/堅持",
+    "level": 5
+  },
+  {
+    "id":180,
+    "title": "manage",
+    "partOfSpeech": "v",
+    "definition": "管理",
+    "level": 5
+  },
+  {
+    "id":181,
+    "title": "marry",
+    "partOfSpeech": "v",
+    "definition": "與…結婚",
+    "level": 5
+  },
+  {
+    "id":182,
+    "title": "match",
+    "partOfSpeech": "v",
+    "definition": "使較量",
+    "level": 5
+  },
+  {
+    "id":183,
+    "title": "mean",
+    "partOfSpeech": "v",
+    "definition": "意謂",
+    "level": 5
+  },
+  {
+    "id":184,
+    "title": "melt",
+    "partOfSpeech": "v",
+    "definition": "溶解",
+    "level": 5
+  },
+  {
+    "id":185,
+    "title": "mention",
+    "partOfSpeech": "v",
+    "definition": "提及",
+    "level": 5
+  },
+  {
+    "id":186,
+    "title": "mind",
+    "partOfSpeech": "v",
+    "definition": "注意",
+    "level": 5
+  },
+  {
+    "id":187,
+    "title": "miss",
+    "partOfSpeech": "v",
+    "definition": "錯過/掛念",
+    "level": 5
+  },
+  {
+    "id":188,
+    "title": "nod",
+    "partOfSpeech": "v",
+    "definition": "點頭",
+    "level": 5
+  },
+  {
+    "id":189,
+    "title": "notice",
+    "partOfSpeech": "v",
+    "definition": "察覺",
+    "level": 5
+  },
+  {
+    "id":190,
+    "title": "occur",
+    "partOfSpeech": "v",
+    "definition": "發生",
+    "level": 5
+  },
+  {
+    "id":191,
+    "title": "offer",
+    "partOfSpeech": "v",
+    "definition": "提供",
+    "level": 5
+  },
+  {
+    "id":192,
+    "title": "organise",
+    "partOfSpeech": "v",
+    "definition": "組織",
+    "level": 5
+  },
+  {
+    "id":193,
+    "title": "owe",
+    "partOfSpeech": "v",
+    "definition": "欠",
+    "level": 5
+  },
+  {
+    "id":194,
+    "title": "own",
+    "partOfSpeech": "v",
+    "definition": "擁有",
+    "level": 5
+  },
+  {
+    "id":195,
+    "title": "pass",
+    "partOfSpeech": "v",
+    "definition": "傳遞/通過",
+    "level": 5
+  },
+  {
+    "id":196,
+    "title": "pay",
+    "partOfSpeech": "v",
+    "definition": "付出",
+    "level": 5
+  },
+  {
+    "id":197,
+    "title": "perform",
+    "partOfSpeech": "v",
+    "definition": "演出",
+    "level": 5
+  },
+  {
+    "id":198,
+    "title": "persist",
+    "partOfSpeech": "v",
+    "definition": "堅持",
+    "level": 5
+  },
+  {
+    "id":199,
+    "title": "pick",
+    "partOfSpeech": "v",
+    "definition": "選擇/採摘",
+    "level": 5
+  },
+  {
+    "id":200,
+    "title": "plant",
+    "partOfSpeech": "v",
+    "definition": "種植",
+    "level": 5
+  },
+  {
+    "id":201,
+    "title": "possess",
+    "partOfSpeech": "v",
+    "definition": "擁有",
+    "level": 5
+  },
+  {
+    "id":202,
+    "title": "practise",
+    "partOfSpeech": "v",
+    "definition": "練習",
+    "level": 5
+  },
+  {
+    "id":203,
+    "title": "pray",
+    "partOfSpeech": "v",
+    "definition": "祈禱",
+    "level": 5
+  },
+  {
+    "id":204,
+    "title": "prefer",
+    "partOfSpeech": "v",
+    "definition": "較喜歡",
+    "level": 5
+  },
+  {
+    "id":205,
+    "title": "prepare",
+    "partOfSpeech": "v",
+    "definition": "準備",
+    "level": 5
+  },
+  {
+    "id":206,
+    "title": "present",
+    "partOfSpeech": "v",
+    "definition": "呈獻",
+    "level": 5
+  },
+  {
+    "id":207,
+    "title": "press",
+    "partOfSpeech": "v",
+    "definition": "按/催逼",
+    "level": 5
+  },
+  {
+    "id":208,
+    "title": "pretend",
+    "partOfSpeech": "v",
+    "definition": "假裝",
+    "level": 5
+  },
+  {
+    "id":209,
+    "title": "prevent",
+    "partOfSpeech": "v",
+    "definition": "防止",
+    "level": 5
+  },
+  {
+    "id":210,
+    "title": "produce",
+    "partOfSpeech": "v",
+    "definition": "生產",
+    "level": 5
+  },
+  {
+    "id":211,
+    "title": "promise",
+    "partOfSpeech": "v",
+    "definition": "承諾",
+    "level": 5
+  },
+  {
+    "id":212,
+    "title": "propose",
+    "partOfSpeech": "v",
+    "definition": "提議",
+    "level": 5
+  },
+  {
+    "id":213,
+    "title": "protect",
+    "partOfSpeech": "v",
+    "definition": "保護",
+    "level": 5
+  },
+  {
+    "id":214,
+    "title": "provide",
+    "partOfSpeech": "v",
+    "definition": "提供",
+    "level": 5
+  },
+  {
+    "id":215,
+    "title": "pump",
+    "partOfSpeech": "v",
+    "definition": "泵",
+    "level": 5
+  },
+  {
+    "id":216,
+    "title": "purchase",
+    "partOfSpeech": "v",
+    "definition": "購買",
+    "level": 5
+  },
+  {
+    "id":217,
+    "title": "raise",
+    "partOfSpeech": "v",
+    "definition": "提高/養育",
+    "level": 5
+  },
+  {
+    "id":218,
+    "title": "reach",
+    "partOfSpeech": "v",
+    "definition": "達到/觸及",
+    "level": 5
+  },
+  {
+    "id":219,
+    "title": "realize",
+    "partOfSpeech": "v",
+    "definition": "領悟到",
+    "level": 5
+  },
+  {
+    "id":220,
+    "title": "receive",
+    "partOfSpeech": "v",
+    "definition": "收到",
+    "level": 5
+  },
+  {
+    "id":221,
+    "title": "recommend",
+    "partOfSpeech": "v",
+    "definition": "推介",
+    "level": 5
+  },
+  {
+    "id":222,
+    "title": "record",
+    "partOfSpeech": "v",
+    "definition": "記錄",
+    "level": 5
+  },
+  {
+    "id":223,
+    "title": "reduce",
+    "partOfSpeech": "v",
+    "definition": "減少",
+    "level": 5
+  },
+  {
+    "id":224,
+    "title": "refer",
+    "partOfSpeech": "v",
+    "definition": "提及",
+    "level": 5
+  },
+  {
+    "id":225,
+    "title": "reflect",
+    "partOfSpeech": "v",
+    "definition": "反映",
+    "level": 5
+  },
+  {
+    "id":226,
+    "title": "register",
+    "partOfSpeech": "v",
+    "definition": "註冊",
+    "level": 5
+  },
+  {
+    "id":227,
+    "title": "release",
+    "partOfSpeech": "v",
+    "definition": "釋放",
+    "level": 5
+  },
+  {
+    "id":228,
+    "title": "remain",
+    "partOfSpeech": "v",
+    "definition": "餘下",
+    "level": 5
+  },
+  {
+    "id":229,
+    "title": "remove",
+    "partOfSpeech": "v",
+    "definition": "移開/消除",
+    "level": 5
+  },
+  {
+    "id":230,
+    "title": "rent",
+    "partOfSpeech": "v",
+    "definition": "租用",
+    "level": 5
+  },
+  {
+    "id":231,
+    "title": "repeat",
+    "partOfSpeech": "v",
+    "definition": "重複",
+    "level": 5
+  },
+  {
+    "id":232,
+    "title": "reply",
+    "partOfSpeech": "v",
+    "definition": "答覆",
+    "level": 5
+  },
+  {
+    "id":233,
+    "title": "report",
+    "partOfSpeech": "v",
+    "definition": "報告",
+    "level": 5
+  },
+  {
+    "id":234,
+    "title": "represent",
+    "partOfSpeech": "v",
+    "definition": "代表",
+    "level": 5
+  },
+  {
+    "id":235,
+    "title": "respect",
+    "partOfSpeech": "v",
+    "definition": "尊重",
+    "level": 5
+  },
+  {
+    "id":236,
+    "title": "return",
+    "partOfSpeech": "v",
+    "definition": "歸還",
+    "level": 5
+  },
+  {
+    "id":237,
+    "title": "review",
+    "partOfSpeech": "v",
+    "definition": "評論/重新探討",
+    "level": 5
+  },
+  {
+    "id":238,
+    "title": "rise",
+    "partOfSpeech": "v",
+    "definition": "上升",
+    "level": 5
+  },
+  {
+    "id":239,
+    "title": "roar",
+    "partOfSpeech": "v",
+    "definition": "哮叫",
+    "level": 5
+  },
+  {
+    "id":240,
+    "title": "rub",
+    "partOfSpeech": "v",
+    "definition": "磨擦",
+    "level": 5
+  },
+  {
+    "id":241,
+    "title": "sail",
+    "partOfSpeech": "v",
+    "definition": "航行",
+    "level": 5
+  },
+  {
+    "id":242,
+    "title": "satisfy",
+    "partOfSpeech": "v",
+    "definition": "使滿意",
+    "level": 5
+  },
+  {
+    "id":243,
+    "title": "scare",
+    "partOfSpeech": "v",
+    "definition": "驚嚇",
+    "level": 5
+  },
+  {
+    "id":244,
+    "title": "scold",
+    "partOfSpeech": "v",
+    "definition": "責罵",
+    "level": 5
+  },
+  {
+    "id":245,
+    "title": "scream",
+    "partOfSpeech": "v",
+    "definition": "尖叫",
+    "level": 5
+  },
+  {
+    "id":246,
+    "title": "search",
+    "partOfSpeech": "v",
+    "definition": "搜尋",
+    "level": 5
+  },
+  {
+    "id":247,
+    "title": "seek",
+    "partOfSpeech": "v",
+    "definition": "找",
+    "level": 5
+  }]

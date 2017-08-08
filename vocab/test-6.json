@@ -1,0 +1,513 @@
+[
+  {
+    "id":248,
+    "title": "seem",
+    "partOfSpeech": "v",
+    "definition": "看來好像",
+    "level": 6
+  },
+  {
+    "id":249,
+    "title": "select",
+    "partOfSpeech": "v",
+    "definition": "選擇",
+    "level": 6
+  },
+  {
+    "id":250,
+    "title": "separate",
+    "partOfSpeech": "v",
+    "definition": "分隔",
+    "level": 6
+  },
+  {
+    "id":251,
+    "title": "shake",
+    "partOfSpeech": "v",
+    "definition": "搖動",
+    "level": 6
+  },
+  {
+    "id":252,
+    "title": "shine",
+    "partOfSpeech": "v",
+    "definition": "發亮",
+    "level": 6
+  },
+  {
+    "id":253,
+    "title": "shiver",
+    "partOfSpeech": "v",
+    "definition": "抖震",
+    "level": 6
+  },
+  {
+    "id":254,
+    "title": "shoot",
+    "partOfSpeech": "v",
+    "definition": "發射/注射",
+    "level": 6
+  },
+  {
+    "id":255,
+    "title": "shout",
+    "partOfSpeech": "v",
+    "definition": "喊叫",
+    "level": 6
+  },
+  {
+    "id":256,
+    "title": "shut",
+    "partOfSpeech": "v",
+    "definition": "關上",
+    "level": 6
+  },
+  {
+    "id":257,
+    "title": "sigh",
+    "partOfSpeech": "v",
+    "definition": "嘆息",
+    "level": 6
+  },
+  {
+    "id":258,
+    "title": "sink",
+    "partOfSpeech": "v",
+    "definition": "下沈",
+    "level": 6
+  },
+  {
+    "id":259,
+    "title": "skip",
+    "partOfSpeech": "v",
+    "definition": "略過/跳繩",
+    "level": 6
+  },
+  {
+    "id":260,
+    "title": "slip",
+    "partOfSpeech": "v",
+    "definition": "滑行/滑倒",
+    "level": 6
+  },
+  {
+    "id":261,
+    "title": "smell",
+    "partOfSpeech": "v",
+    "definition": "聞",
+    "level": 6
+  },
+  {
+    "id":262,
+    "title": "smile",
+    "partOfSpeech": "v",
+    "definition": "微笑",
+    "level": 6
+  },
+  {
+    "id":263,
+    "title": "smoke",
+    "partOfSpeech": "v",
+    "definition": "吸煙",
+    "level": 6
+  },
+  {
+    "id":264,
+    "title": "sneeze",
+    "partOfSpeech": "v",
+    "definition": "打噴嚏",
+    "level": 6
+  },
+  {
+    "id":265,
+    "title": "snore",
+    "partOfSpeech": "v",
+    "definition": "打鼾",
+    "level": 6
+  },
+  {
+    "id":266,
+    "title": "solve",
+    "partOfSpeech": "v",
+    "definition": "解決",
+    "level": 6
+  },
+  {
+    "id":267,
+    "title": "sound",
+    "partOfSpeech": "v",
+    "definition": "聽起來",
+    "level": 6
+  },
+  {
+    "id":268,
+    "title": "speak",
+    "partOfSpeech": "v",
+    "definition": "說",
+    "level": 6
+  },
+  {
+    "id":269,
+    "title": "spend",
+    "partOfSpeech": "v",
+    "definition": "花費",
+    "level": 6
+  },
+  {
+    "id":270,
+    "title": "spill",
+    "partOfSpeech": "v",
+    "definition": "使濺出",
+    "level": 6
+  },
+  {
+    "id":271,
+    "title": "spit",
+    "partOfSpeech": "v",
+    "definition": "吐",
+    "level": 6
+  },
+  {
+    "id":272,
+    "title": "splash",
+    "partOfSpeech": "v",
+    "definition": "潑濕/濺濕",
+    "level": 6
+  },
+  {
+    "id":273,
+    "title": "spoil",
+    "partOfSpeech": "v",
+    "definition": "損壞/寵壞",
+    "level": 6
+  },
+  {
+    "id":274,
+    "title": "spot",
+    "partOfSpeech": "v",
+    "definition": "發現",
+    "level": 6
+  },
+  {
+    "id":275,
+    "title": "spread",
+    "partOfSpeech": "v",
+    "definition": "擴散",
+    "level": 6
+  },
+  {
+    "id":276,
+    "title": "stare",
+    "partOfSpeech": "v",
+    "definition": "凝視/盯",
+    "level": 6
+  },
+  {
+    "id":277,
+    "title": "starve",
+    "partOfSpeech": "v",
+    "definition": "挨餓",
+    "level": 6
+  },
+  {
+    "id":278,
+    "title": "steal",
+    "partOfSpeech": "v",
+    "definition": "偷",
+    "level": 6
+  },
+  {
+    "id":279,
+    "title": "stick",
+    "partOfSpeech": "v",
+    "definition": "釘/貼",
+    "level": 6
+  },
+  {
+    "id":280,
+    "title": "stir",
+    "partOfSpeech": "v",
+    "definition": "攪動",
+    "level": 6
+  },
+  {
+    "id":281,
+    "title": "stretch",
+    "partOfSpeech": "v",
+    "definition": "伸展",
+    "level": 6
+  },
+  {
+    "id":282,
+    "title": "strike",
+    "partOfSpeech": "v",
+    "definition": "攻擊/敲打",
+    "level": 6
+  },
+  {
+    "id":283,
+    "title": "struggle",
+    "partOfSpeech": "v",
+    "definition": "掙扎",
+    "level": 6
+  },
+  {
+    "id":284,
+    "title": "succeed",
+    "partOfSpeech": "v",
+    "definition": "成功",
+    "level": 6
+  },
+  {
+    "id":285,
+    "title": "suck",
+    "partOfSpeech": "v",
+    "definition": "吸",
+    "level": 6
+  },
+  {
+    "id":286,
+    "title": "suffer",
+    "partOfSpeech": "v",
+    "definition": "遭受/受苦/患病",
+    "level": 6
+  },
+  {
+    "id":287,
+    "title": "suggest",
+    "partOfSpeech": "v",
+    "definition": "建議",
+    "level": 6
+  },
+  {
+    "id":288,
+    "title": "support",
+    "partOfSpeech": "v",
+    "definition": "支持",
+    "level": 6
+  },
+  {
+    "id":289,
+    "title": "suppose",
+    "partOfSpeech": "v",
+    "definition": "假設",
+    "level": 6
+  },
+  {
+    "id":290,
+    "title": "surf",
+    "partOfSpeech": "v",
+    "definition": "衝浪",
+    "level": 6
+  },
+  {
+    "id":291,
+    "title": "surrender",
+    "partOfSpeech": "v",
+    "definition": "投降",
+    "level": 6
+  },
+  {
+    "id":292,
+    "title": "surround",
+    "partOfSpeech": "v",
+    "definition": "圍繞",
+    "level": 6
+  },
+  {
+    "id":293,
+    "title": "suspect",
+    "partOfSpeech": "v",
+    "definition": "懷疑",
+    "level": 6
+  },
+  {
+    "id":294,
+    "title": "swallow",
+    "partOfSpeech": "v",
+    "definition": "吞下",
+    "level": 6
+  },
+  {
+    "id":295,
+    "title": "sweep",
+    "partOfSpeech": "v",
+    "definition": "打掃",
+    "level": 6
+  },
+  {
+    "id":296,
+    "title": "switch off",
+    "partOfSpeech": "v",
+    "definition": "關掉",
+    "level": 6
+  },
+  {
+    "id":297,
+    "title": "switch on",
+    "partOfSpeech": "v",
+    "definition": "開啟",
+    "level": 6
+  },
+  {
+    "id":298,
+    "title": "taste",
+    "partOfSpeech": "v",
+    "definition": "嚐起來",
+    "level": 6
+  },
+  {
+    "id":299,
+    "title": "tear",
+    "partOfSpeech": "v",
+    "definition": "撕開",
+    "level": 6
+  },
+  {
+    "id":300,
+    "title": "tease",
+    "partOfSpeech": "v",
+    "definition": "戲弄",
+    "level": 6
+  },
+  {
+    "id":301,
+    "title": "throw",
+    "partOfSpeech": "v",
+    "definition": "拋",
+    "level": 6
+  },
+  {
+    "id":302,
+    "title": "touch",
+    "partOfSpeech": "v",
+    "definition": "接觸",
+    "level": 6
+  },
+  {
+    "id":303,
+    "title": "train",
+    "partOfSpeech": "v",
+    "definition": "訓練",
+    "level": 6
+  },
+  {
+    "id":304,
+    "title": "travel",
+    "partOfSpeech": "v",
+    "definition": "旅遊",
+    "level": 6
+  },
+  {
+    "id":305,
+    "title": "treat",
+    "partOfSpeech": "v",
+    "definition": "對待",
+    "level": 6
+  },
+  {
+    "id":306,
+    "title": "trick",
+    "partOfSpeech": "v",
+    "definition": "哄騙",
+    "level": 6
+  },
+  {
+    "id":307,
+    "title": "trust",
+    "partOfSpeech": "v",
+    "definition": "信任",
+    "level": 6
+  },
+  {
+    "id":308,
+    "title": "twist",
+    "partOfSpeech": "v",
+    "definition": "扭曲/歪曲",
+    "level": 6
+  },
+  {
+    "id":309,
+    "title": "vanish",
+    "partOfSpeech": "v",
+    "definition": "消失",
+    "level": 6
+  },
+  {
+    "id":310,
+    "title": "vibrate",
+    "partOfSpeech": "v",
+    "definition": "震動",
+    "level": 6
+  },
+  {
+    "id":311,
+    "title": "wag",
+    "partOfSpeech": "v",
+    "definition": "搖擺",
+    "level": 6
+  },
+  {
+    "id":312,
+    "title": "warn",
+    "partOfSpeech": "v",
+    "definition": "警告",
+    "level": 6
+  },
+  {
+    "id":313,
+    "title": "waste",
+    "partOfSpeech": "v",
+    "definition": "浪費",
+    "level": 6
+  },
+  {
+    "id":314,
+    "title": "wave",
+    "partOfSpeech": "v",
+    "definition": "搖動/揮手",
+    "level": 6
+  },
+  {
+    "id":315,
+    "title": "wear",
+    "partOfSpeech": "v",
+    "definition": "穿著",
+    "level": 6
+  },
+  {
+    "id":316,
+    "title": "weep",
+    "partOfSpeech": "v",
+    "definition": "飲泣",
+    "level": 6
+  },
+  {
+    "id":317,
+    "title": "weigh",
+    "partOfSpeech": "v",
+    "definition": "重(多少)",
+    "level": 6
+  },
+  {
+    "id":318,
+    "title": "whisper",
+    "partOfSpeech": "v",
+    "definition": "低語",
+    "level": 6
+  },
+  {
+    "id":319,
+    "title": "wrap",
+    "partOfSpeech": "v",
+    "definition": "裹起",
+    "level": 6
+  },
+  {
+    "id":320,
+    "title": "yawn",
+    "partOfSpeech": "v",
+    "definition": "打呵欠",
+    "level": 6
+  }
+]

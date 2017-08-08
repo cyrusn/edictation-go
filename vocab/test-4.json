@@ -1,0 +1,434 @@
+[  {
+    "id":114,
+    "title": "exercise",
+    "partOfSpeech": "v",
+    "definition": "鍛鍊/運動",
+    "level": 4
+  },
+  {
+    "id":115,
+    "title": "exhibit",
+    "partOfSpeech": "v",
+    "definition": "展示",
+    "level": 4
+  },
+  {
+    "id":116,
+    "title": "exist",
+    "partOfSpeech": "v",
+    "definition": "存在",
+    "level": 4
+  },
+  {
+    "id":117,
+    "title": "expect",
+    "partOfSpeech": "v",
+    "definition": "預料/期望",
+    "level": 4
+  },
+  {
+    "id":118,
+    "title": "experience",
+    "partOfSpeech": "v",
+    "definition": "經驗",
+    "level": 4
+  },
+  {
+    "id":119,
+    "title": "expire",
+    "partOfSpeech": "v",
+    "definition": "過期",
+    "level": 4
+  },
+  {
+    "id":120,
+    "title": "explain",
+    "partOfSpeech": "v",
+    "definition": "解釋",
+    "level": 4
+  },
+  {
+    "id":121,
+    "title": "export",
+    "partOfSpeech": "v",
+    "definition": "輸出",
+    "level": 4
+  },
+  {
+    "id":122,
+    "title": "express",
+    "partOfSpeech": "v",
+    "definition": "表達",
+    "level": 4
+  },
+  {
+    "id":123,
+    "title": "fail",
+    "partOfSpeech": "v",
+    "definition": "失敗/不及格",
+    "level": 4
+  },
+  {
+    "id":124,
+    "title": "faint",
+    "partOfSpeech": "v",
+    "definition": "暈",
+    "level": 4
+  },
+  {
+    "id":125,
+    "title": "fear",
+    "partOfSpeech": "v",
+    "definition": "害怕",
+    "level": 4
+  },
+  {
+    "id":126,
+    "title": "feed",
+    "partOfSpeech": "v",
+    "definition": "餵飼",
+    "level": 4
+  },
+  {
+    "id":127,
+    "title": "filter",
+    "partOfSpeech": "v",
+    "definition": "過濾",
+    "level": 4
+  },
+  {
+    "id":128,
+    "title": "float",
+    "partOfSpeech": "v",
+    "definition": "浮",
+    "level": 4
+  },
+  {
+    "id":129,
+    "title": "fold",
+    "partOfSpeech": "v",
+    "definition": "摺",
+    "level": 4
+  },
+  {
+    "id":130,
+    "title": "follow",
+    "partOfSpeech": "v",
+    "definition": "跟從/跟蹤",
+    "level": 4
+  },
+  {
+    "id":131,
+    "title": "force",
+    "partOfSpeech": "v",
+    "definition": "強迫",
+    "level": 4
+  },
+  {
+    "id":132,
+    "title": "forget",
+    "partOfSpeech": "v",
+    "definition": "忘記",
+    "level": 4
+  },
+  {
+    "id":133,
+    "title": "freeze",
+    "partOfSpeech": "v",
+    "definition": "凝固",
+    "level": 4
+  },
+  {
+    "id":134,
+    "title": "frighten",
+    "partOfSpeech": "v",
+    "definition": "使…驚恐",
+    "level": 4
+  },
+  {
+    "id":135,
+    "title": "frown",
+    "partOfSpeech": "v",
+    "definition": "皺眉",
+    "level": 4
+  },
+  {
+    "id":136,
+    "title": "gain",
+    "partOfSpeech": "v",
+    "definition": "得到",
+    "level": 4
+  },
+  {
+    "id":137,
+    "title": "grab",
+    "partOfSpeech": "v",
+    "definition": "抓取",
+    "level": 4
+  },
+  {
+    "id":138,
+    "title": "greet",
+    "partOfSpeech": "v",
+    "definition": "問候",
+    "level": 4
+  },
+  {
+    "id":139,
+    "title": "grow",
+    "partOfSpeech": "v",
+    "definition": "成長/變得",
+    "level": 4
+  },
+  {
+    "id":140,
+    "title": "guard",
+    "partOfSpeech": "v",
+    "definition": "守衛",
+    "level": 4
+  },
+  {
+    "id":141,
+    "title": "guess",
+    "partOfSpeech": "v",
+    "definition": "估計",
+    "level": 4
+  },
+  {
+    "id":142,
+    "title": "guide",
+    "partOfSpeech": "v",
+    "definition": "指導",
+    "level": 4
+  },
+  {
+    "id":143,
+    "title": "handle",
+    "partOfSpeech": "v",
+    "definition": "處理",
+    "level": 4
+  },
+  {
+    "id":144,
+    "title": "hang",
+    "partOfSpeech": "v",
+    "definition": "掛起",
+    "level": 4
+  },
+  {
+    "id":145,
+    "title": "happen",
+    "partOfSpeech": "v",
+    "definition": "發生",
+    "level": 4
+  },
+  {
+    "id":146,
+    "title": "hate",
+    "partOfSpeech": "v",
+    "definition": "憎惡",
+    "level": 4
+  },
+  {
+    "id":147,
+    "title": "heat",
+    "partOfSpeech": "v",
+    "definition": "加熱",
+    "level": 4
+  },
+  {
+    "id":148,
+    "title": "hesitate",
+    "partOfSpeech": "v",
+    "definition": "猶豫",
+    "level": 4
+  },
+  {
+    "id":149,
+    "title": "hike",
+    "partOfSpeech": "v",
+    "definition": "遠足",
+    "level": 4
+  },
+  {
+    "id":150,
+    "title": "hire",
+    "partOfSpeech": "v",
+    "definition": "租/雇用",
+    "level": 4
+  },
+  {
+    "id":151,
+    "title": "hold",
+    "partOfSpeech": "v",
+    "definition": "持著/舉辦",
+    "level": 4
+  },
+  {
+    "id":152,
+    "title": "hug",
+    "partOfSpeech": "v",
+    "definition": "擁抱",
+    "level": 4
+  },
+  {
+    "id":153,
+    "title": "hunt",
+    "partOfSpeech": "v",
+    "definition": "追獵",
+    "level": 4
+  },
+  {
+    "id":154,
+    "title": "ignore",
+    "partOfSpeech": "v",
+    "definition": "忽視",
+    "level": 4
+  },
+  {
+    "id":155,
+    "title": "import",
+    "partOfSpeech": "v",
+    "definition": "輸入",
+    "level": 4
+  },
+  {
+    "id":156,
+    "title": "impress",
+    "partOfSpeech": "v",
+    "definition": "給...極深的印象",
+    "level": 4
+  },
+  {
+    "id":157,
+    "title": "include",
+    "partOfSpeech": "v",
+    "definition": "包括",
+    "level": 4
+  },
+  {
+    "id":158,
+    "title": "increase",
+    "partOfSpeech": "v",
+    "definition": "增加",
+    "level": 4
+  },
+  {
+    "id":159,
+    "title": "influence",
+    "partOfSpeech": "v",
+    "definition": "影響",
+    "level": 4
+  },
+  {
+    "id":160,
+    "title": "interview",
+    "partOfSpeech": "v",
+    "definition": "面試/採訪",
+    "level": 4
+  },
+  {
+    "id":161,
+    "title": "introduce",
+    "partOfSpeech": "v",
+    "definition": "介紹/引進",
+    "level": 4
+  },
+  {
+    "id":162,
+    "title": "invent",
+    "partOfSpeech": "v",
+    "definition": "發明",
+    "level": 4
+  },
+  {
+    "id":163,
+    "title": "investigate",
+    "partOfSpeech": "v",
+    "definition": "調查",
+    "level": 4
+  },
+  {
+    "id":164,
+    "title": "invite",
+    "partOfSpeech": "v",
+    "definition": "邀請",
+    "level": 4
+  },
+  {
+    "id":165,
+    "title": "issue",
+    "partOfSpeech": "v",
+    "definition": "發行/發出",
+    "level": 4
+  },
+  {
+    "id":166,
+    "title": "jog",
+    "partOfSpeech": "v",
+    "definition": "緩跑",
+    "level": 4
+  },
+  {
+    "id":167,
+    "title": "kidnap",
+    "partOfSpeech": "v",
+    "definition": "綁架",
+    "level": 4
+  },
+  {
+    "id":168,
+    "title": "kneel",
+    "partOfSpeech": "v",
+    "definition": "跪下",
+    "level": 4
+  },
+  {
+    "id":169,
+    "title": "knock",
+    "partOfSpeech": "v",
+    "definition": "敲/撞",
+    "level": 4
+  },
+  {
+    "id":170,
+    "title": "lack",
+    "partOfSpeech": "v",
+    "definition": "缺乏",
+    "level": 4
+  },
+  {
+    "id":171,
+    "title": "lay",
+    "partOfSpeech": "v",
+    "definition": "擺放下",
+    "level": 4
+  },
+  {
+    "id":172,
+    "title": "lead",
+    "partOfSpeech": "v",
+    "definition": "引導/領導",
+    "level": 4
+  },
+  {
+    "id":173,
+    "title": "learn",
+    "partOfSpeech": "v",
+    "definition": "學習",
+    "level": 4
+  },
+  {
+    "id":174,
+    "title": "leave",
+    "partOfSpeech": "v",
+    "definition": "離開",
+    "level": 4
+  },
+  {
+    "id":175,
+    "title": "lend",
+    "partOfSpeech": "v",
+    "definition": "借出",
+    "level": 4
+  }]

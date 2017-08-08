@@ -1,0 +1,266 @@
+[{
+    "id": 39,
+    "title": "brush",
+    "partOfSpeech": "v",
+    "definition": "刷",
+    "level": 2
+  },
+  {
+    "id": 40,
+    "title": "bump",
+    "partOfSpeech": "v",
+    "definition": "撞",
+    "level": 2
+  },
+  {
+    "id": 41,
+    "title": "capture",
+    "partOfSpeech": "v",
+    "definition": "捕捉",
+    "level": 2
+  },
+  {
+    "id": 42,
+    "title": "carry",
+    "partOfSpeech": "v",
+    "definition": "攜帶",
+    "level": 2
+  },
+  {
+    "id": 43,
+    "title": "catch",
+    "partOfSpeech": "v",
+    "definition": "捕捉",
+    "level": 2
+  },
+  {
+    "id": 44,
+    "title": "cause",
+    "partOfSpeech": "v",
+    "definition": "導致",
+    "level": 2
+  },
+  {
+    "id": 45,
+    "title": "cease",
+    "partOfSpeech": "v",
+    "definition": "停止",
+    "level": 2
+  },
+  {
+    "id": 46,
+    "title": "celebrate",
+    "partOfSpeech": "v",
+    "definition": "慶祝",
+    "level": 2
+  },
+  {
+    "id": 47,
+    "title": "challenge",
+    "partOfSpeech": "v",
+    "definition": "挑戰",
+    "level": 2
+  },
+  {
+    "id": 48,
+    "title": "chase",
+    "partOfSpeech": "v",
+    "definition": "追逐",
+    "level": 2
+  },
+  {
+    "id": 49,
+    "title": "chat",
+    "partOfSpeech": "v",
+    "definition": "聊天",
+    "level": 2
+  },
+  {
+    "id": 50,
+    "title": "cheat",
+    "partOfSpeech": "v",
+    "definition": "欺騙",
+    "level": 2
+  },
+  {
+    "id": 51,
+    "title": "choose",
+    "partOfSpeech": "v",
+    "definition": "選擇",
+    "level": 2
+  },
+  {
+    "id": 52,
+    "title": "claim",
+    "partOfSpeech": "v",
+    "definition": "聲稱",
+    "level": 2
+  },
+  {
+    "id": 53,
+    "title": "clap",
+    "partOfSpeech": "v",
+    "definition": "拍手",
+    "level": 2
+  },
+  {
+    "id": 54,
+    "title": "climb",
+    "partOfSpeech": "v",
+    "definition": "爬",
+    "level": 2
+  },
+  {
+    "id": 55,
+    "title": "collapse",
+    "partOfSpeech": "v",
+    "definition": "倒塌",
+    "level": 2
+  },
+  {
+    "id": 56,
+    "title": "collect",
+    "partOfSpeech": "v",
+    "definition": "收集",
+    "level": 2
+  },
+  {
+    "id": 57,
+    "title": "combine",
+    "partOfSpeech": "v",
+    "definition": "結合",
+    "level": 2
+  },
+  {
+    "id": 58,
+    "title": "commit",
+    "partOfSpeech": "v",
+    "definition": "干犯",
+    "level": 2
+  },
+  {
+    "id": 59,
+    "title": "communicate",
+    "partOfSpeech": "v",
+    "definition": "通訊",
+    "level": 2
+  },
+  {
+    "id": 60,
+    "title": "compare",
+    "partOfSpeech": "v",
+    "definition": "比較",
+    "level": 2
+  },
+  {
+    "id": 61,
+    "title": "compete",
+    "partOfSpeech": "v",
+    "definition": "競爭",
+    "level": 2
+  },
+  {
+    "id": 62,
+    "title": "complain",
+    "partOfSpeech": "v",
+    "definition": "投訴",
+    "level": 2
+  },
+  {
+    "id": 63,
+    "title": "complete",
+    "partOfSpeech": "v",
+    "definition": "完成",
+    "level": 2
+  },
+  {
+    "id": 64,
+    "title": "concern",
+    "partOfSpeech": "v",
+    "definition": "使不安/關係到",
+    "level": 2
+  },
+  {
+    "id": 65,
+    "title": "consider",
+    "partOfSpeech": "v",
+    "definition": "考慮",
+    "level": 2
+  },
+  {
+    "id": 66,
+    "title": "consist",
+    "partOfSpeech": "v",
+    "definition": "構成",
+    "level": 2
+  },
+  {
+    "id": 67,
+    "title": "contact",
+    "partOfSpeech": "v",
+    "definition": "聯繫",
+    "level": 2
+  },
+  {
+    "id": 68,
+    "title": "contain",
+    "partOfSpeech": "v",
+    "definition": "包含",
+    "level": 2
+  },
+  {
+    "id": 69,
+    "title": "continue",
+    "partOfSpeech": "v",
+    "definition": "持續",
+    "level": 2
+  },
+  {
+    "id": 70,
+    "title": "convince",
+    "partOfSpeech": "v",
+    "definition": "說服",
+    "level": 2
+  },
+  {
+    "id": 71,
+    "title": "correct",
+    "partOfSpeech": "v",
+    "definition": "改正",
+    "level": 2
+  },
+  {
+    "id": 72,
+    "title": "correspond",
+    "partOfSpeech": "v",
+    "definition": "符合/相應",
+    "level": 2
+  },
+  {
+    "id": 73,
+    "title": "cost",
+    "partOfSpeech": "v",
+    "definition": "值(多少錢)",
+    "level": 2
+  },
+  {
+    "id": 74,
+    "title": "cough",
+    "partOfSpeech": "v",
+    "definition": "咳嗽",
+    "level": 2
+  },
+  {
+    "id": 75,
+    "title": "count",
+    "partOfSpeech": "v",
+    "definition": "計數/數",
+    "level": 2
+  }, {
+    "id": 76,
+    "title": "cover",
+    "partOfSpeech": "v",
+    "definition": "遮蓋",
+    "level": 2
+  }
+]

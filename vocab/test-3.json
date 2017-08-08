@@ -1,0 +1,259 @@
+[  {
+    "id":77,
+    "title": "crawl",
+    "partOfSpeech": "v",
+    "definition": "爬",
+    "level": 3
+  },
+  {
+    "id":78,
+    "title": "create",
+    "partOfSpeech": "v",
+    "definition": "創造",
+    "level": 3
+  },
+  {
+    "id":79,
+    "title": "damage",
+    "partOfSpeech": "v",
+    "definition": "破壞",
+    "level": 3
+  },
+  {
+    "id":80,
+    "title": "deceive",
+    "partOfSpeech": "v",
+    "definition": "欺騙",
+    "level": 3
+  },
+  {
+    "id":81,
+    "title": "decide",
+    "partOfSpeech": "v",
+    "definition": "決定",
+    "level": 3
+  },
+  {
+    "id":82,
+    "title": "decorate",
+    "partOfSpeech": "v",
+    "definition": "裝飾",
+    "level": 3
+  },
+  {
+    "id":83,
+    "title": "decrease",
+    "partOfSpeech": "v",
+    "definition": "減少",
+    "level": 3
+  },
+  {
+    "id":84,
+    "title": "defend",
+    "partOfSpeech": "v",
+    "definition": "防守/辯護",
+    "level": 3
+  },
+  {
+    "id":85,
+    "title": "define",
+    "partOfSpeech": "v",
+    "definition": "給...下定義",
+    "level": 3
+  },
+  {
+    "id":86,
+    "title": "deliver",
+    "partOfSpeech": "v",
+    "definition": "傳送",
+    "level": 3
+  },
+  {
+    "id":87,
+    "title": "depart",
+    "partOfSpeech": "v",
+    "definition": "出發/離開",
+    "level": 3
+  },
+  {
+    "id":88,
+    "title": "describe",
+    "partOfSpeech": "v",
+    "definition": "形容/描述",
+    "level": 3
+  },
+  {
+    "id":89,
+    "title": "design",
+    "partOfSpeech": "v",
+    "definition": "設計",
+    "level": 3
+  },
+  {
+    "id":90,
+    "title": "desire",
+    "partOfSpeech": "v",
+    "definition": "渴望",
+    "level": 3
+  },
+  {
+    "id":91,
+    "title": "destroy",
+    "partOfSpeech": "v",
+    "definition": "破壞",
+    "level": 3
+  },
+  {
+    "id":92,
+    "title": "detect",
+    "partOfSpeech": "v",
+    "definition": "察覺",
+    "level": 3
+  },
+  {
+    "id":93,
+    "title": "determine",
+    "partOfSpeech": "v",
+    "definition": "下決心",
+    "level": 3
+  },
+  {
+    "id":94,
+    "title": "develop",
+    "partOfSpeech": "v",
+    "definition": "發展",
+    "level": 3
+  },
+  {
+    "id":95,
+    "title": "dig",
+    "partOfSpeech": "v",
+    "definition": "掘",
+    "level": 3
+  },
+  {
+    "id":96,
+    "title": "direct",
+    "partOfSpeech": "v",
+    "definition": "指揮/導演",
+    "level": 3
+  },
+  {
+    "id":97,
+    "title": "disappear",
+    "partOfSpeech": "v",
+    "definition": "消失",
+    "level": 3
+  },
+  {
+    "id":98,
+    "title": "discourage",
+    "partOfSpeech": "v",
+    "definition": "使洩氣",
+    "level": 3
+  },
+  {
+    "id":99,
+    "title": "discover",
+    "partOfSpeech": "v",
+    "definition": "發現",
+    "level": 3
+  },
+  {
+    "id":100,
+    "title": "discriminate",
+    "partOfSpeech": "v",
+    "definition": "區別/歧視",
+    "level": 3
+  },
+  {
+    "id":101,
+    "title": "discuss",
+    "partOfSpeech": "v",
+    "definition": "討論",
+    "level": 3
+  },
+  {
+    "id":102,
+    "title": "divide",
+    "partOfSpeech": "v",
+    "definition": "劃分",
+    "level": 3
+  },
+  {
+    "id":103,
+    "title": "doubt",
+    "partOfSpeech": "v",
+    "definition": "懷疑",
+    "level": 3
+  },
+  {
+    "id":104,
+    "title": "draft",
+    "partOfSpeech": "v",
+    "definition": "起草",
+    "level": 3
+  },
+  {
+    "id":105,
+    "title": "dress",
+    "partOfSpeech": "v",
+    "definition": "穿著/打扮",
+    "level": 3
+  },
+  {
+    "id":106,
+    "title": "encourage",
+    "partOfSpeech": "v",
+    "definition": "鼓勵",
+    "level": 3
+  },
+  {
+    "id":107,
+    "title": "endanger",
+    "partOfSpeech": "v",
+    "definition": "使遭到危險",
+    "level": 3
+  },
+  {
+    "id":108,
+    "title": "ensure",
+    "partOfSpeech": "v",
+    "definition": "保證",
+    "level": 3
+  },
+  {
+    "id":109,
+    "title": "envy",
+    "partOfSpeech": "v",
+    "definition": "羨慕",
+    "level": 3
+  },
+  {
+    "id":110,
+    "title": "equal",
+    "partOfSpeech": "v",
+    "definition": "等如",
+    "level": 3
+  },
+  {
+    "id":111,
+    "title": "erase",
+    "partOfSpeech": "v",
+    "definition": "抹去",
+    "level": 3
+  },
+  {
+    "id":112,
+    "title": "escape",
+    "partOfSpeech": "v",
+    "definition": "逃走",
+    "level": 3
+  },
+  {
+    "id":113,
+    "title": "establish",
+    "partOfSpeech": "v",
+    "definition": "建立",
+    "level": 3
+  }]
