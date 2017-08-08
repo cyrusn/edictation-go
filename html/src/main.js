@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import routes from './routes'
-import _ from 'lodash'
 
 /* eslint-disable no-new */
 new Vue({
@@ -12,18 +11,15 @@ new Vue({
       clazz: '',
       clazzNo: '',
       mode: 'normal',
-      level: 1,
-      questionIDs: [],
-      stat: {},
-      correctPercentage: 0
+      correctPercentage: 0,
+      assessmentName: '',
+      assessmentRecords: [],
+      assessmentSize: 0
     }
   },
   computed: {
     ViewComponent () {
       return routes[this.currentRoute]
-    },
-    noOfQuestions () {
-      return this.questionIDs.length
     }
   },
   render (h) {

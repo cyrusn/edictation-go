@@ -3,18 +3,18 @@
     <h1>Report <small>{{now.toDateString()}}</small></h1>
     <hr>
     <h2>{{$root.name}} <small>{{$root.clazz}} ({{$root.clazzNo}})</small></h2>
-
-    <mode-and-level-badge></mode-and-level-badge>
-
-    <h3>Statics</h3>
+    <badge></badge>
+    <h3>{{$root.assessmentName}} result</h3>
     <table class="table table-hover">
       <tbody>
         <tr>
+          <th>No</th>
           <th>Title</th>
           <th>Definition</th>
           <th>Your Anwser</th>
         </tr>
-        <tr v-for="v in allIncorrectVocabs">
+        <tr v-for="v in incorretVocab">
+          <td>{{v.index + 1}}</td>
           <td>{{v.title}} ({{v.partOfSpeech}})</td>
           <td>{{v.definition}}</td>
           <td class="text text-danger">{{v.answer}}</td>
@@ -26,44 +26,42 @@
 
 <script>
   import MainLayout from '../layouts/Main.vue'
-  import ModeAndLevelBadge from '../components/ModeAndLevelBadge.vue'
+  import Badge from '../components/Badge.vue'
   import _ from 'lodash'
   import axios from 'axios'
 
   export default {
     components: {
       MainLayout,
-      ModeAndLevelBadge
+      Badge
     },
     data () {
       return {
-        allIncorrectVocabs: [],
+        incorretVocab: [],
         now: new Date()
       }
     },
-    mounted () {
+    created () {
       const vm = this
       const root = vm.$root
+      const name = root.assessmentName
+      const records = root.assessmentRecords
 
-      const ids = _(root.stat)
-        .omitBy(obj => {
-          return obj.isCorrect
-        })
-        .map((val, key) => parseInt(key))
-        .value()
+      const incorrectVocabs = records.filter(obj => !obj.isCorrect)
+      const incorrectVocabIndexes = incorrectVocabs.map(obj => obj.index)
 
-      axios.post('./api/vocab/id', ids)
+      axios.post(`./api/assessment/${name}/report`, incorrectVocabIndexes)
         .then(response => {
-          vm.allIncorrectVocabs = response.data.map(vocab => {
-            const wrongAns = root.stat[vocab.id].answer
-            vocab.answer = wrongAns
+          vm.incorretVocab = _(response.data).map((vocab, n) => {
+            vocab.answer = incorrectVocabs[n].answer
+            vocab.index = incorrectVocabs[n].index
             return vocab
           })
+          .orderBy('index')
+          .value()
         })
         .catch(err => {
-          if (err) {
-            console.log(err)
-          }
+          console.log(err)
         })
     }
   }

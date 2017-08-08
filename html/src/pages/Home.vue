@@ -32,13 +32,16 @@
     </div>
 
     <div class="form-group">
-      <label class="col-sm-2 control-label">Level</label>
-      <div class="col-sm-10">
-        <label class="radio-inline" v-for="l in 6">
-          <input type="radio" v-model="$root.level" :value="l" /> {{ l }}
-        </label>
+      <label class="col-sm-2 control-label">Assessment</label>
+      <div class=" col-sm-10">
+        <select class="form-control" v-model="$root.assessmentName">
+          <option v-for="name in assessmentNames">
+            {{name}}
+          </option>
+        </select>
       </div>
     </div>
+
     <div class="form-group">
       <label class="col-sm-2 control-label">Mode</label>
       <div class="col-sm-10">
@@ -59,17 +62,25 @@
 <script type="text/javascript">
 import axios from 'axios'
 import MainLayout from '../layouts/Main.vue'
-import _ from 'lodash'
 
 // TODO: Validation on student, class and classNo, empty entry is not allowed.
 export default {
   data () {
     return {
-      isValid: true
+      isValid: true,
+      assessmentNames: []
     }
   },
   mounted () {
     document.getElementById('name').focus()
+  },
+  created () {
+    const vm = this
+    axios.get('./api/assessment')
+    .then(response => {
+      vm.assessmentNames = response.data
+    })
+    .catch(err => console.log(err))
   },
   methods: {
     submit: function (event) {
@@ -81,10 +92,6 @@ export default {
 
       if (vm.isValid) {
         vm.$root.currentRoute = '/quiz'
-        axios.get('./api/level/' + vm.$root.level)
-        .then(function (response) {
-          vm.$root.questionIDs = _.shuffle(response.data)
-        })
       }
     }
   },

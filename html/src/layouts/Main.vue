@@ -12,10 +12,9 @@
 import VLink from '../components/VLink.vue'
 
 export default {
-  components: {
-    VLink
-  }
+  components: { VLink }
 }
+
 </script>
 
 <style scoped>

@@ -1,18 +1,22 @@
 <template id="quiz">
 <main-layout>
-  <h1>Quiz</h1>
+  <h1>Assessment <small>{{$root.assessmentName}}</small></h1>
   <hr>
-  <mode-and-level-badge></mode-and-level-badge>
+  <badge></badge>
+
   <progress-bar :percentage="percentage * 100" progressBar='progress-bar'></progress-bar>
-  <progress-bar v-if="$root.mode != 'easy'" :percentage="wrongPercentage * 100" progressBar='progress-bar progress-bar-danger'></progress-bar>
+  <progress-bar v-if="$root.mode != 'easy'" :percentage="tolerantPercentage * 100" progressBar='progress-bar progress-bar-danger'></progress-bar>
+
   <div class="panel panel-success">
     <div class="panel-heading">
-      <h1 class="panel-title">{{definition}} {{partOfSpeech}}</h1>
+      <h1 class="panel-title">{{vocab.definition}} {{vocab.partOfSpeech}}</h1>
     </div>
 
     <div class="panel-body">
       <div class="input-group" @keypress.enter="next">
-        <input id="answer" type="text" class="form-control" v-model="answer">
+        <input
+          placeholder="Please type your answer!"
+          id="answer" type="text" class="form-control" v-model="answer">
         <div class="input-group-btn">
           <button class="btn btn-default" @click.prevent="next">
           <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
@@ -30,14 +34,12 @@
 </template>
 
 <script>
-/*global Audio, FormData*/
+/* global Audio */
 import MainLayout from '../layouts/Main.vue'
 import ProgressBar from '../components/ProgressBar.vue'
-import ModeAndLevelBadge from '../components/ModeAndLevelBadge.vue'
+import Badge from '../components/Badge.vue'
 import axios from 'axios'
 import _ from 'lodash'
-
-const defaultMessage = 'Please type your answer!'
 
 function acceptance (mode) {
   switch (mode) {
@@ -54,28 +56,33 @@ export default {
   components: {
     MainLayout,
     ProgressBar,
-    ModeAndLevelBadge
+    Badge
   },
   data () {
     return {
-      index: 0,
-      definition: '',
-      partOfSpeech: '',
       tts_source: '',
+      vocab: {},
       answer: '',
-      wrongPercentage: 0,
-      message: defaultMessage,
-      correctPercentage: 0
+      tolerantPercentage: 0,
+      correctPercentage: 0,
+      runningIndex: 0,
+      indexes: []
     }
   },
+  created () {
+    const vm = this
+    axios.get('./api/assessment/' + vm.$root.assessmentName + '/size')
+    .then(response => {
+      const size = response.data
+      vm.$root.assessmentSize = size
+      vm.indexes = _(size).range().shuffle().value()
+      vm.getVocab()
+    })
+  },
   computed: {
-    id () {
-      const vm = this
-      return vm.$root.questionIDs[vm.index]
-    },
     percentage () {
       const vm = this
-      return (vm.index + 1) / vm.$root.noOfQuestions
+      return (vm.runningIndex + 1) / vm.$root.assessmentSize
     },
     tts () {
       const vm = this
@@ -83,74 +90,87 @@ export default {
     }
   },
   watch: {
-    id () {
+    runningIndex () {
       const vm = this
       // fetch infomation for new question
-      vm.fetchAPI()
+      vm.getVocab()
+      vm.getVoice()
 
-      vm.tts_source = `./api/voice/vocab/id/${vm.id}`
       // reset answer
       vm.answer = ''
       document.getElementById('answer').focus()
     },
     tts_source () {
       const vm = this
-      setTimeout(vm.speak, 500)
+      setTimeout(vm.speak, 200)
     }
   },
   methods: {
-    fetchAPI () {
+    restart () {
       const vm = this
+      vm.$root.assessmentRecords = []
+      vm.indexes = _.shuffle(vm.indexes)
+      vm.runningIndex = 0
+      vm.tolerantPercentage = 0
+      vm.correctPercentage = 0
+    },
+    getVocab () {
+      const vm = this
+      const index = vm.indexes[vm.runningIndex]
+      const name = vm.$root.assessmentName
 
-      axios.get('./api/vocab/id/' + vm.id)
+      axios.get(`./api/assessment/${name}/index/${index}`)
         .then(function (response) {
-          const definition = response.data.definition
-          const partOfSpeech = response.data.partOfSpeech
-
-          vm.definition = definition
-          vm.partOfSpeech = partOfSpeech
+          vm.vocab = response.data
         })
         .catch(err => {
-          if (err) {
-            console.log(err)
-          }
+          console.log(err)
         })
+    },
+    getVoice () {
+      const vm = this
+      const root = vm.$root
+      const name = root.assessmentName
+      const index = vm.indexes[vm.runningIndex]
+      vm.tts_source = `./api/voice/assessment/${name}/index/${index}`
     },
     next () {
       const vm = this
       const root = vm.$root
-      const id = vm.id
+
+      const name = root.assessmentName
+      const index = vm.indexes[vm.runningIndex]
       const answer = vm.answer.toLowerCase()
 
-      axios.post('./api/check/vocab/id/' + id, {answer})
+      axios.get(`./api/check/assessment/${name}/index/${index}?ans=${answer}`)
         .then(response => {
           const isCorrect = response.data
-          root.stat[id] = { isCorrect, answer }
+          root.assessmentRecords.push({index, isCorrect, answer})
 
-          const noOfWrongAnswers = _(root.stat)
-            .map(val => val.isCorrect)
-            .filter(val => !val)
+          const noOfIncorrectAns = _(root.assessmentRecords)
+            .filter(obj => !obj.isCorrect)
             .value()
             .length
 
           // updated $root.correctPercentage
-          root.correctPercentage = (1 - noOfWrongAnswers / root.noOfQuestions).toFixed(2) * 100
+          root.correctPercentage = (1 - noOfIncorrectAns / root.assessmentSize).toFixed(2) * 100
 
-          // updated wrongPercentage for ProgressBar
-          vm.wrongPercentage = noOfWrongAnswers / (root.noOfQuestions * acceptance(root.mode))
+          // updated tolerantPercentage for ProgressBar
+          vm.tolerantPercentage = noOfIncorrectAns / (root.assessmentSize * acceptance(root.mode))
 
-          if (vm.wrongPercentage > 1) {
-            window.location.pathname = '/'
-          } else if (vm.index < root.noOfQuestions - 1) {
-            vm.index += 1
+          if (vm.tolerantPercentage > 1) {
+            vm.restart()
+            return
+          }
+
+          if (vm.runningIndex < root.assessmentSize - 1) {
+            vm.runningIndex += 1
           } else {
             root.currentRoute = '/report'
           }
         })
         .catch(err => {
-          if (err) {
-            console.log(err)
-          }
+          console.log(err)
         })
     },
     speak () {
