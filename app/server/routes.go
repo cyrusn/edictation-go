@@ -9,19 +9,22 @@ type api struct {
 }
 
 var apis = []api{
+	// get the list of assessment name
+	api{"GET", "/api/assessment", assessmentHandler},
+
 	// Get Vocab by vocabID
-	api{"GET", "/api/vocab/id/{id:[0-9]+}", vocabHandler},
+	api{"GET", "/api/assessment/{name}/index/{index:[0-9]+}", vocabHandler},
+
+	// get the no of vocab in given assessment name
+	api{"GET", "/api/assessment/{name}/size", assessmentSizeHandler},
+
+	// get the src of tts by given assessment and index
+	api{"GET", "/api/voice/assessment/{name}/index/{index:[0-9]+}", voiceHandler},
+
+	// post a vocabID and with answer in body, return bool
+	api{"GET", "/api/check/assessment/{name}/index/{index:[0-9]+}", checkHandler},
 
 	// Post a list of VocabID in body, and will return the list of Vocabs
 	// for reporting
-	api{"POST", "/api/vocab/id", vocabsHandler},
-
-	// get the list of vocabs by given level
-	api{"GET", "/api/level/{level:[1-6]}", levelHandler},
-
-	// get the src of tts by given vocabID
-	api{"GET", "/api/voice/vocab/id/{id:[0-9]+}", voiceHandler},
-
-	// post a vocabID and with answer in body, return bool
-	api{"post", "/api/check/vocab/id/{id:[0-9]+}", checkHandler},
+	api{"POST", "/api/assessment/{name}/report", reportHandler},
 }

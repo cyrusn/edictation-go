@@ -6,12 +6,14 @@ import (
 )
 
 func vocabHandler(w http.ResponseWriter, r *http.Request) {
-	id := getIDFromAPI(r)
+	v, err := getVocabFromAPI(r)
+	if err != nil {
+		errPrint(w, err)
+		return
+	}
 
 	w.Header().Add("Content-Type", "application/json; charset=UTF-8")
-	v := allVocabs[id]
-	// remove title, so student can't retrive the vocab simple from
-	// calling the api directly
+	// remove title, so student can't retrive the vocab directly from api
 	v.Title = ""
 
 	if err := json.NewEncoder(w).Encode(v); err != nil {

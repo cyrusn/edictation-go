@@ -7,9 +7,12 @@ import (
 )
 
 func voiceHandler(w http.ResponseWriter, r *http.Request) {
-	id := getIDFromAPI(r)
+	v, err := getVocabFromAPI(r)
+	if err != nil {
+		errPrint(w, err)
+		return
+	}
 
-	v := allVocabs[id]
 	url, err := voice.GetVoiceSource(v.Title, voiceSpeed)
 	if err != nil {
 		errPrint(w, err)

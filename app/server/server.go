@@ -7,14 +7,7 @@ import (
 	"time"
 
 	"github.com/cyrusn/edictation-go/app/cli"
-	"github.com/cyrusn/edictation-go/app/vocab"
 	"github.com/gorilla/mux"
-)
-
-// init variables for initiation
-var (
-	allVocabs  []vocab.Vocab
-	voiceSpeed float64
 )
 
 // Serve ...
@@ -39,7 +32,7 @@ func Serve() {
 
 	srv := &http.Server{
 		Handler: httpLogger(r),
-		Addr:    "127.0.0.1" + port,
+		Addr:    "localhost" + port,
 		// Good practice: enforce timeouts for servers you create!
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,

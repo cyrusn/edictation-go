@@ -27,12 +27,12 @@ func init() {
 		defaultPort          = ":5050"
 		defaultVoiceSpeed    = 0.5
 		defaultServingFolder = "./html/dist"
-		defaultVocabJSONPath = "./vocab/vocab.json"
+		defaultVocabJSONPath = "./vocab"
 
 		usagePort          = "server port"
 		usageVoiceSpeed    = "speed of voice"
 		usageServingFolder = "location of static files"
-		usageVocabJSONPath = "location of vocab.json"
+		usageVocabJSONPath = "location of all vocabs file (in json format)"
 	)
 
 	flag.StringVar(&Port, "port", defaultPort, usagePort)

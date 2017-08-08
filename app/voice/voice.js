@@ -3,7 +3,7 @@ const googleTTS = require('google-tts-api');
 const argv = require('yargs')
   .option('title', {
     alias: 't',
-    default: "hello world",
+    default: 'hello world',
     describe: 'choose a title',
     type: 'string'
   })
@@ -14,15 +14,15 @@ const argv = require('yargs')
     type: 'number'
   })
   .help()
-  .argv
+  .argv;
 
-const title = argv.title
-const speed = argv.speed
+const title = argv.title;
+const speed = argv.speed;
 
-googleTTS(title, "en", speed)
-.then(url => {
-  process.stdout.write(url)
-})
-.catch(url => {
-  process.stderr.write(url)
-})
+googleTTS(title, 'en', speed)
+  .then(url => {
+    process.stdout.write(url);
+  })
+  .catch(url => {
+    process.stderr.write(url);
+  });
