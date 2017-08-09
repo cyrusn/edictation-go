@@ -46,10 +46,10 @@
 </template>
 
 <script>
-import userInfo from '../mixins/userInfo'
+import UserInfo from '../mixins/UserInfo'
 
 export default {
-  mixins: [userInfo],
+  mixins: [UserInfo],
   data () {
     return {
       name: '',
@@ -59,15 +59,15 @@ export default {
   },
   methods: {
     updateName (name) {
-      userInfo.$emit('update:name', name)
+      UserInfo.$emit('update:name', name)
       this.validate()
     },
     updateClazz (clazz) {
-      userInfo.$emit('update:clazz', clazz)
+      UserInfo.$emit('update:clazz', clazz)
       this.validate()
     },
     updateClazzNo (clazzNo) {
-      userInfo.$emit('update:clazzNo', clazzNo)
+      UserInfo.$emit('update:clazzNo', clazzNo)
       this.validate()
     },
     validate () {

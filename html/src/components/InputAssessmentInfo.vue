@@ -33,12 +33,12 @@
 </template>
 
 <script>
-import assessment from '../mixins/assessment'
+import Assessment from '../mixins/Assessment'
 import axios from 'axios'
 import _ from 'lodash'
 
 export default {
-  mixins: [assessment],
+  mixins: [Assessment],
   data () {
     return {
       mode: 'normal',
@@ -56,26 +56,18 @@ export default {
       .catch(err => console.log(err))
   },
   methods: {
+    // TODO: Validate if user didn't select the assessment name
     updateMode () {
-      assessment.$emit('update:assessment-mode', this.mode)
+      Assessment.$emit('update:assessment-mode', this.mode)
     },
     updateName () {
-      assessment.$emit('update:assessment-name', this.name)
+      Assessment.$emit('update:assessment-name', this.name)
     }
-    // TODO: Validate if user didn't select the assessment name
   }
 }
 </script>
 
 <style lang="css">
-select:invalid {
-  color: gray !important;
-}
-
-select:required:invalid {
-  color: gray;
-}
-
 option[value=""][disabled] {
   display: none;
 }

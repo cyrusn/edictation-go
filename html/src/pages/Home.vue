@@ -1,4 +1,4 @@
-<template id="hello-world">
+<template id="home">
 <main-layout>
   <h1 class="text-center">
     S.K.H. Li Ping Secondary School<br><small>eDictation System</small>
@@ -28,10 +28,10 @@ import UserInfo from '../mixins/UserInfo'
 import Router from '../mixins/Router'
 
 export default {
+  mixins: [UserInfo, Router],
   components: {
     MainLayout, InputUserInfo, InputAssessmentInfo, SubmitButton, WarningMessage
   },
-  mixins: [UserInfo, Router],
   data () {
     return {
       isValid: false,
@@ -45,8 +45,8 @@ export default {
   methods: {
     onSubmit: function (event) {
       const vm = this
-
       vm.isShowWarning = !vm.isValid
+
       if (vm.isValid) {
         Router.$emit('update:route', '/quiz')
       }
