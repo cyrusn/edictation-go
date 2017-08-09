@@ -1,5 +1,5 @@
 {
-  "name": "Voice Package",
+  "name": "voice-package",
   "version": "1.0.0",
   "description": "voice package for edictation system",
   "main": "server.js",
