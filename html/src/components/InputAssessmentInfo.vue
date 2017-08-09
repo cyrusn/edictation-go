@@ -35,6 +35,7 @@
 <script>
 import assessment from '../mixins/assessment'
 import axios from 'axios'
+import _ from 'lodash'
 
 export default {
   mixins: [assessment],
@@ -50,7 +51,7 @@ export default {
 
     axios.get('./api/assessment')
       .then(response => {
-        vm.names = response.data
+        vm.names = _.orderBy(response.data)
       })
       .catch(err => console.log(err))
   },
