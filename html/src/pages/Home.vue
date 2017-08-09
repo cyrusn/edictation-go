@@ -4,19 +4,13 @@
     S.K.H. Li Ping Secondary School<br><small>eDictation System</small>
   </h1>
   <hr>
-<!-- {{assessment.name}} -->
-  <div v-if="showWarning" class="alert alert-danger" role="alert">Invalid user information</div>
 
-  <form class="form-horizontal" @keypress.enter.prevent="submit">
+  <warning-message :show='isShowWarning' />
 
+  <form class="form-horizontal" @keypress.enter.prevent="onSubmit">
     <input-user-info @validate='onValidate'></input-user-info>
     <input-assessment-info />
-
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button class="btn btn-success" @click.prevent="submit">Next</button>
-      </div>
-    </div>
+    <submit-button :submit='onSubmit' />
   </form>
 
 </main-layout>
@@ -24,17 +18,23 @@
 
 <script type="text/javascript">
 import MainLayout from '../layouts/Main.vue'
+
 import InputUserInfo from '../components/InputUserInfo.vue'
 import InputAssessmentInfo from '../components/InputAssessmentInfo.vue'
+import SubmitButton from '../components/SubmitButton.vue'
+import WarningMessage from '../components/WarningMessage.vue'
+
 import userInfo from '../mixins/userInfo'
 
 export default {
+  components: {
+    MainLayout, InputUserInfo, InputAssessmentInfo, SubmitButton, WarningMessage
+  },
   mixins: [userInfo],
   data () {
     return {
-      // assessment,
       isValid: false,
-      showWarning: false,
+      isShowWarning: false,
       assessmentNames: []
     }
   },
@@ -42,21 +42,17 @@ export default {
     document.getElementById('name').focus()
   },
   methods: {
-    submit: function (event) {
+    onSubmit: function (event) {
       const vm = this
-      const root = vm.$root
 
-      vm.showWarning = !vm.isValid
+      vm.isShowWarning = !vm.isValid
       if (vm.isValid) {
-        root.currentRoute = '/quiz'
+        vm.$root.currentRoute = '/quiz'
       }
     },
     onValidate (isValid) {
       this.isValid = isValid
     }
-  },
-  components: {
-    MainLayout, InputUserInfo, InputAssessmentInfo
   }
 }
 </script>

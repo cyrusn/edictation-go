@@ -7,12 +7,7 @@
 </template>
 
 <script>
-import VLink from '../components/VLink.vue'
-
-export default {
-  components: { VLink }
-}
-
+  export default {}
 </script>
 
 <style scoped>

@@ -62,6 +62,7 @@ export default {
     updateName () {
       assessment.$emit('update:assessment-name', this.name)
     }
+    // TODO: Validate if user didn't select the assessment name
   }
 }
 </script>

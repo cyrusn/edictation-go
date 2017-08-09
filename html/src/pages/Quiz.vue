@@ -1,5 +1,10 @@
 <template id="quiz">
 <main-layout>
+  <div>
+    <audio :src="playerSrc" autoplay ref='player'>
+    </audio>
+  </div>
+
   <h1>Assessment <small>{{name}}</small></h1>
   <hr>
   <badge
@@ -40,6 +45,7 @@
             <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
           </button>
         </div>
+
       </div>
     </div>
   </div>
@@ -56,7 +62,7 @@ import _ from 'lodash'
 
 import assessment from '../mixins/assessment'
 
-function acceptance (mode) {
+function acceptanceRatio (mode) {
   switch (mode) {
     case 'normal':
       return 0.5
@@ -77,21 +83,20 @@ export default {
   data () {
     return {
       hp: 100,
-      // hpBar: 'progress-bar-default',
       mode: assessment.mode,
       name: assessment.name,
       size: '',
       records: [],
-      tts_source: '',
       vocab: {},
       answer: '',
+      playerSrc: '',
       progressPercentage: 0,
       correctPercentage: 0,
       runningIndex: 0,
       shuffledIndexes: []
     }
   },
-  created () {
+  mounted () {
     const vm = this
     axios.get('./api/assessment/' + vm.name + '/size')
     .then(response => {
@@ -99,6 +104,10 @@ export default {
       vm.size = size
       vm.shuffledIndexes = _(size).range().shuffle().value()
       vm.getVocab()
+      vm.$on('load:player', () => {
+        console.log('load:player')
+        vm.$refs.player.load()
+      })
     })
   },
   computed: {
@@ -116,10 +125,6 @@ export default {
     percentage () {
       const vm = this
       return (vm.runningIndex + 1) / vm.size
-    },
-    tts () {
-      const vm = this
-      return new Audio(vm.tts_source)
     }
   },
   watch: {
@@ -127,15 +132,9 @@ export default {
       const vm = this
       // fetch infomation for new question
       vm.getVocab()
-      vm.getVoice()
-
       // reset answer
       vm.answer = ''
       document.getElementById('answer').focus()
-    },
-    tts_source () {
-      const vm = this
-      setTimeout(vm.speak, 200)
     }
   },
   methods: {
@@ -156,16 +155,16 @@ export default {
       axios.get(`./api/assessment/${name}/index/${index}`)
         .then(function (response) {
           vm.vocab = response.data
+          vm.updatePlayer(name, index)
+          vm.$emit('load:player')
         })
         .catch(err => {
           console.log(err)
         })
     },
-    getVoice () {
+    updatePlayer (name, index) {
       const vm = this
-      const name = vm.name
-      const index = vm.shuffledIndexes[vm.runningIndex]
-      vm.tts_source = `./api/voice/assessment/${name}/index/${index}`
+      vm.playerSrc = `./api/voice/assessment/${name}/index/${index}`
     },
     next () {
       const vm = this
@@ -178,14 +177,16 @@ export default {
           const isCorrect = response.data
           vm.records.push({index, isCorrect, answer})
 
-          const noOfIncorrectAns = _(vm.records)
+          // where mistake indicate the number of incorrect ans
+          const mistake = _(vm.records)
             .filter(obj => !obj.isCorrect)
             .value()
             .length
 
-          vm.progressPercentage = ((vm.runningIndex + 1) / vm.size)
-          vm.correctPercentage = (1 - (noOfIncorrectAns / vm.size))
-          vm.hp = (1 - noOfIncorrectAns / (vm.size * acceptance(vm.mode)))
+          const acceptance = vm.size * acceptanceRatio(vm.mode)
+
+          vm.correctPercentage = 1 - (mistake / vm.size)
+          vm.hp = 1 - mistake / acceptance
 
           if (vm.hp <= 0) {
             vm.restart()
@@ -194,6 +195,7 @@ export default {
 
           if (vm.runningIndex < vm.size - 1) {
             vm.runningIndex += 1
+            vm.progressPercentage = vm.runningIndex / vm.size
           } else {
             assessment.$emit('update:assessment-report', {
               records: vm.records,
@@ -208,7 +210,7 @@ export default {
     },
     speak () {
       const vm = this
-      vm.tts.play()
+      vm.$refs.player.play()
     }
   }
 }
