@@ -1,66 +1,30 @@
 <template id="quiz">
 <main-layout>
-  <div>
-    <audio :src="playerSrc" autoplay ref='player'>
-    </audio>
-  </div>
-
+  <player ref='player' />
   <h1>Assessment <small>{{name}}</small></h1>
   <hr>
-  <badge
-    :mode='mode'
-    :percentage='correctPercentage | toPercentage'
-   />
-   <div class="row">
-      <progress-bar
-        name='Progress'
-         :classArray='["progress-bar"]'
-         :percentage="progressPercentage | toPercentage"
-       />
-       <progress-bar
-         v-if="mode != 'easy'"
-         name='HP'
-         :classArray='["progress-bar", hpBar]'
-         :percentage="hp | toPercentage"
-       />
-   </div>
-
-  <div class="panel panel-success">
-    <div class="panel-heading">
-      <h1 class="panel-title">{{vocab.definition}} {{vocab.partOfSpeech}}</h1>
-    </div>
-
-    <div class="panel-body">
-      <div class="input-group" @keypress.enter="next">
-        <input
-          placeholder="Please type your answer!"
-          id="answer" type="text" class="form-control" v-model="answer">
-
-        <div class="input-group-btn">
-          <button class="btn btn-default" @click.prevent="next">
-            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-          </button>
-
-          <button class="btn btn-default" @click="speak">
-            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
-          </button>
-        </div>
-
-      </div>
-    </div>
+  <badge :mode='mode' :percentage='correctPercentage | toPercentage' />
+  <div class="row">
+    <progress-bar name='Progress' :percentage="progressPercentage | toPercentage" />
+    <progress-bar v-if="mode != 'easy'" name='HP' :contextualColor='contextualColor' :percentage="hp | toPercentage" />
   </div>
+
+  <quiz-panel :vocab='vocab' :next='next' @update:assessment-ans='updateAnswer' :speak='speak' />
 </main-layout>
 </template>
 
 <script>
-/* global Audio */
-import MainLayout from '../layouts/Main.vue'
-import ProgressBar from '../components/ProgressBar.vue'
-import Badge from '../components/Badge.vue'
 import axios from 'axios'
 import _ from 'lodash'
 
-import assessment from '../mixins/assessment'
+import MainLayout from '../layouts/Main.vue'
+import ProgressBar from '../components/ProgressBar.vue'
+import Badge from '../components/Badge.vue'
+import Player from '../components/Player.vue'
+import QuizPanel from '../components/QuizPanel.vue'
+
+import Assessment from '../mixins/Assessment'
+import Router from '../mixins/Router'
 
 function acceptanceRatio (mode) {
   switch (mode) {
@@ -74,23 +38,23 @@ function acceptanceRatio (mode) {
 }
 
 export default {
-  mixins: [assessment],
+  mixins: [Assessment],
   components: {
     MainLayout,
     ProgressBar,
-    Badge
+    Badge,
+    Player,
+    QuizPanel
   },
   data () {
     return {
       hp: 100,
-      mode: assessment.mode,
-      name: assessment.name,
-      size: '',
+      size: 0,
+      mode: Assessment.mode,
+      name: Assessment.name,
       records: [],
       vocab: {},
       answer: '',
-      playerSrc: '',
-      progressPercentage: 0,
       correctPercentage: 0,
       runningIndex: 0,
       shuffledIndexes: []
@@ -99,49 +63,42 @@ export default {
   mounted () {
     const vm = this
     axios.get('./api/assessment/' + vm.name + '/size')
-    .then(response => {
-      const size = response.data
-      vm.size = size
-      vm.shuffledIndexes = _(size).range().shuffle().value()
-      vm.getVocab()
-      vm.$on('load:player', () => {
-        console.log('load:player')
-        vm.$refs.player.load()
+      .then(response => {
+        const size = response.data
+        vm.size = size
+        vm.shuffledIndexes = _(size).range().shuffle().value()
+        vm.getVocab()
       })
-    })
   },
   computed: {
-    hpBar () {
+    index () {
+      const vm = this
+      return vm.shuffledIndexes[vm.runningIndex]
+    },
+    contextualColor () {
       const vm = this
       switch (true) {
         case vm.hp < 0.5 && vm.hp > 0.2:
-          return 'progress-bar-warning'
+          return 'warning'
         case vm.hp <= 0.2:
-          return 'progress-bar-danger'
+          return 'danger'
         default:
-          return 'progress-bar-success'
+          return 'success'
       }
     },
-    percentage () {
+    progressPercentage () {
       const vm = this
-      return (vm.runningIndex + 1) / vm.size
-    }
-  },
-  watch: {
-    runningIndex () {
-      const vm = this
-      // fetch infomation for new question
-      vm.getVocab()
-      // reset answer
-      vm.answer = ''
-      document.getElementById('answer').focus()
+      return vm.runningIndex / vm.size
     }
   },
   methods: {
+    updateAnswer (answer) {
+      this.answer = answer
+    },
     restart () {
       const vm = this
-      vm.records = []
       vm.shuffledIndexes = _.shuffle(vm.shuffledIndexes)
+      vm.records = []
       vm.runningIndex = 0
       vm.progressPercentage = 0
       vm.hp = 100
@@ -149,68 +106,79 @@ export default {
     },
     getVocab () {
       const vm = this
-      const index = vm.shuffledIndexes[vm.runningIndex]
+      const index = vm.index
       const name = vm.name
 
       axios.get(`./api/assessment/${name}/index/${index}`)
         .then(function (response) {
           vm.vocab = response.data
-          vm.updatePlayer(name, index)
-          vm.$emit('load:player')
+          vm.$refs.player.$emit('update:tts-audio', {
+            name,
+            index
+          })
         })
-        .catch(err => {
-          console.log(err)
-        })
+        .catch(console.error)
     },
-    updatePlayer (name, index) {
-      const vm = this
-      vm.playerSrc = `./api/voice/assessment/${name}/index/${index}`
+    speak () {
+      this.$refs.player.play()
     },
     next () {
       const vm = this
       const name = vm.name
-      const index = vm.shuffledIndexes[vm.runningIndex]
+      const index = vm.index
       const answer = vm.answer.toLowerCase()
 
       axios.get(`./api/check/assessment/${name}/index/${index}?ans=${answer}`)
         .then(response => {
           const isCorrect = response.data
-          vm.records.push({index, isCorrect, answer})
-
-          // where mistake indicate the number of incorrect ans
-          const mistake = _(vm.records)
-            .filter(obj => !obj.isCorrect)
-            .value()
-            .length
-
-          const acceptance = vm.size * acceptanceRatio(vm.mode)
-
-          vm.correctPercentage = 1 - (mistake / vm.size)
-          vm.hp = 1 - mistake / acceptance
-
-          if (vm.hp <= 0) {
-            vm.restart()
-            return
-          }
-
-          if (vm.runningIndex < vm.size - 1) {
-            vm.runningIndex += 1
-            vm.progressPercentage = vm.runningIndex / vm.size
-          } else {
-            assessment.$emit('update:assessment-report', {
-              records: vm.records,
-              percentage: vm.correctPercentage
-            })
-            vm.$root.currentRoute = '/report'
-          }
+          vm.updateRecords(isCorrect, index, answer)
+          vm.updateProgressBar()
+          vm.decideNextStep()
         })
-        .catch(err => {
-          console.log(err)
-        })
+        .catch(console.error)
     },
-    speak () {
+    updateRecords (isCorrect, index, answer) {
       const vm = this
-      vm.$refs.player.play()
+      if (!isCorrect) {
+        vm.records.push({
+          index,
+          answer
+        })
+      }
+    },
+    updateProgressBar () {
+      const vm = this
+      // where mistake indicate the number of incorrect ans
+      const mistake = vm.records.length
+      const acceptance = vm.size * acceptanceRatio(vm.mode)
+
+      vm.correctPercentage = 1 - (mistake / vm.size)
+      vm.hp = 1 - mistake / acceptance
+    },
+    updateReport () {
+      const vm = this
+      Assessment.$emit('update:assessment-report', {
+        records: vm.records,
+        percentage: vm.correctPercentage
+      })
+    },
+    decideNextStep () {
+      const vm = this
+      const isWrongToMach = vm.hp < 0
+      const isLastQuestion = vm.runningIndex < vm.size - 1
+
+      switch (true) {
+        case isWrongToMach:
+          vm.restart()
+          break
+        case isLastQuestion:
+          vm.runningIndex += 1
+          vm.getVocab()
+          break
+        default:
+          vm.updateReport()
+          Router.$emit('update:route', '/report')
+      }
     }
   }
 }

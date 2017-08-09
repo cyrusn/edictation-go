@@ -24,13 +24,14 @@ import InputAssessmentInfo from '../components/InputAssessmentInfo.vue'
 import SubmitButton from '../components/SubmitButton.vue'
 import WarningMessage from '../components/WarningMessage.vue'
 
-import userInfo from '../mixins/userInfo'
+import UserInfo from '../mixins/UserInfo'
+import Router from '../mixins/Router'
 
 export default {
   components: {
     MainLayout, InputUserInfo, InputAssessmentInfo, SubmitButton, WarningMessage
   },
-  mixins: [userInfo],
+  mixins: [UserInfo, Router],
   data () {
     return {
       isValid: false,
@@ -47,7 +48,7 @@ export default {
 
       vm.isShowWarning = !vm.isValid
       if (vm.isValid) {
-        vm.$root.currentRoute = '/quiz'
+        Router.$emit('update:route', '/quiz')
       }
     },
     onValidate (isValid) {

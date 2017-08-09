@@ -10,7 +10,6 @@ module.exports = new Vue({
   },
   created () {
     const vm = this
-
     const names = ['name', 'clazz', 'clazzNo']
 
     names.forEach(name => {

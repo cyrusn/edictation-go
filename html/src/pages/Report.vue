@@ -1,8 +1,8 @@
 <template>
   <main-layout>
-    <h1>Report <small>{{assessment.name}}</small></h1>
+    <h1>Report <small>{{assessmentName}}</small></h1>
     <hr>
-    <h2>{{userInfo.name}} <small>{{userInfo.clazz}} ({{userInfo.clazzNo}})</small></h2>
+    <h2>{{name}} <small>{{clazz}} ({{clazzNo}})</small></h2>
     <badge
       :mode='assessment.mode'
       :percentage='assessment.report.percentage | toPercentage'
@@ -33,35 +33,37 @@
   import _ from 'lodash'
   import axios from 'axios'
 
-  import userInfo from '../mixins/userInfo'
-  import assessment from '../mixins/assessment'
+  import UserInfo from '../mixins/UserInfo'
+  import Assessment from '../mixins/Assessment'
 
   export default {
-    mixins: [userInfo, assessment],
+    mixins: [UserInfo, Assessment],
     components: {
       MainLayout,
       Badge
     },
     data () {
       return {
-        userInfo,
-        assessment,
+        name: UserInfo.name,
+        clazz: UserInfo.clazz,
+        clazzNo: UserInfo.clazzNo,
+        assessmentName: Assessment.name,
+        records: Assessment.report.records,
         incorretVocabs: [],
         now: new Date()
       }
     },
     created () {
       const vm = this
-      const name = assessment.name
-      const records = assessment.report.records
+      const name = vm.assessmentName
+      const records = vm.records
 
-      const incorrectVocabs = records.filter(obj => !obj.isCorrect)
-      const incorrectVocabIndexes = incorrectVocabs.map(obj => obj.index)
+      const incorrectVocabIndexes = records.map(obj => obj.index)
       axios.post(`./api/assessment/${name}/report`, incorrectVocabIndexes)
         .then(response => {
           vm.incorretVocabs = _(response.data).map((vocab, n) => {
-            vocab.answer = incorrectVocabs[n].answer
-            vocab.index = incorrectVocabs[n].index
+            vocab.answer = records[n].answer
+            vocab.index = records[n].index
             return vocab
           })
           .orderBy('index')

@@ -8,7 +8,7 @@
       :aria-valuenow='percentage'
       aria-valuemin="0"
       aria-valuemax="100"
-      :class='classArray'
+      :class='classObject'
       :style='{width: percentage + "%"}'
       />
     </div>
@@ -27,8 +27,21 @@ export default {
     progressBar: {
       type: String
     },
-    classArray: {
-      type: Array
+    contextualColor: {
+      type: String
+    }
+  },
+  computed: {
+    classObject () {
+      const vm = this
+      const result = {
+        'progress-bar': true
+      }
+      if (vm.contextualColor) {
+        result['progress-bar-' + vm.contextualColor] = true
+      }
+
+      return result
     }
   }
 }
