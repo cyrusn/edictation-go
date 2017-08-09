@@ -1,11 +1,24 @@
 <template id="quiz">
 <main-layout>
-  <h1>Assessment <small>{{$root.assessmentName}}</small></h1>
+  <h1>Assessment <small>{{name}}</small></h1>
   <hr>
-  <badge></badge>
-
-  <progress-bar :percentage="percentage * 100" progressBar='progress-bar'></progress-bar>
-  <progress-bar v-if="$root.mode != 'easy'" :percentage="tolerantPercentage * 100" progressBar='progress-bar progress-bar-danger'></progress-bar>
+  <badge
+    :mode='mode'
+    :percentage='correctPercentage | toPercentage'
+   />
+   <div class="row">
+      <progress-bar
+        name='Progress'
+         :classArray='["progress-bar"]'
+         :percentage="progressPercentage | toPercentage"
+       />
+       <progress-bar
+         v-if="mode != 'easy'"
+         name='HP'
+         :classArray='["progress-bar", hpBar]'
+         :percentage="hp | toPercentage"
+       />
+   </div>
 
   <div class="panel panel-success">
     <div class="panel-heading">
@@ -17,18 +30,18 @@
         <input
           placeholder="Please type your answer!"
           id="answer" type="text" class="form-control" v-model="answer">
+
         <div class="input-group-btn">
           <button class="btn btn-default" @click.prevent="next">
-          <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-        </button>
+            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+          </button>
+
           <button class="btn btn-default" @click="speak">
-          <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
-        </button>
+            <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
+          </button>
         </div>
       </div>
     </div>
-
-    <div class="panel-footer" role="alert">{{message}}</div>
   </div>
 </main-layout>
 </template>
@@ -40,6 +53,8 @@ import ProgressBar from '../components/ProgressBar.vue'
 import Badge from '../components/Badge.vue'
 import axios from 'axios'
 import _ from 'lodash'
+
+import assessment from '../mixins/assessment'
 
 function acceptance (mode) {
   switch (mode) {
@@ -53,6 +68,7 @@ function acceptance (mode) {
 }
 
 export default {
+  mixins: [assessment],
   components: {
     MainLayout,
     ProgressBar,
@@ -60,29 +76,46 @@ export default {
   },
   data () {
     return {
+      hp: 100,
+      // hpBar: 'progress-bar-default',
+      mode: assessment.mode,
+      name: assessment.name,
+      size: '',
+      records: [],
       tts_source: '',
       vocab: {},
       answer: '',
-      tolerantPercentage: 0,
+      progressPercentage: 0,
       correctPercentage: 0,
       runningIndex: 0,
-      indexes: []
+      shuffledIndexes: []
     }
   },
   created () {
     const vm = this
-    axios.get('./api/assessment/' + vm.$root.assessmentName + '/size')
+    axios.get('./api/assessment/' + vm.name + '/size')
     .then(response => {
       const size = response.data
-      vm.$root.assessmentSize = size
-      vm.indexes = _(size).range().shuffle().value()
+      vm.size = size
+      vm.shuffledIndexes = _(size).range().shuffle().value()
       vm.getVocab()
     })
   },
   computed: {
+    hpBar () {
+      const vm = this
+      switch (true) {
+        case vm.hp < 0.5 && vm.hp > 0.2:
+          return 'progress-bar-warning'
+        case vm.hp <= 0.2:
+          return 'progress-bar-danger'
+        default:
+          return 'progress-bar-success'
+      }
+    },
     percentage () {
       const vm = this
-      return (vm.runningIndex + 1) / vm.$root.assessmentSize
+      return (vm.runningIndex + 1) / vm.size
     },
     tts () {
       const vm = this
@@ -108,16 +141,17 @@ export default {
   methods: {
     restart () {
       const vm = this
-      vm.$root.assessmentRecords = []
-      vm.indexes = _.shuffle(vm.indexes)
+      vm.records = []
+      vm.shuffledIndexes = _.shuffle(vm.shuffledIndexes)
       vm.runningIndex = 0
-      vm.tolerantPercentage = 0
+      vm.progressPercentage = 0
+      vm.hp = 100
       vm.correctPercentage = 0
     },
     getVocab () {
       const vm = this
-      const index = vm.indexes[vm.runningIndex]
-      const name = vm.$root.assessmentName
+      const index = vm.shuffledIndexes[vm.runningIndex]
+      const name = vm.name
 
       axios.get(`./api/assessment/${name}/index/${index}`)
         .then(function (response) {
@@ -129,44 +163,43 @@ export default {
     },
     getVoice () {
       const vm = this
-      const root = vm.$root
-      const name = root.assessmentName
-      const index = vm.indexes[vm.runningIndex]
+      const name = vm.name
+      const index = vm.shuffledIndexes[vm.runningIndex]
       vm.tts_source = `./api/voice/assessment/${name}/index/${index}`
     },
     next () {
       const vm = this
-      const root = vm.$root
-
-      const name = root.assessmentName
-      const index = vm.indexes[vm.runningIndex]
+      const name = vm.name
+      const index = vm.shuffledIndexes[vm.runningIndex]
       const answer = vm.answer.toLowerCase()
 
       axios.get(`./api/check/assessment/${name}/index/${index}?ans=${answer}`)
         .then(response => {
           const isCorrect = response.data
-          root.assessmentRecords.push({index, isCorrect, answer})
+          vm.records.push({index, isCorrect, answer})
 
-          const noOfIncorrectAns = _(root.assessmentRecords)
+          const noOfIncorrectAns = _(vm.records)
             .filter(obj => !obj.isCorrect)
             .value()
             .length
 
-          // updated $root.correctPercentage
-          root.correctPercentage = (1 - noOfIncorrectAns / root.assessmentSize).toFixed(2) * 100
+          vm.progressPercentage = ((vm.runningIndex + 1) / vm.size)
+          vm.correctPercentage = (1 - (noOfIncorrectAns / vm.size))
+          vm.hp = (1 - noOfIncorrectAns / (vm.size * acceptance(vm.mode)))
 
-          // updated tolerantPercentage for ProgressBar
-          vm.tolerantPercentage = noOfIncorrectAns / (root.assessmentSize * acceptance(root.mode))
-
-          if (vm.tolerantPercentage > 1) {
+          if (vm.hp <= 0) {
             vm.restart()
             return
           }
 
-          if (vm.runningIndex < root.assessmentSize - 1) {
+          if (vm.runningIndex < vm.size - 1) {
             vm.runningIndex += 1
           } else {
-            root.currentRoute = '/report'
+            assessment.$emit('update:assessment-report', {
+              records: vm.records,
+              percentage: vm.correctPercentage
+            })
+            vm.$root.currentRoute = '/report'
           }
         })
         .catch(err => {

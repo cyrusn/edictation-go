@@ -1,20 +1,14 @@
 import Vue from 'vue'
 import routes from './routes'
 
+Vue.filter('capitalize', str => str.charAt(0).toUpperCase() + str.slice(1))
+Vue.filter('toPercentage', n => Math.round(n * 100))
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   data () {
     return {
-      currentRoute: '/',
-      name: '',
-      clazz: '',
-      clazzNo: '',
-      mode: 'normal',
-      correctPercentage: 0,
-      assessmentName: '',
-      assessmentRecords: [],
-      assessmentSize: 0
+      currentRoute: '/'
     }
   },
   computed: {

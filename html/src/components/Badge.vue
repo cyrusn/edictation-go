@@ -1,10 +1,17 @@
 <template lang="html">
   <div class="row lead" >
     <div class="col-sm-4">
-      Mode <span class="badge">{{$root.mode}}</span>
+      Mode <span class="badge">{{mode | capitalize}}</span>
     </div>
     <div class="col-sm-8">
-      Percentage <span class="badge">{{$root.correctPercentage}}%</span>
+      Percentage <span class="badge">{{percentage}}%</span>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ['mode', 'percentage']
+}
+
+</script>

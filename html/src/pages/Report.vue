@@ -1,10 +1,13 @@
 <template>
   <main-layout>
-    <h1>Report <small>{{now.toDateString()}}</small></h1>
+    <h1>Report <small>{{assessment.name}}</small></h1>
     <hr>
-    <h2>{{$root.name}} <small>{{$root.clazz}} ({{$root.clazzNo}})</small></h2>
-    <badge></badge>
-    <h3>{{$root.assessmentName}} result</h3>
+    <h2>{{userInfo.name}} <small>{{userInfo.clazz}} ({{userInfo.clazzNo}})</small></h2>
+    <badge
+      :mode='assessment.mode'
+      :percentage='assessment.report.percentage | toPercentage'
+    />
+    <h3>{{now.toDateString()}}</h3>
     <table class="table table-hover">
       <tbody>
         <tr>
@@ -13,7 +16,7 @@
           <th>Definition</th>
           <th>Your Anwser</th>
         </tr>
-        <tr v-for="v in incorretVocab">
+        <tr v-for="v in incorretVocabs">
           <td>{{v.index + 1}}</td>
           <td>{{v.title}} ({{v.partOfSpeech}})</td>
           <td>{{v.definition}}</td>
@@ -30,29 +33,33 @@
   import _ from 'lodash'
   import axios from 'axios'
 
+  import userInfo from '../mixins/userInfo'
+  import assessment from '../mixins/assessment'
+
   export default {
+    mixins: [userInfo, assessment],
     components: {
       MainLayout,
       Badge
     },
     data () {
       return {
-        incorretVocab: [],
+        userInfo,
+        assessment,
+        incorretVocabs: [],
         now: new Date()
       }
     },
     created () {
       const vm = this
-      const root = vm.$root
-      const name = root.assessmentName
-      const records = root.assessmentRecords
+      const name = assessment.name
+      const records = assessment.report.records
 
       const incorrectVocabs = records.filter(obj => !obj.isCorrect)
       const incorrectVocabIndexes = incorrectVocabs.map(obj => obj.index)
-
       axios.post(`./api/assessment/${name}/report`, incorrectVocabIndexes)
         .then(response => {
-          vm.incorretVocab = _(response.data).map((vocab, n) => {
+          vm.incorretVocabs = _(response.data).map((vocab, n) => {
             vocab.answer = incorrectVocabs[n].answer
             vocab.index = incorrectVocabs[n].index
             return vocab
