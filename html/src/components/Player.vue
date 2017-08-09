@@ -20,9 +20,7 @@ export default {
     vm.$on('update:tts-audio', function ({name, index}) {
       console.log('update:tts-audio')
       vm.audioSrc = `./api/voice/assessment/${name}/index/${index}`
-      setTimeout(function () {
-        vm.$refs.player.load()
-      }, 200)
+      vm.$refs.player.load()
     })
   }
 }
