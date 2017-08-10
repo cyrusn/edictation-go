@@ -43,7 +43,7 @@ export default {
   methods: {
     onChange () {
       const vm = this
-      vm.$emit('update:assessment-ans', vm.answer)
+      vm.$emit('updateAnswer', vm.answer)
     },
     onNext () {
       const vm = this

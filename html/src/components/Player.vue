@@ -17,8 +17,8 @@ export default {
   },
   created () {
     const vm = this
-    vm.$on('update:tts-audio', function ({name, index}) {
-      console.log('update:tts-audio')
+    vm.$on('updateAudioSource', function ({name, index}) {
+      console.log('updateAudioSource')
       vm.audioSrc = `./api/voice/assessment/${name}/index/${index}`
       vm.$refs.player.load()
     })

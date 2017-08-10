@@ -4,9 +4,10 @@
     <hr>
     <h2>{{name}} <small>{{clazz}} ({{clazzNo}})</small></h2>
     <badge
-      :mode='assessment.mode'
-      :percentage='assessment.report.percentage | toPercentage'
+      :mode='mode'
+      :numerator='size - mistake' :denominator='size'
     />
+
     <h3>{{now.toDateString()}}</h3>
     <table class="table table-hover">
       <tbody>
@@ -48,9 +49,16 @@
         clazz: UserInfo.clazz,
         clazzNo: UserInfo.clazzNo,
         assessmentName: Assessment.name,
-        records: Assessment.report.records,
+        mode: Assessment.mode,
+        size: Assessment.size,
+        records: Assessment.records,
         incorretVocabs: [],
         now: new Date()
+      }
+    },
+    computed: {
+      mistake () {
+        return this.records.length
       }
     },
     created () {

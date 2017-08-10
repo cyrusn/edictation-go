@@ -3,13 +3,13 @@
   <player ref='player' />
   <h1>Assessment <small>{{name}}</small></h1>
   <hr>
-  <badge :mode='mode' :percentage='correctPercentage | toPercentage' />
+  <badge :mode='mode' :numerator='size - mistake' :denominator='size' />
   <div class="row">
     <progress-bar name='Progress' :percentage="progressPercentage | toPercentage" />
     <progress-bar v-if="mode != 'easy'" name='HP' :contextualColor='contextualColor' :percentage="hp | toPercentage" />
   </div>
 
-  <quiz-panel :vocab='vocab' :next='next' @update:assessment-ans='updateAnswer' :speak='speak' />
+  <quiz-panel :vocab='vocab' :next='next' @updateAnswer='updateAnswer' :speak='speak' />
 </main-layout>
 </template>
 
@@ -25,17 +25,6 @@ import QuizPanel from '../components/QuizPanel.vue'
 
 import Assessment from '../mixins/Assessment'
 import Router from '../mixins/Router'
-
-function acceptanceRatio (mode) {
-  switch (mode) {
-    case 'normal':
-      return 0.5
-    case 'hard':
-      return 0.25
-    default:
-      return 1
-  }
-}
 
 export default {
   mixins: [Assessment],
@@ -54,8 +43,7 @@ export default {
       name: Assessment.name,
       records: [],
       vocab: {},
-      answer: '',
-      correctPercentage: 0,
+      mistake: '',
       runningIndex: 0,
       shuffledIndexes: []
     }
@@ -66,6 +54,7 @@ export default {
       .then(response => {
         const size = response.data
         vm.size = size
+        Assessment.$emit('update:assessment-size', size)
         vm.shuffledIndexes = _(size).range().shuffle().value()
         vm.getVocab()
       })
@@ -93,7 +82,7 @@ export default {
   },
   methods: {
     updateAnswer (answer) {
-      this.answer = answer
+      this.answer = answer.toLowerCase()
     },
     restart () {
       const vm = this
@@ -101,32 +90,28 @@ export default {
       vm.records = []
       vm.runningIndex = 0
       vm.progressPercentage = 0
+      vm.mistake = 0
       vm.hp = 100
-      vm.correctPercentage = 0
     },
     getVocab () {
       const vm = this
-      const index = vm.index
-      const name = vm.name
+      const {index, name} = vm
 
       axios.get(`./api/assessment/${name}/index/${index}`)
         .then(function (response) {
           vm.vocab = response.data
-          vm.$refs.player.$emit('update:tts-audio', {
-            name,
-            index
-          })
+          const player = vm.$refs.player
+          player.$emit('updateAudioSource', {name, index})
         })
         .catch(console.error)
     },
     speak () {
-      this.$refs.player.play()
+      const player = this.$refs.player
+      player.play()
     },
     next () {
       const vm = this
-      const name = vm.name
-      const index = vm.index
-      const answer = vm.answer.toLowerCase()
+      const {name, index, answer} = vm
 
       axios.get(`./api/check/assessment/${name}/index/${index}?ans=${answer}`)
         .then(response => {
@@ -138,29 +123,35 @@ export default {
         .catch(console.error)
     },
     updateRecords (isCorrect, index, answer) {
-      const vm = this
       if (!isCorrect) {
-        vm.records.push({
-          index,
-          answer
-        })
+        this.records.push({index, answer})
       }
     },
     updateProgressBar () {
       const vm = this
+
       // where mistake indicate the number of incorrect ans
       const mistake = vm.records.length
-      const acceptance = vm.size * acceptanceRatio(vm.mode)
+      vm.mistake = mistake
 
-      vm.correctPercentage = 1 - (mistake / vm.size)
+      var acceptanceRatio
+      switch (vm.mode) {
+        case 'normal':
+          acceptanceRatio = 0.5
+          break
+        case 'hard':
+          acceptanceRatio = 0.25
+          break
+        default:
+          acceptanceRatio = 1
+      }
+
+      const acceptance = vm.size * acceptanceRatio
       vm.hp = 1 - mistake / acceptance
     },
     updateReport () {
-      const vm = this
-      Assessment.$emit('update:assessment-report', {
-        records: vm.records,
-        percentage: vm.correctPercentage
-      })
+      const {records} = this
+      Assessment.$emit('update:assessment-records', records)
     },
     decideNextStep () {
       const vm = this

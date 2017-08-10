@@ -9,7 +9,7 @@
         class="form-control"
         placeholder="Name"
         v-model='name'
-        @input='updateName(name)'
+        @input='updateUserInfo({name})'
       >
     </div>
   </div>
@@ -20,7 +20,7 @@
       <select
         class="form-control"
         v-model="clazz"
-        @change="updateClazz(clazz)"
+        @change="updateUserInfo({clazz})"
       >
         <option value="" disabled selected>Select your class</option>
         <option v-for="clazz in ['1A','1B','1C','1D','2A','2B','2C','2D','3A','3B','3C','3D','4A','4B','4C','4D','4E','5A','5B','5C','5D','5E','6A','6B','6C','6D','6E']">
@@ -38,7 +38,7 @@
         id="name"
         v-model="clazzNo"
         class="form-control"
-        @input='updateClazzNo(clazzNo)'
+        @input='updateUserInfo({clazzNo})'
       >
     </div>
   </div>
@@ -58,16 +58,8 @@ export default {
     }
   },
   methods: {
-    updateName (name) {
-      UserInfo.$emit('update:name', name)
-      this.validate()
-    },
-    updateClazz (clazz) {
-      UserInfo.$emit('update:clazz', clazz)
-      this.validate()
-    },
-    updateClazzNo (clazzNo) {
-      UserInfo.$emit('update:clazzNo', clazzNo)
+    updateUserInfo (obj) {
+      UserInfo.$emit('update:UserInfo', obj)
       this.validate()
     },
     validate () {

@@ -4,7 +4,6 @@
     S.K.H. Li Ping Secondary School<br><small>eDictation System</small>
   </h1>
   <hr>
-
   <warning-message :show='isShowWarning' />
 
   <form class="form-horizontal" @keypress.enter.prevent="onSubmit">

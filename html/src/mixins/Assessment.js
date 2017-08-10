@@ -5,15 +5,13 @@ module.exports = new Vue({
     return {
       name: '',
       mode: 'normal',
-      report: {
-        percentage: 0,
-        records: []
-      }
+      size: 0,
+      records: []
     }
   },
   created () {
     const vm = this
-    const names = ['name', 'mode', 'report']
+    const names = ['name', 'mode', 'records', 'size']
 
     names.forEach(name => {
       const eventName = 'update:assessment-' + name

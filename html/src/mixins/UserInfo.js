@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import _ from 'lodash'
 
 module.exports = new Vue({
   data () {
@@ -9,14 +10,12 @@ module.exports = new Vue({
     }
   },
   created () {
-    const vm = this
-    const names = ['name', 'clazz', 'clazzNo']
-
-    names.forEach(name => {
-      const eventName = 'update:' + name
-      vm.$on(eventName, value => {
-        console.log(eventName)
-        vm[name] = value
+    var vm = this
+    const eventName = 'update:UserInfo'
+    vm.$on(eventName, obj => {
+      console.log(eventName)
+      _.forIn(obj, (val, key) => {
+        vm[key] = val
       })
     })
   }
