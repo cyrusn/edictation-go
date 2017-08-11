@@ -30,7 +30,6 @@ const store = new Vuex.Store({
       const {name, clazz, clazzNo} = user
       const {mode} = assessment
       const assessmentName = assessment.name
-      console.log(name, clazz, clazzNo, mode, assessmentName)
       const isValid = name !== '' && clazz !== '' && clazzNo !== '' && assessmentName !== '' && mode !== ''
       return isValid
     },

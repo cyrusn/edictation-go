@@ -73,27 +73,24 @@ export default {
     },
     next (answer) {
       const {
-        addRecords, decideNextStep
+        addRecords, decideNextStep, increment
       } = this
 
       addRecords(answer)
+        .then(increment)
         .then(decideNextStep)
     },
     decideNextStep () {
       const {
-        hp, assessment, restart, getVocab, increment, goto, speak
+        hp, assessment, restart, getVocab, goto, speak
       } = this
-
-      const {size, runningIndex} = assessment
       const isWrongToMuch = hp < 0
-      const isLastQuestion = runningIndex > size - 1
-
+      const {size, runningIndex} = assessment
       switch (true) {
         case isWrongToMuch:
           restart()
           break
-        case !isLastQuestion:
-          increment()
+        case runningIndex < size:
           getVocab()
           .then(speak)
           break

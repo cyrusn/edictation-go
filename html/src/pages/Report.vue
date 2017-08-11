@@ -8,7 +8,7 @@
       :numerator='assessment.size - mistake' :denominator='assessment.size'
     />
 
-    <h3>{{now.toDateString()}}</h3>
+    <h3>{{now}}</h3>
     <table class="table table-hover">
       <tbody>
         <tr>
@@ -17,7 +17,7 @@
           <th>Definition</th>
           <th>Your Anwser</th>
         </tr>
-        <tr v-for="v in incorretVocabs">
+        <tr v-for="v in orderedIncorretVocabs">
           <td>{{v.index + 1}}</td>
           <td>{{v.title}} ({{v.partOfSpeech}})</td>
           <td>{{v.definition}}</td>
@@ -43,29 +43,40 @@
     },
     data () {
       return {
-        incorretVocabs: [],
-        now: new Date()
+        incorretVocabs: []
       }
     },
     computed: {
       ...mapState(['assessment', 'user']),
-      ...mapGetters(['mistake'])
+      ...mapGetters(['mistake']),
+      orderedIncorretVocabs () {
+        return _.orderBy(this.incorretVocabs, 'index')
+      },
+      now () {
+        const now = new Date()
+        return now.toDateString()
+      }
     },
     created () {
-      const {assessment, incorretVocabs} = this
-      const {name, records} = assessment
+      this.updateIncorretVocabs()
+    },
+    methods: {
+      updateIncorretVocabs () {
+        const {assessment, incorretVocabs} = this
+        const {name, records} = assessment
 
-      const incorrectVocabIndexes = records.map(obj => obj.index)
-      axios.post(`./api/assessment/${name}/report`, incorrectVocabIndexes)
-        .then(response => {
-          _(response.data).forEach((vocab, n) => {
-            const {answer, index} = records[n]
-            vocab.answer = answer
-            vocab.index = index
-            incorretVocabs.push(vocab)
+        const incorrectVocabIndexes = records.map(obj => obj.index)
+        axios.post(`./api/assessment/${name}/report`, incorrectVocabIndexes)
+          .then(response => {
+            _(response.data).forEach((vocab, n) => {
+              const {answer, index} = records[n]
+              vocab.answer = answer
+              vocab.index = index
+              incorretVocabs.push(vocab)
+            })
           })
-        })
-        .catch(console.error)
+          .catch(console.error)
+      }
     }
   }
 </script>
