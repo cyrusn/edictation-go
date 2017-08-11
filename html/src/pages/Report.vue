@@ -1,11 +1,11 @@
 <template>
   <main-layout>
-    <h1>Report <small>{{assessmentName}}</small></h1>
+    <h1>Report <small>{{assessment.name}}</small></h1>
     <hr>
-    <h2>{{name}} <small>{{clazz}} ({{clazzNo}})</small></h2>
+    <h2>{{user.name}} <small>{{user.clazz}} ({{user.clazzNo}})</small></h2>
     <badge
-      :mode='mode'
-      :numerator='size - mistake' :denominator='size'
+      :mode='assessment.mode'
+      :numerator='assessment.size - mistake' :denominator='assessment.size'
     />
 
     <h3>{{now.toDateString()}}</h3>
@@ -34,52 +34,38 @@
   import _ from 'lodash'
   import axios from 'axios'
 
-  import UserInfo from '../mixins/UserInfo'
-  import Assessment from '../mixins/Assessment'
+  import {mapState, mapGetters} from 'vuex'
 
   export default {
-    mixins: [UserInfo, Assessment],
     components: {
       MainLayout,
       Badge
     },
     data () {
       return {
-        name: UserInfo.name,
-        clazz: UserInfo.clazz,
-        clazzNo: UserInfo.clazzNo,
-        assessmentName: Assessment.name,
-        mode: Assessment.mode,
-        size: Assessment.size,
-        records: Assessment.records,
         incorretVocabs: [],
         now: new Date()
       }
     },
     computed: {
-      mistake () {
-        return this.records.length
-      }
+      ...mapState(['assessment', 'user']),
+      ...mapGetters(['mistake'])
     },
     created () {
-      const vm = this
-      const name = vm.assessmentName
-      const records = vm.records
+      const {assessment, incorretVocabs} = this
+      const {name, records} = assessment
 
       const incorrectVocabIndexes = records.map(obj => obj.index)
       axios.post(`./api/assessment/${name}/report`, incorrectVocabIndexes)
         .then(response => {
-          vm.incorretVocabs = _(response.data).map((vocab, n) => {
-            vocab.answer = records[n].answer
-            vocab.index = records[n].index
-            return vocab
+          _(response.data).forEach((vocab, n) => {
+            const {answer, index} = records[n]
+            vocab.answer = answer
+            vocab.index = index
+            incorretVocabs.push(vocab)
           })
-          .orderBy('index')
-          .value()
         })
-        .catch(err => {
-          console.log(err)
-        })
+        .catch(console.error)
     }
   }
 </script>

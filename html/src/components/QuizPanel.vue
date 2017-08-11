@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="panel panel-success">
     <div class="panel-heading">
-      <h1 class="panel-title">{{vocab.definition}} {{vocab.partOfSpeech}}</h1>
+      <h1 class="panel-title">Q{{index}}. {{vocab.definition}} {{vocab.partOfSpeech}}</h1>
     </div>
 
     <div class="panel-body">
@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  props: ['vocab', 'speak', 'next'],
+  props: ['vocab', 'speak', 'next', 'index'],
   data () {
     return {
       answer: ''
@@ -47,9 +47,9 @@ export default {
     },
     onNext () {
       const vm = this
-      vm.answer = ''
       document.getElementById('answer').focus()
-      vm.next()
+      vm.next(vm.answer)
+      vm.answer = ''
     }
   }
 }

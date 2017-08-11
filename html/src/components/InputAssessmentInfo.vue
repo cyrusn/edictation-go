@@ -4,9 +4,9 @@
       <label class="col-sm-2 control-label">Assessment</label>
       <div class=" col-sm-10">
         <select
+          id='name'
           class="form-control"
-          v-model="name"
-          @change='updateName'
+          @change='onUpdateName'
         >
           <option value="" disabled selected>Select the test</option>
           <option v-for="name in names">
@@ -21,11 +21,12 @@
       <div class="col-sm-10">
         <label class="radio-inline" v-for="m in ['easy', 'normal', 'hard']">
           <input
+            name="modeOption"
             type="radio"
-            @change='updateMode'
-            v-model='mode'
-            :value="m"
-          /> {{ m | capitalize }}
+            @change='onUpdateMode'
+            :value='m'
+          />
+          {{ m | capitalize }}
         </label>
       </div>
     </div>
@@ -33,35 +34,35 @@
 </template>
 
 <script>
-import Assessment from '../mixins/Assessment'
 import axios from 'axios'
 import _ from 'lodash'
 
+import {mapState, mapMutations} from 'vuex'
+
 export default {
-  mixins: [Assessment],
   data () {
     return {
-      mode: 'normal',
-      name: '',
       names: []
     }
   },
+  computed: {
+    ...mapState(['assessment'])
+  },
   created () {
     const vm = this
-
     axios.get('./api/assessment')
       .then(response => {
         vm.names = _.orderBy(response.data)
       })
-      .catch(err => console.log(err))
+      .catch(console.error)
   },
   methods: {
-    // TODO: Validate if user didn't select the assessment name
-    updateMode () {
-      Assessment.$emit('update:assessment-mode', this.mode)
+    ...mapMutations(['updateAssessmentName', 'updateAssessmentMode']),
+    onUpdateName (e) {
+      this.updateAssessmentName(e.target.value)
     },
-    updateName () {
-      Assessment.$emit('update:assessment-name', this.name)
+    onUpdateMode (e) {
+      this.updateAssessmentMode(e.target.value)
     }
   }
 }

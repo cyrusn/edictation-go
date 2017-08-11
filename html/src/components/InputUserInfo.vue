@@ -1,15 +1,12 @@
 <template lang="html">
 <div>
-
   <div class="form-group">
     <label class="col-sm-2 control-label">Name</label>
     <div class="col-sm-10">
       <input
-        id="name"
         class="form-control"
         placeholder="Name"
-        v-model='name'
-        @input='updateUserInfo({name})'
+        @input='onUpdateUserName'
       >
     </div>
   </div>
@@ -19,8 +16,8 @@
     <div class=" col-sm-10">
       <select
         class="form-control"
-        v-model="clazz"
-        @change="updateUserInfo({clazz})"
+        :value="clazz"
+        @change="onUpdateUserClazz"
       >
         <option value="" disabled selected>Select your class</option>
         <option v-for="clazz in ['1A','1B','1C','1D','2A','2B','2C','2D','3A','3B','3C','3D','4A','4B','4C','4D','4E','5A','5B','5C','5D','5E','6A','6B','6C','6D','6E']">
@@ -35,10 +32,9 @@
     <div class="col-sm-10">
       <input
         placeholder="Class No."
-        id="name"
-        v-model="clazzNo"
+        :value="clazzNo"
         class="form-control"
-        @input='updateUserInfo({clazzNo})'
+        @input='onUpdateUserClazzNo'
       >
     </div>
   </div>
@@ -46,26 +42,26 @@
 </template>
 
 <script>
-import UserInfo from '../mixins/UserInfo'
+import {mapState, mapMutations} from 'vuex'
 
 export default {
-  mixins: [UserInfo],
-  data () {
-    return {
-      name: '',
-      clazz: '',
-      clazzNo: ''
-    }
+  computed: {
+    ...mapState(['user', 'clazz', 'clazzNo'])
   },
   methods: {
-    updateUserInfo (obj) {
-      UserInfo.$emit('update:UserInfo', obj)
-      this.validate()
+    ...mapMutations([
+      'updateUserName',
+      'updateUserClazz',
+      'updateUserClazzNo'
+    ]),
+    onUpdateUserName (e) {
+      this.updateUserName(e.target.value)
     },
-    validate () {
-      const vm = this
-      const isValid = vm.name !== '' && vm.clazz !== '' && vm.clazzNo !== ''
-      this.$emit('validate', isValid)
+    onUpdateUserClazz (e) {
+      this.updateUserClazz(e.target.value)
+    },
+    onUpdateUserClazzNo (e) {
+      this.updateUserClazzNo(e.target.value)
     }
   }
 }

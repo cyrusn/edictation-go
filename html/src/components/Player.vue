@@ -1,27 +1,23 @@
 <template lang="html">
-  <audio :src="audioSrc" autoplay ref='player'></audio>
+  <div class="">
+    <audio :src="src" autoplay ref='player'></audio>
+  </div>
 </template>
 
 <script>
+// import {mapState} from 'vuex'
+
 export default {
   data () {
     return {
-      audioSrc: ''
+      src: ''
     }
   },
   methods: {
     play () {
-      const vm = this
-      vm.$refs.player.play()
+      this.src = this.$store.state.assessment.vocab.src
+      this.$refs.player.load()
     }
-  },
-  created () {
-    const vm = this
-    vm.$on('updateAudioSource', function ({name, index}) {
-      console.log('updateAudioSource')
-      vm.audioSrc = `./api/voice/assessment/${name}/index/${index}`
-      vm.$refs.player.load()
-    })
   }
 }
 </script>

@@ -1,176 +1,117 @@
 <template id="quiz">
 <main-layout>
   <player ref='player' />
-  <h1>Assessment <small>{{name}}</small></h1>
+  <h1>Assessment <small>{{assessment.name}}</small></h1>
   <hr>
-  <badge :mode='mode' :numerator='size - mistake' :denominator='size' />
+  <badge :mode='assessment.mode' :numerator='assessment.size - mistake' :denominator='assessment.size' />
   <div class="row">
     <progress-bar name='Progress' :percentage="progressPercentage | toPercentage" />
-    <progress-bar v-if="mode != 'easy'" name='HP' :contextualColor='contextualColor' :percentage="hp | toPercentage" />
+    <progress-bar v-if="assessment.mode != 'easy'" name='HP' :contextualColor='contextualColor' :percentage="hp | toPercentage" />
   </div>
 
-  <quiz-panel :vocab='vocab' :next='next' @updateAnswer='updateAnswer' :speak='speak' />
+  <quiz-panel :index='assessment.runningIndex + 1' :vocab='assessment.vocab' :next='next' @updateAnswer='updateAnswer' :speak='speak' />
 </main-layout>
 </template>
 
 <script>
-import axios from 'axios'
-import _ from 'lodash'
-
 import MainLayout from '../layouts/Main.vue'
 import ProgressBar from '../components/ProgressBar.vue'
 import Badge from '../components/Badge.vue'
 import Player from '../components/Player.vue'
 import QuizPanel from '../components/QuizPanel.vue'
 
-import Assessment from '../mixins/Assessment'
-import Router from '../mixins/Router'
+import {mapState, mapMutations, mapActions, mapGetters} from 'vuex'
 
 export default {
-  mixins: [Assessment],
   components: {
-    MainLayout,
-    ProgressBar,
-    Badge,
-    Player,
-    QuizPanel
-  },
+    MainLayout, ProgressBar, Badge, Player, QuizPanel},
   data () {
     return {
-      hp: 100,
-      size: 0,
-      mode: Assessment.mode,
-      name: Assessment.name,
-      records: [],
-      vocab: {},
-      mistake: '',
-      runningIndex: 0,
-      shuffledIndexes: []
+      answer: ''
     }
   },
-  mounted () {
-    const vm = this
-    axios.get('./api/assessment/' + vm.name + '/size')
-      .then(response => {
-        const size = response.data
-        vm.size = size
-        Assessment.$emit('update:assessment-size', size)
-        vm.shuffledIndexes = _(size).range().shuffle().value()
-        vm.getVocab()
-      })
-  },
   computed: {
-    index () {
-      const vm = this
-      return vm.shuffledIndexes[vm.runningIndex]
-    },
+    ...mapState(['assessment']),
+    ...mapGetters(['mistake', 'index', 'hp', 'progressPercentage']),
     contextualColor () {
-      const vm = this
+      const {hp} = this
       switch (true) {
-        case vm.hp < 0.5 && vm.hp > 0.2:
+        case hp < 0.4 && hp > 0.2:
           return 'warning'
-        case vm.hp <= 0.2:
+        case hp <= 0.1:
           return 'danger'
         default:
           return 'success'
       }
-    },
-    progressPercentage () {
-      const vm = this
-      return vm.runningIndex / vm.size
     }
   },
   methods: {
+    ...mapMutations([
+      'goto', 'increment', 'resetIndex', 'clearAssessmentRecords'
+    ]),
+    ...mapActions([
+      'addRecords', 'getOrders', 'getSize', 'getVocab'
+    ]),
     updateAnswer (answer) {
       this.answer = answer.toLowerCase()
     },
     restart () {
-      const vm = this
-      vm.shuffledIndexes = _.shuffle(vm.shuffledIndexes)
-      vm.records = []
-      vm.runningIndex = 0
-      vm.progressPercentage = 0
-      vm.mistake = 0
-      vm.hp = 100
-    },
-    getVocab () {
-      const vm = this
-      const {index, name} = vm
+      const {
+        speak, getVocab, getOrders, resetIndex, clearAssessmentRecords
+      } = this
 
-      axios.get(`./api/assessment/${name}/index/${index}`)
-        .then(function (response) {
-          vm.vocab = response.data
-          const player = vm.$refs.player
-          player.$emit('updateAudioSource', {name, index})
-        })
-        .catch(console.error)
+      resetIndex()
+      clearAssessmentRecords()
+
+      getOrders()
+      .then(getVocab)
+      .then(speak)
     },
     speak () {
       const player = this.$refs.player
       player.play()
     },
-    next () {
-      const vm = this
-      const {name, index, answer} = vm
+    next (answer) {
+      const {
+        addRecords, decideNextStep
+      } = this
 
-      axios.get(`./api/check/assessment/${name}/index/${index}?ans=${answer}`)
-        .then(response => {
-          const isCorrect = response.data
-          vm.updateRecords(isCorrect, index, answer)
-          vm.updateProgressBar()
-          vm.decideNextStep()
-        })
-        .catch(console.error)
-    },
-    updateRecords (isCorrect, index, answer) {
-      if (!isCorrect) {
-        this.records.push({index, answer})
-      }
-    },
-    updateProgressBar () {
-      const vm = this
-
-      // where mistake indicate the number of incorrect ans
-      const mistake = vm.records.length
-      vm.mistake = mistake
-
-      var acceptanceRatio
-      switch (vm.mode) {
-        case 'normal':
-          acceptanceRatio = 0.5
-          break
-        case 'hard':
-          acceptanceRatio = 0.25
-          break
-        default:
-          acceptanceRatio = 1
-      }
-
-      const acceptance = vm.size * acceptanceRatio
-      vm.hp = 1 - mistake / acceptance
-    },
-    updateReport () {
-      const {records} = this
-      Assessment.$emit('update:assessment-records', records)
+      addRecords(answer)
+        .then(decideNextStep)
     },
     decideNextStep () {
-      const vm = this
-      const isWrongToMach = vm.hp < 0
-      const isLastQuestion = vm.runningIndex < vm.size - 1
+      const {
+        hp, assessment, restart, getVocab, increment, goto, speak
+      } = this
+
+      const {size, runningIndex} = assessment
+      const isWrongToMuch = hp < 0
+      const isLastQuestion = runningIndex > size - 1
 
       switch (true) {
-        case isWrongToMach:
-          vm.restart()
+        case isWrongToMuch:
+          restart()
           break
-        case isLastQuestion:
-          vm.runningIndex += 1
-          vm.getVocab()
+        case !isLastQuestion:
+          increment()
+          getVocab()
+          .then(speak)
           break
         default:
-          vm.updateReport()
-          Router.$emit('update:route', '/report')
+          goto('/report')
       }
     }
+  },
+  mounted () {
+    const {
+      assessment, getSize, getOrders, getVocab, speak
+    } = this
+    const {name} = assessment
+
+    getSize(name)
+      .then(getOrders)
+      .then(getVocab)
+      .then(speak)
   }
 }
 </script>
