@@ -26,6 +26,7 @@ const store = new Vuex.Store({
   },
   getters: {
     isValid: (state) => {
+      // TODO: Better validation method like using joi
       const {assessment, user} = state
       const {name, clazz, clazzNo} = user
       const {mode} = assessment
@@ -61,7 +62,6 @@ const store = new Vuex.Store({
       return 1 - mistake / acceptance
     },
     progressPercentage: state => {
-      // const {} = getters
       const {assessment} = state
       const {runningIndex, size} = assessment
       return runningIndex / size

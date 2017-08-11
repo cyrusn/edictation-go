@@ -9,6 +9,12 @@ npm run build
 # or npm run watchify for development
 ```
 
+- install for voice api
+``` sh
+cd app/voice
+npm install
+```
+
 - run server app
 ``` sh
 go run main.go

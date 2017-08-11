@@ -1,4 +1,5 @@
 <template id="home">
+  <!-- TODO: use bootstrap 4.0 -->
 <main-layout>
   <h1 class="text-center">
     S.K.H. Li Ping Secondary School<br><small>Online Vocabulary System</small>
@@ -43,6 +44,8 @@ export default {
   methods: {
     ...mapMutations(['goto']),
     onSubmit: function (event) {
+      // TODO: only user and assessment on form submit,
+      // and seperate validation from store, validate values before submit.
       const {isValid, goto} = this
       this.isShowWarning = !isValid
       if (isValid) {
