@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const actions = {
-  getSize ({commit}, name) {
+  getSize ({commit, state}) {
+    const {name} = state
     return axios.get(`./api/assessment/${name}/size`)
       .then(response => {
         commit('updateSize', response.data)

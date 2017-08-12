@@ -3,36 +3,35 @@ import axios from 'axios'
 const actions = {
   getDefinitionAndPartOfSpeech ({commit, rootState, getters}) {
     const {name} = rootState.assessment
-    const {index} = getters
+    const {vocabIndex} = getters
 
-    return axios.get(`./api/assessment/${name}/index/${index}`)
+    return axios.get(`./api/assessment/${name}/index/${vocabIndex}`)
       .then(response => {
         const {definition, partOfSpeech} = response.data
         commit('updateDefinition', definition)
         commit('updatePartOfSpeech', partOfSpeech)
         return {
-          name, index
+          name, vocabIndex
         }
       })
       .catch(console.error)
   },
-  getAudioSrcFromAPI ({commit}, payload) {
-    const {name, index} = payload
-    const audioSource = `./api/voice/assessment/${name}/index/${index}`
+  getAudioSrc ({commit}, {name, vocabIndex}) {
+    const audioSource = `./api/voice/assessment/${name}/index/${vocabIndex}`
     commit('updateAudioSource', audioSource)
-    return {name, index}
+    return {name, vocabIndex}
   },
   checkAnswer ({commit, state, rootState, getters}) {
-    const {answer} = state.answer
+    const {answer} = state
     const {name} = rootState.assessment
-    const {index} = getters
+    const {vocabIndex} = getters
 
-    return axios.get(`./api/check/assessment/${name}/index/${index}?ans=${answer}`)
+    return axios.get(`./api/check/assessment/${name}/index/${vocabIndex}?ans=${answer}`)
       .then(response => {
         const isCorrect = response.data
         commit('updateIsCorrect', isCorrect)
         return {
-          index, answer
+          isCorrect, vocabIndex, answer
         }
       })
       .catch(console.error)

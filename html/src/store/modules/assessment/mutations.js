@@ -1,8 +1,12 @@
 import _ from 'lodash'
 
 const mutations = {
-  addRecords (state, record) {
-    state.records.push(record)
+  addRecords (state, {isCorrect, vocabIndex, answer}) {
+    if (!isCorrect) {
+      state.records.push({
+        vocabIndex, answer
+      })
+    }
   },
   clearRecords (state) {
     state.records = []
@@ -26,7 +30,6 @@ const mutationTypes = [{
 
 mutationTypes.forEach(({type, target}) => {
   mutations[type] = function (state, payload) {
-    console.log(type, payload)
     state[target] = payload
   }
 })

@@ -1,24 +1,24 @@
 const mutations = {
   increment (state) {
-    state.assessment.runningIndex ++
+    state.runningIndex ++
   },
-  resetIndex (state) {
-    state.assessment.runningIndex = 0
+  resetRunningIndex (state) {
+    state.runningIndex = 0
   },
   updateDefinition (state, definition) {
-    state.assessment.definition = definition
+    state.definition = definition
   },
   updatePartOfSpeech (state, partOfSpeech) {
-    state.assessment.partOfSpeech = partOfSpeech
+    state.partOfSpeech = partOfSpeech
   },
   updateAudioSource (state, src) {
-    state.assessment.audioSource = src
+    state.audioSource = src
   },
   updateAnswer (state, answer) {
-    state.assessment.answer = answer
+    state.answer = answer.toLowerCase()
   },
   updateIsCorrect (state, isCorrect) {
-    state.assessment.isCorrect = isCorrect
+    state.isCorrect = isCorrect
   }
 }
 

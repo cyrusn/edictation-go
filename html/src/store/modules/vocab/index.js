@@ -11,7 +11,7 @@ const state = {
 }
 
 const getters = {
-  index: (state, getters, rootState) => {
+  vocabIndex: (state, getters, rootState) => {
     const {orders} = rootState.assessment
     const {runningIndex} = state
     return orders[runningIndex]

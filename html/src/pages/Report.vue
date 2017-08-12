@@ -1,11 +1,11 @@
 <template>
   <main-layout>
-    <h1>Report <small>{{assessment.name}}</small></h1>
+    <h1>Report <small>{{assessmentName}}</small></h1>
     <hr>
-    <h2>{{user.name}} <small>{{user.clazz}} ({{user.clazzNo}})</small></h2>
+    <h2>{{name}} <small>{{clazz}} ({{clazzNo}})</small></h2>
     <badge
-      :mode='assessment.mode'
-      :numerator='assessment.size - mistake' :denominator='assessment.size'
+      :mode='mode'
+      :numerator='size - mistake' :denominator='size'
     />
 
     <h3>{{now}}</h3>
@@ -18,7 +18,7 @@
           <th>Your Anwser</th>
         </tr>
         <tr v-for="v in orderedIncorretVocabs">
-          <td>{{v.index + 1}}</td>
+          <td>{{v.vocabIndex + 1}}</td>
           <td>{{v.title}} ({{v.partOfSpeech}})</td>
           <td>{{v.definition}}</td>
           <td class="text text-danger">{{v.answer}}</td>
@@ -47,31 +47,39 @@
       }
     },
     computed: {
-      ...mapState(['assessment', 'user']),
-      ...mapGetters(['mistake']),
+      ...mapState('assessment', {
+        assessmentName: state => {
+          console.log(state)
+          return state.name
+        }
+      }),
+      ...mapState('assessment', ['mode', 'size', 'records']),
+      ...mapState('user', ['name', 'clazz', 'clazzNo']),
+      ...mapGetters('assessment', [
+        'mistake'
+      ]),
       orderedIncorretVocabs () {
-        return _.orderBy(this.incorretVocabs, 'index')
+        return _.orderBy(this.incorretVocabs, 'vocabIndex')
       },
       now () {
         const now = new Date()
         return now.toDateString()
       }
     },
-    created () {
+    mounted () {
       this.updateIncorretVocabs()
     },
     methods: {
       updateIncorretVocabs () {
-        const {assessment, incorretVocabs} = this
-        const {name, records} = assessment
+        const {assessmentName, records, incorretVocabs} = this
 
-        const incorrectVocabIndexes = records.map(obj => obj.index)
-        axios.post(`./api/assessment/${name}/report`, incorrectVocabIndexes)
+        const incorrectVocabIndexes = records.map(obj => obj.vocabIndex)
+        axios.post(`./api/assessment/${assessmentName}/report`, incorrectVocabIndexes)
           .then(response => {
             _(response.data).forEach((vocab, n) => {
-              const {answer, index} = records[n]
+              const {answer, vocabIndex} = records[n]
               vocab.answer = answer
-              vocab.index = index
+              vocab.vocabIndex = vocabIndex
               incorretVocabs.push(vocab)
             })
           })

@@ -1,9 +1,9 @@
 import mutations from './mutations'
 
 const state = {
-  name: '',
-  clazz: '',
-  clazzNo: ''
+  name: undefined,
+  clazz: undefined,
+  clazzNo: undefined
 }
 
 const namespaced = true

@@ -1,12 +1,14 @@
 <template lang="html">
-  <div v-if="show" class="alert alert-warning">
-    <strong>Warning!</strong> Invalid user information
+  <div v-if="show" class="alert alert-danger">
+    <div v-for='message in messages'>
+      <strong>Warning!</strong> &nbsp{{message}}
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['show']
+  props: ['messages', 'show']
 }
 </script>
 
