@@ -26,7 +26,8 @@ const mutationTypes = [{
 
 mutationTypes.forEach(({type, target}) => {
   mutations[type] = function (state, payload) {
-    state[type] = payload
+    console.log(type, payload)
+    state[target] = payload
   }
 })
 

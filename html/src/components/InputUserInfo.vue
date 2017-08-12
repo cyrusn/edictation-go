@@ -1,12 +1,13 @@
 <template lang="html">
 <div>
+  {{name}} {{clazz}} {{clazzNo}}
   <div class="form-group">
     <label class="col-sm-2 control-label">Name</label>
     <div class="col-sm-10">
       <input
         class="form-control"
         placeholder="Name"
-        @input='onUpdateUserName'
+        @input='onUpdateName'
       >
     </div>
   </div>
@@ -17,7 +18,7 @@
       <select
         class="form-control"
         :value="clazz"
-        @change="onUpdateUserClazz"
+        @change="onUpdateClazz"
       >
         <option value="" disabled selected>Select your class</option>
         <option v-for="clazz in ['1A','1B','1C','1D','2A','2B','2C','2D','3A','3B','3C','3D','4A','4B','4C','4D','4E','5A','5B','5C','5D','5E','6A','6B','6C','6D','6E']">
@@ -34,7 +35,7 @@
         placeholder="Class No."
         :value="clazzNo"
         class="form-control"
-        @input='onUpdateUserClazzNo'
+        @input='onUpdateClazzNo'
       >
     </div>
   </div>
@@ -46,22 +47,26 @@ import {mapState, mapMutations} from 'vuex'
 
 export default {
   computed: {
-    ...mapState(['user', 'clazz', 'clazzNo'])
+    ...mapState('user', [
+      'name',
+      'clazz',
+      'clazzNo'
+    ])
   },
   methods: {
-    ...mapMutations([
-      'updateUserName',
-      'updateUserClazz',
-      'updateUserClazzNo'
+    ...mapMutations('user', [
+      'updateName',
+      'updateClazz',
+      'updateClazzNo'
     ]),
-    onUpdateUserName (e) {
-      this.updateUserName(e.target.value)
+    onUpdateName (e) {
+      this.updateName(e.target.value)
     },
-    onUpdateUserClazz (e) {
-      this.updateUserClazz(e.target.value)
+    onUpdateClazz (e) {
+      this.updateClazz(e.target.value)
     },
-    onUpdateUserClazzNo (e) {
-      this.updateUserClazzNo(e.target.value)
+    onUpdateClazzNo (e) {
+      this.updateClazzNo(e.target.value)
     }
   }
 }

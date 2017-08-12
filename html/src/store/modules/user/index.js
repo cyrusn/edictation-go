@@ -5,6 +5,7 @@ const state = {
   clazz: '',
   clazzNo: ''
 }
+
 const namespaced = true
 export default {
   namespaced, state, mutations

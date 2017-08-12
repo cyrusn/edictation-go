@@ -21,6 +21,6 @@ new Vue({
   el: '#app',
   store,
   render (h) {
-    return h(routes[this.$store.state.currentRoute])
+    return h(routes[this.$store.state.router.currentRoute])
   }
 })

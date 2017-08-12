@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="assessment">
+  <div>
     <div class="form-group">
       <label class="col-sm-2 control-label">Assessment</label>
       <div class=" col-sm-10">
@@ -8,9 +8,9 @@
           class="form-control"
           @change='onUpdateName'
         >
-          <option value="" disabled selected>Select the test</option>
-          <option v-for="name in names">
-            {{name}}
+          <option disabled selected>Select the test</option>
+          <option v-for="n in names">
+            {{n}}
           </option>
         </select>
       </div>
@@ -46,7 +46,10 @@ export default {
     }
   },
   computed: {
-    ...mapState(['assessment'])
+    ...mapState('assessment', [
+      'name',
+      'mode'
+    ])
   },
   created () {
     const vm = this
@@ -57,12 +60,15 @@ export default {
       .catch(console.error)
   },
   methods: {
-    ...mapMutations(['updateAssessmentName', 'updateAssessmentMode']),
+    ...mapMutations('assessment', [
+      'updateName',
+      'updateMode'
+    ]),
     onUpdateName (e) {
-      this.updateAssessmentName(e.target.value)
+      this.updateName(e.target.value)
     },
     onUpdateMode (e) {
-      this.updateAssessmentMode(e.target.value)
+      this.updateMode(e.target.value)
     }
   }
 }

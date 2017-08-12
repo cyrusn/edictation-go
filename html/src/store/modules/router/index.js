@@ -7,6 +7,7 @@ const mutations = {
     state.currentRoute = route
   }
 }
+
 const namespaced = true
 export default {
   namespaced, state, mutations
