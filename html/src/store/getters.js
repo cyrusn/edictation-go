@@ -23,7 +23,7 @@ const validators = {
 
     if (name.length < 3) {
       return {
-        message: `Name must be at least 3 characters long.`,
+        message: `"Name" must be at least 3 characters long.`,
         isValid: false
       }
     }
