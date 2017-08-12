@@ -1,11 +1,12 @@
 <template lang="html">
   <div class="">
+    {{validateMessages}}
       <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
         <button class="btn btn-success" @click.prevent="onSubmit">Start</button>
       </div>
     </div>
-    <warning-message :show='show' :messages='messages'/>
+    <warning-message :show='show' :messages='validateMessages'/>
   </div>
 </template>
 
@@ -20,23 +21,25 @@ export default {
   data () {
     return {
       messages: [],
-      show: false
+      firstRun: true
     }
   },
   computed: {
-    ...mapGetters(['isValid'])
+    ...mapGetters(['validateMessages']),
+    show () {
+      return this.validateMessages.length !== 0 && !this.firstRun
+    }
   },
   methods: {
     ...mapMutations('router', ['goto']),
     onSubmit: function (event) {
       // TODO: only user and assessment on form submit,
       // and seperate validation from store, validate values before submit.
-      const {goto, isValid} = this
-      if (isValid === null) {
-        return goto('/quiz')
-      } else {
-        this.show = isValid !== null
-        this.messages = isValid.details.map(detail => detail.message)
+      const {goto, validateMessages} = this
+      const isValid = validateMessages.length === 0
+      this.firstRun = false
+      if (isValid) {
+        goto('/quiz')
       }
     }
   }

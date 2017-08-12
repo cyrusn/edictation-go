@@ -46,4 +46,3 @@ const actions = {
 }
 
 export default actions
-const Joi = require('joi')

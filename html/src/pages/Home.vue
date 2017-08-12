@@ -25,11 +25,6 @@ export default {
   components: {
     MainLayout, InputUserInfo, InputAssessmentInfo, SubmitButton
   },
-  data () {
-    return {
-      isShowWarning: false
-    }
-  },
   mounted () {
     document.getElementById('name').focus()
   }
