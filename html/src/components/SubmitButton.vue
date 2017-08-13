@@ -5,7 +5,7 @@
         <button class="btn btn-success" @click.prevent="onSubmit">Start</button>
       </div>
     </div>
-    <warning-message :show='show' :messages='validateMessages'/>
+    <warning-message />
   </div>
 </template>
 
@@ -17,26 +17,15 @@ export default {
   components: {
     WarningMessage
   },
-  data () {
-    return {
-      messages: [],
-      firstRun: true
-    }
-  },
   computed: {
-    ...mapGetters(['validateMessages']),
-    show () {
-      return this.validateMessages.length !== 0 && !this.firstRun
-    }
+    ...mapGetters(['isValid'])
   },
   methods: {
+    ...mapMutations(['setFirstSubmitToFalse']),
     ...mapMutations('router', ['goto']),
     onSubmit: function (event) {
-      // TODO: only user and assessment on form submit,
-      // and seperate validation from store, validate values before submit.
-      const {goto, validateMessages} = this
-      const isValid = validateMessages.length === 0
-      this.firstRun = false
+      const {goto, isValid, setFirstSubmitToFalse} = this
+      setFirstSubmitToFalse()
       if (isValid) {
         goto('/quiz')
       }

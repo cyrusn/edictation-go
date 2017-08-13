@@ -86,6 +86,10 @@ function validate (obj) {
 }
 
 const getters = {
+  isValid (state, getters) {
+    const {validateMessages} = getters
+    return validateMessages.length === 0
+  },
   validateMessages (state) {
     const {name, clazz, clazzNo} = state.user
     const {mode} = state.assessment
